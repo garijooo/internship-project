@@ -8,6 +8,10 @@ import PasswordReset from './auth/PasswordReset';
 
 import history from '../history';
 
+//styles
+import '../styles/index.css';
+import '../styles/auth.css';
+
 const App = () => {
 
   return (

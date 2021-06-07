@@ -1,15 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-const AuthForm = props => {
+import history from '../../history';
 
-    const onSubmitHandler = e => {
-        e.preventDefault();
-        console.log('form was submitted');
-    }
+const AuthForm = ({renderFields, onSubmitHandler, submitTitle}) => {
+    useEffect(() => {
+        if(localStorage.getItem("auth-token")) history.push('/');
+    }, []);
 
     return (
-        <form onSubmit={onSubmitHandler} >
-            
+        <form onSubmit={onSubmitHandler} className="auth__form">
+            {renderFields()}
+            <input type="submit" onSubmit={onSubmitHandler} value={submitTitle} />
         </form>
     );
 }
