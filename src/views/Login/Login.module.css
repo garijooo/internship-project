@@ -1,0 +1,18 @@
+.content {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1em;
+    width: 100%;
+}
+/* 
+.checkbox {
+}
+.checkbox input {
+} */
+.checkbox span {
+  margin-left: 0.5em;
+}
+
+.link {
+    color: #1788f0;
+}

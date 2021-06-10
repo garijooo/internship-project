@@ -1,0 +1,11 @@
+.content {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1em;
+    width: 100%;
+}
+
+.link {
+    margin-left: .5em;
+    color: #1788f0;
+}
