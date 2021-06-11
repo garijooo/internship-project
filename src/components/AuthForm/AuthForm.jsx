@@ -11,22 +11,22 @@ const AuthForm = ({
   <form onSubmit={onSubmitHandler} className={styles.form}>
     {renderFields()}
     {renderInnerContent && renderInnerContent()}
-    <input type="submit" onSubmit={onSubmitHandler} value={submitTitle} />
+    <input type="submit" value={submitTitle} />
   </form>
 );
 
 AuthForm.propTypes = {
-  renderFields: PropTypes.element,
+  renderFields: PropTypes.func,
   onSubmitHandler: PropTypes.func,
   submitTitle: PropTypes.string,
-  renderInnerContent: PropTypes.element,
+  renderInnerContent: PropTypes.func,
 };
 
 AuthForm.defaultProps = {
-  renderFields: null,
+  renderFields: undefined,
   onSubmitHandler: null,
   submitTitle: null,
-  renderInnerContent: null,
+  renderInnerContent: undefined,
 };
 
 export default AuthForm;

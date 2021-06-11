@@ -2,6 +2,7 @@
   "name": "akvelon_intership_test_project",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://34.227.104.147:8080",
   "dependencies": {
     "@testing-library/jest-dom": "^5.13.0",
     "@testing-library/react": "^11.2.7",

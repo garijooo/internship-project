@@ -1,18 +1,33 @@
 .content {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 1em;
-    width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1em;
+  width: 100%;
 }
-/* 
-.checkbox {
-}
-.checkbox input {
-} */
 .checkbox span {
   margin-left: 0.5em;
 }
 
 .link {
-    color: #1788f0;
+  color: #1788f0;
+}
+
+@media (max-width: 500px) and (min-width: 350px) {
+  .content {
+    align-items: center;
+  }
+  .checkbox span,
+  .link {
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 349px) {
+  .content {
+    align-items: center;
+  }
+  .checkbox span,
+  .link {
+    font-size: 0.75em;
+  }
 }

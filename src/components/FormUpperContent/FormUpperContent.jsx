@@ -6,16 +6,11 @@ import styles from './FormUpperContent.module.css';
 const FormUpperContent = ({ type }) => (
   <div className={styles.content}>
     <h2 className={type === 'login' ? styles.selected : styles.title}>
-      <Link to="/auth/login">
-        Login
-      </Link>
+      <Link to="/auth/login">Login</Link>
     </h2>
     <h2 className={type === 'signup' ? styles.selected : styles.title}>
-      <Link to="/auth/signup">
-        Sign Up
-      </Link>
+      <Link to="/auth/signup">Sign Up</Link>
     </h2>
-    <div className={styles.space} />
   </div>
 );
 

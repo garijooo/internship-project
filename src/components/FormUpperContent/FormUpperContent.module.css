@@ -1,11 +1,18 @@
 .content {
-    display: flex;
-    width: 100%;
-    margin-bottom: 2em;
-  }
+  display: flex;
+  width: 100%;
+  margin-bottom: 2em;
+  position: relative;
+}
 
 .title {
+  position: relative;
   border-bottom: 1.5px solid #e2e4e7;
+  padding-bottom: 2px;
+  flex-grow: 1;
+}
+.title:nth-child(2) {
+  flex-grow: 1;
 }
 
 .title a {
@@ -14,23 +21,49 @@
 
 .title:first-child {
   padding-right: 10%;
+  flex-grow: 1;
+  z-index: 1;
 }
 .title:nth-child(2) {
   padding-left: 10%;
+  flex-grow: 1;
 }
 
 .selected {
   border-bottom: 3px solid #1788f0;
   padding-left: 0;
   padding-right: 0;
+  z-index: 1;
+}
+
+.selected:nth-child(2) {
+  position: absolute;
+  left: 25%;
 }
 
 .selected a {
-    color: #1788f0;
+  color: #1788f0;
 }
-
 
 .space {
-    border-bottom: 1px solid #e2e4e7;
-    flex-grow: 1;
+  border-bottom: 1.5px solid #e2e4e7;
+  flex-grow: 1;
 }
+
+@media (max-width: 500px) and (min-width: 350px) {
+  .selected:nth-child(2) {
+    left: 30%;
+  }
+  .title, .selected {
+    font-size: 1.2em;
+  }
+} 
+
+@media (max-width: 349px) {
+  .selected:nth-child(2) {
+    left: 30%;
+  }
+  .title, .selected {
+    font-size: 1em;
+  }
+} 

@@ -13,15 +13,13 @@ const PasswordReset = () => {
   };
 
   const renderFormFields = () => (
-    <>
-      <input
-        type="email"
-        value={email}
-        placeholder="Email"
-        onChange={(e) => setEmail(e.target.value)}
-        required
-      />
-    </>
+    <input
+      type="email"
+      value={email}
+      placeholder="Email"
+      onChange={(e) => setEmail(e.target.value)}
+      required
+    />
   );
 
   return (
