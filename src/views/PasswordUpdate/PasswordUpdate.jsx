@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import AuthForm from '../../components/AuthForm/AuthForm';
+import AuthLogo from '../../components/AuthLogo/AuthLogo';
 import FormBottomContent from '../../components/FormBottomContent/FormBottomContent';
-import logo from '../../assets/images/logo-akvelon.png';
 
 const PasswordUpdate = () => {
   const [password, setPassword] = useState('');
@@ -34,9 +34,7 @@ const PasswordUpdate = () => {
   return (
     <section className="container">
       <div className="auth">
-        <div className="logo">
-          <img src={logo} alt="logo-akvelon" />
-        </div>
+        <AuthLogo />
         <div className="content">
           <h2 className="title">
             Create new password

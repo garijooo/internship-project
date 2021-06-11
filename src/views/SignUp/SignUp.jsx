@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import AuthForm from '../../components/AuthForm/AuthForm';
+import AuthLogo from '../../components/AuthLogo/AuthLogo';
 import FormUpperContent from '../../components/FormUpperContent/FormUpperContent';
-import logo from '../../assets/images/logo-akvelon.png';
 
 const SignUp = () => {
   const [fname, setFname] = useState('');
@@ -58,9 +58,7 @@ const SignUp = () => {
   return (
     <section className="container">
       <div className="auth">
-        <div className="logo">
-          <img src={logo} alt="logo-akvelon" />
-        </div>
+        <AuthLogo />
         <FormUpperContent type="signup" />
         <AuthForm
           renderFields={renderFormFields}

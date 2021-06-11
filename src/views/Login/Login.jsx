@@ -1,8 +1,8 @@
 import React, { useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import AuthForm from '../../components/AuthForm/AuthForm';
+import AuthLogo from '../../components/AuthLogo/AuthLogo';
 import FormUpperContent from '../../components/FormUpperContent/FormUpperContent';
-import logo from '../../assets/images/logo-akvelon.png';
 import styles from './Login.module.css';
 
 const Login = () => {
@@ -51,9 +51,7 @@ const Login = () => {
   return (
     <section className="container">
       <div className="auth">
-        <div className="logo">
-          <img src={logo} alt="logo-akvelon" />
-        </div>
+        <AuthLogo />
         <FormUpperContent type="login" />
         <AuthForm
           renderFields={renderFormFields}

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import AuthForm from '../../components/AuthForm/AuthForm';
+import AuthLogo from '../../components/AuthLogo/AuthLogo';
 import FormBottomContent from '../../components/FormBottomContent/FormBottomContent';
-import logo from '../../assets/images/logo-akvelon.png';
 import styles from './PasswordReset.module.css';
 
 const PasswordReset = () => {
@@ -25,9 +25,7 @@ const PasswordReset = () => {
   return (
     <section className="container">
       <div className="auth">
-        <div className="logo">
-          <img src={logo} alt="logo-akvelon" />
-        </div>
+        <AuthLogo />
         <div className="content">
           <h2 className="title">
             Reset the password
