@@ -1,22 +1,39 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import AuthForm from '../../components/AuthForm/AuthForm';
 import AuthLogo from '../../components/AuthLogo/AuthLogo';
 import FormUpperContent from '../../components/FormUpperContent/FormUpperContent';
 import styles from './Login.module.css';
+import fetchWrapper from '../../utils/fetchWrapper';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [checked, setChecked] = useState(false);
 
+  useEffect(() => {
+    fetch.post = fetchWrapper('POST');
+  }, []);
+
   const checkboxHandler = useCallback(() => {
     setChecked(!checked);
   }, [checked]);
 
-  const onLoginHandler = (e) => {
+  const onLoginHandler = async (e) => {
     e.preventDefault();
-    window.console.log('logged in!');
+    try {
+      const res = await fetch.post('/api/login', {
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      });
+      const data = await res.json();
+      if (data.msg) throw new Error(data.msg);
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const renderFormFields = () => (
