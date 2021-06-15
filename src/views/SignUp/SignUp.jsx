@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import AuthForm from '../../components/AuthForm/AuthForm';
 import AuthLogo from '../../components/AuthLogo/AuthLogo';
 import FormUpperContent from '../../components/FormUpperContent/FormUpperContent';
-import fetchWrapper from '../../utils/fetchWrapper';
+import fetch from '../../utils/fetchWrapper';
 
 const SignUp = () => {
   const [fname, setFname] = useState('');
@@ -10,10 +10,6 @@ const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-
-  useEffect(() => {
-    fetch.post = fetchWrapper('POST');
-  });
 
   const onSignUpHandler = async (e) => {
     e.preventDefault();

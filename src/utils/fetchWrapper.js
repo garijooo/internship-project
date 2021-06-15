@@ -7,5 +7,5 @@ const fetchWrapper = (method) => {
   };
   return (url, options) => fetch(url, { ...options, ...defaultOptions });
 };
-
-export default fetchWrapper;
+fetch.post = fetchWrapper('POST');
+export default fetch;

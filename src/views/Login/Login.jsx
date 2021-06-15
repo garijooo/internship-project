@@ -1,18 +1,19 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import AuthForm from '../../components/AuthForm/AuthForm';
 import AuthLogo from '../../components/AuthLogo/AuthLogo';
 import FormUpperContent from '../../components/FormUpperContent/FormUpperContent';
 import styles from './Login.module.css';
-import fetchWrapper from '../../utils/fetchWrapper';
+import fetch from '../../utils/fetchWrapper';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [checked, setChecked] = useState(false);
+  const history = useHistory();
 
   useEffect(() => {
-    fetch.post = fetchWrapper('POST');
+    if (localStorage.getItem('auth-token')) history.push('/');
   }, []);
 
   const checkboxHandler = useCallback(() => {
@@ -31,6 +32,7 @@ const Login = () => {
       const data = await response.json();
       if (data.msg) throw new Error(data.msg);
       localStorage.setItem('auth-token', data.token);
+      history.push('/');
     } catch (error) {
       console.log(error);
     }

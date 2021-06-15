@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  BrowserRouter, Route, Switch, Redirect,
+  BrowserRouter, Route, Switch,
 } from 'react-router-dom';
 import Login from './views/Login/Login';
 import SignUp from './views/SignUp/SignUp';
@@ -14,9 +14,7 @@ import './styles/auth.css';
 const App = () => (
   <BrowserRouter>
     <Switch>
-      <Route exact path="/">
-        {localStorage.getItem('auth-token') ? <Profile /> : <Redirect to="/auth/login" /> }
-      </Route>
+      <Route exact path="/" component={Profile} />
       <Route exact path="/auth/login" component={Login} />
       <Route exact path="/auth/signup" component={SignUp} />
       <Route exact path="/auth/password/update/:resetToken" component={PasswordUpdate} />
