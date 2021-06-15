@@ -12,25 +12,6 @@ const PasswordUpdate = () => {
     window.console.log('password was updated!');
   };
 
-  const renderFormFields = () => (
-    <>
-      <input
-        type="password"
-        value={password}
-        placeholder="New password"
-        onChange={(e) => setPassword(e.target.value)}
-        required
-      />
-      <input
-        type="password"
-        value={confirmPassword}
-        placeholder="Confirm password"
-        onChange={(e) => setConfirmPassword(e.target.value)}
-        required
-      />
-    </>
-  );
-
   return (
     <section className="container">
       <div className="auth">
@@ -40,7 +21,25 @@ const PasswordUpdate = () => {
             Create new password
           </h2>
         </div>
-        <AuthForm renderFields={renderFormFields} onSubmitHandler={onUpdatePasswordHandler} submitTitle="Reset password and Log in" />
+        <AuthForm
+          onSubmitHandler={onUpdatePasswordHandler}
+          submitTitle="Reset password and Log in"
+        >
+          <input
+            type="password"
+            value={password}
+            placeholder="New password"
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <input
+            type="password"
+            value={confirmPassword}
+            placeholder="Confirm password"
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            required
+          />
+        </AuthForm>
         <FormBottomContent />
       </div>
     </section>

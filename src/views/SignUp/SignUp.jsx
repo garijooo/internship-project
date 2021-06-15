@@ -35,56 +35,51 @@ const SignUp = () => {
     }
   };
 
-  const renderFormFields = () => (
-    <>
-      <input
-        type="text"
-        value={fname}
-        placeholder="First name"
-        onChange={(e) => setFname(e.target.value)}
-        required
-      />
-      <input
-        type="text"
-        value={lname}
-        placeholder="Last name"
-        onChange={(e) => setLname(e.target.value)}
-        required
-      />
-      <input
-        type="email"
-        value={email}
-        placeholder="Email"
-        onChange={(e) => setEmail(e.target.value)}
-        required
-      />
-      <input
-        type="password"
-        value={password}
-        placeholder="Password(6 digits at least, case sensitive)"
-        onChange={(e) => setPassword(e.target.value)}
-        required
-      />
-      <input
-        type="password"
-        value={confirmPassword}
-        placeholder="Confirm password"
-        onChange={(e) => setConfirmPassword(e.target.value)}
-        required
-      />
-    </>
-  );
-
   return (
     <section className="container">
       <div className="auth">
         <AuthLogo />
         <FormUpperContent type="signup" />
         <AuthForm
-          renderFields={renderFormFields}
           onSubmitHandler={onSignUpHandler}
           submitTitle="Register"
-        />
+        >
+          <input
+            type="text"
+            value={fname}
+            placeholder="First name"
+            onChange={(e) => setFname(e.target.value)}
+            required
+          />
+          <input
+            type="text"
+            value={lname}
+            placeholder="Last name"
+            onChange={(e) => setLname(e.target.value)}
+            required
+          />
+          <input
+            type="email"
+            value={email}
+            placeholder="Email"
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <input
+            type="password"
+            value={password}
+            placeholder="Password(6 digits at least, case sensitive)"
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <input
+            type="password"
+            value={confirmPassword}
+            placeholder="Confirm password"
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            required
+          />
+        </AuthForm>
       </div>
     </section>
   );

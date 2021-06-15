@@ -35,47 +35,37 @@ const Login = () => {
       console.log(error);
     }
   };
-
-  const renderFormFields = () => (
-    <>
-      <input
-        type="email"
-        value={email}
-        placeholder="Email"
-        onChange={(e) => setEmail(e.target.value)}
-        required
-      />
-      <input
-        type="password"
-        value={password}
-        placeholder="Password"
-        onChange={(e) => setPassword(e.target.value)}
-        required
-      />
-    </>
-  );
-
-  const renderInner = () => (
-    <div className={styles.content}>
-      <div className={styles.checkbox}>
-        <input type="checkbox" defaultChecked={checked} onChange={checkboxHandler} />
-        <span>Remember me</span>
-      </div>
-      <Link to="/auth/password/reset" className={styles.link}>Forgot your password?</Link>
-    </div>
-  );
-
   return (
     <section className="container">
       <div className="auth">
         <AuthLogo />
         <FormUpperContent type="login" />
         <AuthForm
-          renderFields={renderFormFields}
           onSubmitHandler={onLoginHandler}
           submitTitle="Sign In"
-          renderInnerContent={renderInner}
-        />
+        >
+          <input
+            type="email"
+            value={email}
+            placeholder="Email"
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <input
+            type="password"
+            value={password}
+            placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <div className={styles.content}>
+            <div className={styles.checkbox}>
+              <input type="checkbox" defaultChecked={checked} onChange={checkboxHandler} />
+              <span>Remember me</span>
+            </div>
+            <Link to="/auth/password/reset" className={styles.link}>Forgot your password?</Link>
+          </div>
+        </AuthForm>
       </div>
     </section>
   );

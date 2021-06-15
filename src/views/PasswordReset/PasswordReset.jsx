@@ -12,16 +12,6 @@ const PasswordReset = () => {
     window.console.log('reset password link was sent');
   };
 
-  const renderFormFields = () => (
-    <input
-      type="email"
-      value={email}
-      placeholder="Email"
-      onChange={(e) => setEmail(e.target.value)}
-      required
-    />
-  );
-
   return (
     <section className="container">
       <div className="auth">
@@ -35,10 +25,17 @@ const PasswordReset = () => {
           </span>
         </div>
         <AuthForm
-          renderFields={renderFormFields}
           onSubmitHandler={onResetPasswordHandler}
           submitTitle="Send a link"
-        />
+        >
+          <input
+            type="email"
+            value={email}
+            placeholder="Email"
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </AuthForm>
         <FormBottomContent />
       </div>
     </section>
