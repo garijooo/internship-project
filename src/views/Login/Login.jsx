@@ -22,15 +22,15 @@ const Login = () => {
   const onLoginHandler = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch.post('/api/login', {
+      const response = await fetch.post('/api/login', {
         body: JSON.stringify({
           email,
           password,
         }),
       });
-      const data = await res.json();
+      const data = await response.json();
       if (data.msg) throw new Error(data.msg);
-      console.log(data);
+      localStorage.setItem('auth-token', data.token);
     } catch (error) {
       console.log(error);
     }

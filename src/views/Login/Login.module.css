@@ -1,15 +1,29 @@
 .content {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 1em;
+  margin-bottom: 1.5em;
   width: 100%;
 }
+.checkbox {
+  /* background: lime; */
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+.checkbox input[type=checkbox] {
+  transform: scale(1.5);
+  display: inline;
+  margin-left: 4px;
+}
 .checkbox span {
-  margin-left: 0.5em;
+  margin-left: 0.75em;
+  /* display: inline; */
 }
 
 .link {
+  font-size: 1.2em;
   color: #1788f0;
+  /* background: red; */
 }
 
 @media (max-width: 500px) and (min-width: 350px) {

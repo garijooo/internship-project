@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AuthForm from '../../components/AuthForm/AuthForm';
 import AuthLogo from '../../components/AuthLogo/AuthLogo';
 import FormUpperContent from '../../components/FormUpperContent/FormUpperContent';
+import fetchWrapper from '../../utils/fetchWrapper';
 
 const SignUp = () => {
   const [fname, setFname] = useState('');
@@ -10,9 +11,28 @@ const SignUp = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  const onSignUpHandler = (e) => {
+  useEffect(() => {
+    fetch.post = fetchWrapper('POST');
+  });
+
+  const onSignUpHandler = async (e) => {
     e.preventDefault();
-    window.console.log('signed up!');
+    try {
+      if (password !== confirmPassword) throw new Error('passwords didn\'t match');
+      const response = await fetch.post('/api/user', {
+        body: JSON.stringify({
+          firstname: fname,
+          lastname: lname,
+          email,
+          password,
+        }),
+      });
+      const data = await response.json();
+      if (data.msg) throw new Error(data.msg);
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const renderFormFields = () => (

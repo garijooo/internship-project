@@ -1,15 +1,21 @@
 .content {
   display: flex;
   width: 100%;
-  margin-bottom: 2em;
+  margin-bottom: 1.5em;
   position: relative;
+}
+
+.title,
+.selected {
+  font-size: 1em;
+  padding-bottom: 0.75em;
 }
 
 .title {
   position: relative;
   border-bottom: 1.5px solid #e2e4e7;
-  padding-bottom: 2px;
   flex-grow: 1;
+  padding-bottom: 14px;
 }
 .title:nth-child(2) {
   flex-grow: 1;
@@ -20,7 +26,7 @@
 }
 
 .title:first-child {
-  padding-right: 10%;
+  /* width: 20%; */
   flex-grow: 1;
   z-index: 1;
 }
@@ -34,11 +40,13 @@
   padding-left: 0;
   padding-right: 0;
   z-index: 1;
+  width: 10%;
 }
 
 .selected:nth-child(2) {
   position: absolute;
-  left: 25%;
+  left: 20%;
+  width: 14%;
 }
 
 .selected a {
@@ -50,20 +58,42 @@
   flex-grow: 1;
 }
 
-@media (max-width: 500px) and (min-width: 350px) {
-  .selected:nth-child(2) {
-    left: 30%;
+@media (max-width: 500px) and (min-width: 400px) {
+  .title:nth-child(2) {
+    padding-left: 10%;
   }
-  .title, .selected {
-    font-size: 1.2em;
-  }
-} 
 
-@media (max-width: 349px) {
   .selected:nth-child(2) {
-    left: 30%;
+    left: 20%;
+    width: 15%;
   }
-  .title, .selected {
-    font-size: 1em;
+
+  .title,
+  .selected {
+    font-size: 0.9em;
   }
-} 
+  .title {
+    padding-bottom: 12px;
+  }
+}
+
+@media (max-width: 399px) {
+  .selected {
+    width: 15%;
+  }
+  .title:nth-child(2) {
+    padding-left: 10%;
+  }
+
+  .selected:nth-child(2) {
+    left: 25%;
+    width: 20%;
+  }
+  .title,
+  .selected {
+    font-size: .8em;
+  }
+  .title {
+    padding-bottom: 11px;
+  }
+}

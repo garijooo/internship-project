@@ -4,7 +4,9 @@
     margin-bottom: 1em;
     width: 100%;
 }
-
+.content span {
+    color: #818181;
+}
 .link {
     margin-left: .5em;
     color: #1788f0;
