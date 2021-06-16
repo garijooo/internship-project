@@ -7,9 +7,7 @@ const fetchWrapper = (method) => {
   };
   return (url, options) => {
     const updatedOptions = { ...options, ...defaultOptions };
-    if (method === 'GET') {
-      updatedOptions.headers = { ...updatedOptions.headers, ...options.headers };
-    }
+    if (method === 'GET') updatedOptions.headers = { ...updatedOptions.headers, ...options.headers };
     return fetch(url, updatedOptions);
   };
 };
