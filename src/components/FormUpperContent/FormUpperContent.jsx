@@ -1,25 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import PropsTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 import styles from './FormUpperContent.module.css';
 
-const FormUpperContent = ({ type }) => (
+const FormUpperContent = () => (
   <div className={styles.content}>
-    <h2 className={type === 'login' ? styles.selected : styles.title}>
-      <Link to="/auth/login">Login</Link>
-    </h2>
-    <h2 className={type === 'signup' ? styles.selected : styles.title}>
-      <Link to="/auth/signup">Sign Up</Link>
-    </h2>
+    <NavLink to="/auth/login" className={styles.title} activeClassName={styles.selected}>Login</NavLink>
+    <NavLink to="/auth/signup" className={styles.title} activeClassName={styles.selected}>Sign Up</NavLink>
   </div>
 );
-
-FormUpperContent.propTypes = {
-  type: PropsTypes.string,
-};
-
-FormUpperContent.defaultProps = {
-  type: null,
-};
 
 export default FormUpperContent;
