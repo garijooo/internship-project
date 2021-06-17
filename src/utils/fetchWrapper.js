@@ -1,16 +1,15 @@
-const fetchWrapper = (method) => {
-  const defaultOptions = {
+const fetchWrapper = (method) => (url, options = {}) => {
+  const updatedOptions = {
     method,
+    ...options,
     headers: {
       'Content-Type': 'application/json',
+      ...(options.headers ?? {}),
     },
   };
-  return (url, options) => {
-    const updatedOptions = { ...options, ...defaultOptions };
-    if (method === 'GET') updatedOptions.headers = { ...updatedOptions.headers, ...options.headers };
-    return fetch(url, updatedOptions);
-  };
+  return fetch(url, updatedOptions);
 };
+
 fetch.post = fetchWrapper('POST');
 fetch.get = fetchWrapper('GET');
 export default fetch;

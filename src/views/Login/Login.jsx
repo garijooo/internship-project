@@ -28,9 +28,7 @@ const Login = () => {
       const data = await response.json();
       if (data.msg) throw new Error(data.msg);
       localStorage.setItem('auth-token', data.token);
-      console.log(1);
       history.push('/');
-      console.log(2);
     } catch (error) {
       console.log(error);
     }
