@@ -3,45 +3,27 @@
   justify-content: space-between;
   margin-bottom: 1.5em;
   width: 100%;
+  font-size: 8px;
 }
 .checkbox {
-  /* background: lime; */
   display: flex;
   justify-content: left;
   align-items: center;
+  font-size: 1em;
 }
-.checkbox input[type=checkbox] {
-  transform: scale(1.5);
-  display: inline;
-  margin-left: 4px;
+.checkbox input[type="checkbox"] {
+  font-size: 1em;
+  width: 2em;
+  height: 2em;
+  border-radius: 2px;
 }
 .checkbox span {
-  margin-left: 0.75em;
-  /* display: inline; */
+  margin-left: 8px;
+  font-size: 14px;
+  line-height: 22px;
 }
 
 .link {
-  font-size: 1.2em;
+  font-size: 16px;
   color: #1788f0;
-  /* background: red; */
-}
-
-@media (max-width: 500px) and (min-width: 350px) {
-  .content {
-    align-items: center;
-  }
-  .checkbox span,
-  .link {
-    font-size: 0.9em;
-  }
-}
-
-@media (max-width: 349px) {
-  .content {
-    align-items: center;
-  }
-  .checkbox span,
-  .link {
-    font-size: 0.75em;
-  }
 }

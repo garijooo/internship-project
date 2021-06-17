@@ -2,6 +2,8 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  min-width: 320px;
+  font-size: 8px;
 }
 
 .form input[type="text"],
@@ -10,17 +12,18 @@
 .form input[type="submit"] {
   width: 100%;
   box-sizing: border-box;
-  padding: 0.5em;
-  font-size: 1.2em;
+  font-size: 2em;
   margin-bottom: 1.5em;
+  padding: 0.5em 0.75em;
   outline: none;
+  border-radius: 2px;
+  line-height: 1.5em;
 }
 
 .form input[type="text"],
 .form input[type="email"],
 .form input[type="password"] {
   border: 1px solid #d9d9d9;
-  border-radius: 2px;
 }
 
 .form input[type="text"]::placeholder,
@@ -32,22 +35,14 @@
 .form input[type="submit"] {
   width: 100%;
   border: none;
-  border-radius: 2px;
   color: #fff;
-  background: #fa8c16;
+  background: #FA8C16;
   cursor: pointer;
   transition: background-color 0.5s ease;
+  line-height: 24px;
+  padding: 8px 0;
 }
 
 .form input[type="submit"]:hover {
-  background: #e96719;
-}
-
-@media (max-width: 500px) {
-  .form input[type="text"],
-  .form input[type="email"],
-  .form input[type="password"],
-  .form input[type="submit"] {
-    font-size: 0.9em;
-  }
+  background: #bba99e;
 }

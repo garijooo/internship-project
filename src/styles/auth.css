@@ -1,11 +1,12 @@
+body {
+  background: #f0f2f5;
+}
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
-
-  width: 100%;
+  width: 100vw;
   height: 100vh;
-  background: #f0f2f5;
 }
 
 .auth {
@@ -15,27 +16,20 @@
   align-items: center;
 
   width: 80%;
-  max-width: 400px;
-}
-
-.auth .logo {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin-bottom: 3em;
-}
-
-.auth .logo img {
-  width: 70%;
+  max-width: 360px;
+  min-width: 320px;
+  font-size: 8px;
 }
 
 .auth .content {
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-bottom: 2em;
+  margin-bottom: 3em;
+  font-size: 1em;
 }
 
 .auth .title {
-  font-size: 1.2em;
+  font-size: 2em;
+  line-height: 1.5em;
 }

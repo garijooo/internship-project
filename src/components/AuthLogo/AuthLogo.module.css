@@ -2,7 +2,8 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  margin-bottom: 3em;
+  min-width: 320px;
+  margin-bottom: 40px;
 }
 
 .logo img {
