@@ -1,0 +1,35 @@
+.content {
+  display: flex;
+  width: 100%;
+  margin-bottom: 24px;
+  position: relative;
+  font-size: 7px;
+}
+.title,
+.selected {
+  font-size: 2em;
+  line-height: 22px;
+  padding: 12px 0;
+}
+.title {
+  color: #000;
+  flex-grow: 1;
+  border-bottom: 1px solid #e2e4e7;
+}
+.title:nth-child(2) {
+  padding-left: 32px;
+}
+.selected {
+  border-bottom: 2px solid #1890ff;
+  color: #1890ff;
+}
+.selected:first-child {
+  max-width: 35px;
+}
+.selected:nth-child(2) {
+  flex-grow: unset;
+  position: absolute;
+  left: 67px;
+  padding-left: 0;
+  padding-bottom: 11px;
+}
