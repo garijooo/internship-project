@@ -14,7 +14,7 @@ const AuthForm = ({
 );
 
 AuthForm.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.element),
+  children: PropTypes.node,
   onSubmitHandler: PropTypes.func,
   submitTitle: PropTypes.string,
 };

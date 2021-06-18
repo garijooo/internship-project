@@ -7,7 +7,6 @@ import SignUp from './views/SignUp/SignUp';
 import PasswordUpdate from './views/PasswordUpdate/PasswordUpdate';
 import PasswordReset from './views/PasswordReset/PasswordReset';
 import Profile from './views/Profile/Profile';
-
 import './styles/index.css';
 import './styles/auth.css';
 

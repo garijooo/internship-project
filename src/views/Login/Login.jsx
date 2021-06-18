@@ -1,5 +1,10 @@
-import React, { useState, useCallback } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import React, {
+  useState,
+  useCallback,
+  useEffect,
+} from 'react';
+import { Link } from 'react-router-dom';
+import { useHistory, withRouter } from 'react-router';
 import AuthForm from '../../components/AuthForm/AuthForm';
 import AuthLogo from '../../components/AuthLogo/AuthLogo';
 import FormUpperContent from '../../components/FormUpperContent/FormUpperContent';
@@ -11,6 +16,10 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [checked, setChecked] = useState(false);
   const history = useHistory();
+
+  useEffect(() => {
+    if (localStorage.getItem('auth-token')) history.push('/');
+  }, []);
 
   const checkboxHandler = useCallback(() => {
     setChecked(!checked);
@@ -69,4 +78,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default withRouter(Login);

@@ -10,7 +10,7 @@ const Profile = () => {
   const user = useSelector((state) => state.user);
 
   useEffect(() => {
-    if (!localStorage.getItem('auth-token')) history.replace('/auth/login');
+    if (!localStorage.getItem('auth-token')) history.push('/auth/login');
     if (!user.ID) {
       const { Email } = jwtDecode(localStorage.getItem('auth-token'));
       dispatch(fetchUser(Email, localStorage.getItem('auth-token')));
