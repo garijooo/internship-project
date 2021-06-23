@@ -1,0 +1,28 @@
+.nav {
+  background: #fff;
+  max-width: 220px;
+  padding-top: 20px;
+}
+.nav ul li {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  margin-bottom: 8px;
+  padding-right: 50px;
+  padding-left: 15px;
+}
+.nav ul li a {
+  display: flex;
+  align-items: center;
+  color: #000;
+  font-size: 14px;
+  line-height: 22px;
+}
+.nav ul li a svg {
+  margin-right: 12px;
+}
+
+.selected {
+  background: rgba(250, 140, 22, 0.2);
+  border-right: 4px solid #fa8c16;
+}

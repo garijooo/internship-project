@@ -1,0 +1,38 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  background: #001529;
+  font-size: 8px;
+  padding-left: 16px;
+  padding-right: 28px;
+}
+
+.header > img {
+  height: 2em;
+  margin: 16px 0;
+}
+
+.profile {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 1em;
+}
+
+.profile img {
+  border-radius: 50%;
+  width: 3em;
+  height: 3em;
+}
+
+.profile h3 {
+  font-size: 14px;
+  line-height: 22px;
+  margin-left: 1em;
+}
+a {
+  color: #fff;
+}

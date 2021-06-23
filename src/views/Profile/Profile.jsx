@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useHistory, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import jwtDecode from 'jwt-decode';
+import Grid from '../../components/Grid/Grid';
 import { fetchUser, signOut } from '../../store/actions';
 
 const Profile = () => {
@@ -25,15 +26,14 @@ const Profile = () => {
 
   if (!localStorage.getItem('auth-token')) return <Redirect to="/auth/login" />;
   return (
-    <div>
-      Profile
-      <button
-        onClick={signOutHandler}
-        type="button"
-      >
-        exit
-      </button>
-    </div>
+    <Grid>
+      <section>
+        Profile
+        <button onClick={signOutHandler} type="button">
+          exit
+        </button>
+      </section>
+    </Grid>
   );
 };
 
