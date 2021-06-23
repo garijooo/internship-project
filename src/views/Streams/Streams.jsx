@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import jwtDecode from 'jwt-decode';
 import { fetchUser, signOut } from '../../store/actions';
 
-const Profile = () => {
+const Streams = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
@@ -26,7 +26,7 @@ const Profile = () => {
   if (!localStorage.getItem('auth-token')) return <Redirect to="/auth/login" />;
   return (
     <div>
-      Profile
+      Streams
       <button
         onClick={signOutHandler}
         type="button"
@@ -37,4 +37,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default Streams;
