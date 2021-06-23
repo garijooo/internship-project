@@ -3,8 +3,7 @@ import React, {
   useCallback,
   useEffect,
 } from 'react';
-import { Link } from 'react-router-dom';
-import { useHistory, withRouter } from 'react-router';
+import { useHistory, Link, Redirect } from 'react-router-dom';
 import AuthForm from '../../components/AuthForm/AuthForm';
 import AuthLogo from '../../components/AuthLogo/AuthLogo';
 import FormUpperContent from '../../components/FormUpperContent/FormUpperContent';
@@ -42,6 +41,7 @@ const Login = () => {
       console.log(error);
     }
   };
+  if (localStorage.getItem('auth-token')) return <Redirect to="/" />;
   return (
     <section className="container">
       <div className="auth">
@@ -78,4 +78,4 @@ const Login = () => {
   );
 };
 
-export default withRouter(Login);
+export default Login;

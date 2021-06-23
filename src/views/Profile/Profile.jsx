@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useHistory } from 'react-router';
+import { useHistory, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import jwtDecode from 'jwt-decode';
 import { fetchUser, signOut } from '../../store/actions';
@@ -20,9 +20,10 @@ const Profile = () => {
   const signOutHandler = () => {
     localStorage.removeItem('auth-token');
     dispatch(signOut());
-    history.replace('/auth/login');
+    history.push('/auth/login');
   };
 
+  if (!localStorage.getItem('auth-token')) return <Redirect to="/auth/login" />;
   return (
     <div>
       Profile
