@@ -1,0 +1,38 @@
+.header {
+  background: #fff;
+  padding: 16px 24px;
+  min-width: 320px;
+}
+
+.upper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.title {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 500;
+  width: 80%;
+  margin-right: 12px;
+}
+
+.link {
+  font-size: 16px;
+  line-height: 24px;
+  color: #000;
+  border-bottom: none;
+}
+.links {
+  padding-bottom: 8px;
+}
+.links a:first-child {
+  margin-right: 32px;
+}
+
+.active {
+  color: #fa8c16;
+  border-bottom: 2px solid #fa8c16;
+  padding-bottom: 8px;
+}

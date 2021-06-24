@@ -5,13 +5,15 @@ import Navbar from '../Navbar/Navbar';
 import styles from './Grid.module.css';
 
 const Grid = ({ children }) => (
-  <div className={styles.grid}>
+  <>
     <Header />
-    <Navbar />
-    <div className={styles.dashboard}>
-      {children}
+    <div className={styles.grid}>
+      <Navbar />
+      <div className={styles.dashboard}>
+        {children}
+      </div>
     </div>
-  </div>
+  </>
 );
 
 Grid.propTypes = {

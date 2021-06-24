@@ -1,11 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { useHistory, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import jwtDecode from 'jwt-decode';
 import Grid from '../../components/Grid/Grid';
 import { fetchUser, signOut } from '../../store/actions';
+import StreamsHeader from '../../components/StreamsHeader/StreamsHeader';
+import SearchBar from '../../components/SearchBar/SearchBar';
 
-const Profile = () => {
+const Streams = ({ children }) => {
+  const [searchingValue, setSearchingValue] = useState('');
   const history = useHistory();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
@@ -24,17 +28,33 @@ const Profile = () => {
     history.push('/auth/login');
   };
 
+  const onSearchChange = (e) => {
+    setSearchingValue(e.target.value);
+    console.log(searchingValue);
+  };
+
   if (!localStorage.getItem('auth-token')) return <Redirect to="/auth/login" />;
   return (
     <Grid>
+      <StreamsHeader />
+      <SearchBar title="Search stream" onChangeHandler={onSearchChange} value={searchingValue} />
       <section>
-        Profile
+        Streams
         <button onClick={signOutHandler} type="button">
           exit
         </button>
+        {children}
       </section>
     </Grid>
   );
 };
 
-export default Profile;
+Streams.propTypes = {
+  children: PropTypes.node,
+};
+
+Streams.defaultProps = {
+  children: null,
+};
+
+export default Streams;

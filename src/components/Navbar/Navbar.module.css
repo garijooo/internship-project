@@ -1,7 +1,10 @@
 .nav {
   background: #fff;
-  max-width: 220px;
+  /* max-width: 220px; */
+  min-width: 220px;
   padding-top: 20px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+  z-index: 5;
 }
 .nav ul li {
   display: flex;
