@@ -1,39 +1,46 @@
 import React, { useEffect } from 'react';
-import { useHistory } from 'react-router';
+import { useHistory, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import jwtDecode from 'jwt-decode';
 import { fetchUser, signOut } from '../../store/actions';
 
-const Profile = () => {
+const Streams = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
 
   useEffect(() => {
-    if (!localStorage.getItem('auth-token')) history.push('/auth/login');
     if (!user.ID) {
-      const { Email } = jwtDecode(localStorage.getItem('auth-token'));
-      dispatch(fetchUser(Email, localStorage.getItem('auth-token')));
+      let data;
+      if (localStorage.getItem('auth-token')) data = jwtDecode(localStorage.getItem('auth-token'));
+      else data = jwtDecode(sessionStorage.getItem('auth-token'));
+      const { Email } = data;
+      dispatch(fetchUser(Email, sessionStorage.getItem('auth-token')));
     }
   }, []);
 
   const signOutHandler = () => {
     localStorage.removeItem('auth-token');
+    sessionStorage.removeItem('auth-token');
     dispatch(signOut());
-    history.replace('/auth/login');
+    history.push('/auth/login');
   };
 
   return (
     <div>
-      Profile
+      Streams
       <button
         onClick={signOutHandler}
         type="button"
       >
         exit
       </button>
+      <h2>
+        {`${user.firstname} ${user.lastname}`}
+      </h2>
+      <Link to="/test">Dashboard</Link>
     </div>
   );
 };
 
-export default Profile;
+export default Streams;
