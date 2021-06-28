@@ -17,8 +17,11 @@ const Streams = ({ children }) => {
   useEffect(() => {
     if (!user.ID) {
       let token;
-      if (localStorage.getItem('auth-token')) token = localStorage.getItem('auth-token');
-      else token = sessionStorage.getItem('auth-token');
+      if (localStorage.getItem('auth-token')) {
+        token = localStorage.getItem('auth-token');
+      } else {
+        token = sessionStorage.getItem('auth-token');
+      }
       const data = jwtDecode(token);
       const { Email } = data;
       dispatch(fetchUser(Email, token));

@@ -14,15 +14,9 @@ const AuthForm = ({
 );
 
 AuthForm.propTypes = {
-  children: PropTypes.node,
-  onSubmitHandler: PropTypes.func,
-  submitTitle: PropTypes.string,
-};
-
-AuthForm.defaultProps = {
-  children: null,
-  onSubmitHandler: null,
-  submitTitle: null,
+  children: PropTypes.node.isRequired,
+  onSubmitHandler: PropTypes.func.isRequired,
+  submitTitle: PropTypes.string.isRequired,
 };
 
 export default AuthForm;
