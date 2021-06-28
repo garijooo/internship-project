@@ -1,11 +1,8 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
 import {
   AiOutlineFilter, AiOutlineMore, AiFillCaretUp, AiFillCaretDown,
 } from 'react-icons/ai';
 import styles from './StreamsList.module.css';
-// import ListHeader from './ListHeader';
-// import ListRow from './ListRow';
 
 const StreamsList = () => (
   <section className={styles.list}>
