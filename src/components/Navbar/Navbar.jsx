@@ -21,12 +21,10 @@ const Navbar = () => {
   const spanClass = classNames({
     [styles.hide]: !isShown,
   });
-  const itemClass = classNames({
-    [styles.selected]: location.pathname === '/streams/current'
-    || location.pathname === '/streams/finished',
+  const streamsItemClass = classNames({
+    [styles.selected]: location.pathname === '/streams/finished',
   });
 
-  const checkActive = () => (location.pathname === '/');
   const onClickHandler = () => {
     setIsShown(!isShown);
   };
@@ -35,7 +33,7 @@ const Navbar = () => {
     <nav className={navClass}>
       <ul>
         <li>
-          <NavLink to="/streams/current" isActive={checkActive} activeClassName={styles.selected} className={itemClass}>
+          <NavLink to="/streams/current" activeClassName={styles.selected} className={streamsItemClass}>
             <AiOutlineRocket />
             <span className={spanClass}>Internship Streams</span>
           </NavLink>

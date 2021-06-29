@@ -8,19 +8,19 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  transition: .3s;
+  transition: 0.3s;
   text-overflow: clip;
   white-space: nowrap;
 }
 
 .hidden {
-  min-width: 50px;
-  width: 50px;
-  transition: width .3s;
+  min-width: 60px;
+  width: 60px;
+  transition: width 0.3s;
 }
-
-nav.hidden ul li {
+nav.hidden ul li a {
   padding-right: 0;
+  transition: width 0.3s;
 }
 
 .change {
@@ -32,8 +32,8 @@ nav.hidden ul li {
 }
 .nav ul {
   height: 100%;
-  /* background: red; */
 }
+
 .nav ul li {
   display: flex;
   align-items: center;
@@ -52,12 +52,11 @@ nav.hidden ul li {
   padding-right: 50px;
   padding-left: 15px;
 }
-.nav ul li a svg {
-  margin-right: 12px;
+.nav ul li a span {
+  margin-left: 12px;
 }
 
 .selected {
   background: rgba(250, 140, 22, 0.2);
   border-right: 4px solid #fa8c16;
-  /* width: 100%; */
 }
