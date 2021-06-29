@@ -1,7 +1,7 @@
 .nav {
   background: #fff;
-  min-width: 220px;
-  width: 220px;
+  min-width: 180px;
+  width: 180px;
   padding-top: 20px;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
   z-index: 5;
@@ -16,7 +16,7 @@
 .hidden {
   min-width: 60px;
   width: 60px;
-  transition: width 0.3s;
+  transition: 0.3s;
 }
 nav.hidden ul li a {
   padding-right: 0;

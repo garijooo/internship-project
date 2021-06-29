@@ -2,6 +2,8 @@
   background: #fff;
   padding: 16px 24px;
   min-width: 320px;
+  flex-grow: 1;
+  width: 100%;
 }
 
 .upper {

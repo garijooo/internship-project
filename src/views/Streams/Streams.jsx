@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import jwtDecode from 'jwt-decode';
-import Grid from '../../components/Grid/Grid';
+import PageContainer from '../../components/PageContainer/PageContainer';
 import { fetchUser, signOut } from '../../store/actions';
 import StreamsHeader from '../../components/StreamsHeader/StreamsHeader';
 import SearchBar from '../../components/SearchBar/SearchBar';
@@ -38,7 +38,7 @@ const Streams = ({ children }) => {
   };
 
   return (
-    <Grid>
+    <PageContainer>
       <StreamsHeader />
       <SearchBar
         title="Search stream"
@@ -49,7 +49,7 @@ const Streams = ({ children }) => {
       <button onClick={signOutHandler} type="button">
         exit
       </button>
-    </Grid>
+    </PageContainer>
   );
 };
 

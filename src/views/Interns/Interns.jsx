@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { signOut } from '../../store/actions';
-import Grid from '../../components/Grid/Grid';
+import PageContainer from '../../components/PageContainer/PageContainer';
 
 const Interns = () => {
   const history = useHistory();
@@ -15,12 +15,12 @@ const Interns = () => {
   };
 
   return (
-    <Grid>
+    <PageContainer>
       Interns
       <button onClick={signOutHandler} type="button">
         exit
       </button>
-    </Grid>
+    </PageContainer>
   );
 };
 

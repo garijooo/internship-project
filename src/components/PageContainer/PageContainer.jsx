@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Header from '../Header/Header';
 import Navbar from '../Navbar/Navbar';
-import styles from './Grid.module.css';
+import styles from './PageContainer.module.css';
 
-const Grid = ({ children }) => (
+const PageContainer = ({ children }) => (
   <>
     <Header />
     <div className={styles.grid}>
@@ -16,12 +16,12 @@ const Grid = ({ children }) => (
   </>
 );
 
-Grid.propTypes = {
+PageContainer.propTypes = {
   children: PropTypes.node,
 };
 
-Grid.defaultProps = {
+PageContainer.defaultProps = {
   children: null,
 };
 
-export default Grid;
+export default PageContainer;
