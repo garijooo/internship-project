@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import {
+  NavLink,
+  useLocation,
+} from 'react-router-dom';
 import {
   AiOutlineUser,
   AiOutlineRocket,
@@ -11,10 +14,19 @@ import styles from './Navbar.module.css';
 
 const Navbar = () => {
   const [isShown, setIsShown] = useState(true);
+  const location = useLocation();
   const navClass = classNames(styles.nav, {
     [styles.hidden]: !isShown,
   });
+  const spanClass = classNames({
+    [styles.hide]: !isShown,
+  });
+  const itemClass = classNames({
+    [styles.selected]: location.pathname === '/streams/current'
+    || location.pathname === '/streams/finished',
+  });
 
+  const checkActive = () => (location.pathname === '/');
   const onClickHandler = () => {
     setIsShown(!isShown);
   };
@@ -22,21 +34,21 @@ const Navbar = () => {
   return (
     <nav className={navClass}>
       <ul>
-        <li className={styles.selected}>
-          <NavLink to="/">
+        <li>
+          <NavLink to="/" isActive={checkActive} activeClassName={styles.selected} className={itemClass}>
             <AiOutlineRocket />
-            <span className={!isShown && styles.hide}>Internship Streams</span>
+            <span className={spanClass}>Internship Streams</span>
           </NavLink>
         </li>
         <li>
-          <NavLink to="/">
+          <NavLink to="/interns" activeClassName={styles.selected}>
             <AiOutlineUser />
-            <span className={!isShown && styles.hide}>Interns</span>
+            <span className={spanClass}>Interns</span>
           </NavLink>
         </li>
       </ul>
       <div className={styles.change}>
-        <AiOutlineMenuFold onClick={onClickHandler} className={!isShown && styles.hide} />
+        <AiOutlineMenuFold onClick={onClickHandler} className={spanClass} />
         <AiOutlineMenuUnfold className={isShown && styles.hide} onClick={onClickHandler} />
       </div>
     </nav>
