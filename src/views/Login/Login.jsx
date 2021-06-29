@@ -33,7 +33,7 @@ const Login = ({ history }) => {
       else sessionStorage.setItem('auth-token', data.token);
       const { Email } = jwtDecode(data.token);
       dispatch(fetchUser(Email, data.token));
-      history.push('/');
+      history.push('/streams/current');
     } catch (error) {
       console.log(error);
     }

@@ -35,7 +35,7 @@ const Navbar = () => {
     <nav className={navClass}>
       <ul>
         <li>
-          <NavLink to="/" isActive={checkActive} activeClassName={styles.selected} className={itemClass}>
+          <NavLink to="/streams/current" isActive={checkActive} activeClassName={styles.selected} className={itemClass}>
             <AiOutlineRocket />
             <span className={spanClass}>Internship Streams</span>
           </NavLink>

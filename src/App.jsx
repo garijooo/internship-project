@@ -23,7 +23,7 @@ const App = () => {
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
-          {(localStorage.getItem('auth-token') || sessionStorage.getItem('auth-token')) ? <Redirect to="/streams/current" /> : <Redirect to="/auth/login" />}
+          {(localStorage.getItem('auth-token') || sessionStorage.getItem('auth-token')) && <Redirect to="/streams/current" />}
         </Route>
         <PrivateRoute path="/streams/current" exact component={CurrentStreams} />
         <PrivateRoute path="/streams/finished" exact component={FinishedStreams} />
