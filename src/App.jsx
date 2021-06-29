@@ -2,7 +2,7 @@ import React from 'react';
 import {
   BrowserRouter, Switch, Route,
 } from 'react-router-dom';
-import Streams from './views/Streams/Streams';
+import CurrentStreams from './views/CurrentStreams/CurrentStreams';
 import NotFound from './components/NotFound/NotFound';
 import PrivateRoute from './routes/PrivateRoute';
 import AuthRoutes from './routes/AuthRoutes';
@@ -12,7 +12,7 @@ import './styles/auth.css';
 const App = () => (
   <BrowserRouter>
     <Switch>
-      <PrivateRoute path="/" exact component={Streams} />
+      <PrivateRoute path="/" exact component={CurrentStreams} />
       {!(localStorage.getItem('auth-token') || sessionStorage.getItem('auth-token')) && <AuthRoutes />}
       <Route component={NotFound} />
     </Switch>
