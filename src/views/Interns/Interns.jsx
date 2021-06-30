@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { signOut } from '../../store/actions';
+import { signOut } from '../../store/auth/actions';
 import PageContainer from '../../components/PageContainer/PageContainer';
 
 const Interns = () => {

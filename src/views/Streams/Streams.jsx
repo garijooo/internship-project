@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import jwtDecode from 'jwt-decode';
+import { fetchUser, signOut } from '../../store/auth/actions';
 import PageContainer from '../../components/PageContainer/PageContainer';
-import { fetchUser, signOut } from '../../store/actions';
 import StreamsHeader from '../../components/StreamsHeader/StreamsHeader';
 import SearchBar from '../../components/SearchBar/SearchBar';
 
@@ -12,10 +12,10 @@ const Streams = ({ children }) => {
   const [searchingValue, setSearchingValue] = useState('');
   const history = useHistory();
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
+  const auth = useSelector((state) => state.auth);
 
   useEffect(() => {
-    if (!user.ID) {
+    if (!auth.ID) {
       let token;
       if (localStorage.getItem('auth-token')) token = localStorage.getItem('auth-token');
       else token = sessionStorage.getItem('auth-token');

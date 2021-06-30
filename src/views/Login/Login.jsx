@@ -10,7 +10,7 @@ import AuthLogo from '../../components/AuthLogo/AuthLogo';
 import FormUpperContent from '../../components/FormUpperContent/FormUpperContent';
 import styles from './Login.module.css';
 import fetch from '../../utils/fetchWrapper';
-import { fetchUser } from '../../store/actions';
+import { fetchUser } from '../../store/auth/actions';
 
 const Login = ({ history }) => {
   const email = useRef('');

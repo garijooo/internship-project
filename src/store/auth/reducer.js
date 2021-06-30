@@ -1,4 +1,4 @@
-import { FETCH_USER, SIGN_OUT } from '../actions/types';
+import { SIGN_OUT, FETCH_USER } from './types';
 
 const INITIAL_STATE = {
   ID: '',

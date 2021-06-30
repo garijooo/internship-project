@@ -6,13 +6,13 @@ import avatar from '../../assets/images/avatar.jpg';
 import styles from './Header.module.css';
 
 const Header = () => {
-  const user = useSelector((state) => state.user);
+  const auth = useSelector((state) => state.auth);
   return (
     <header className={styles.header}>
       <img src={logo} alt="logo" />
       <Link to="/" className={styles.profile}>
         <img src={avatar} alt="avatar" />
-        <h3>{`${user.firstname} ${user.lastname}`}</h3>
+        <h3>{`${auth.firstname} ${auth.lastname}`}</h3>
       </Link>
     </header>
   );
