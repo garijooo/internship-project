@@ -2,8 +2,10 @@
 
 .list {
   padding: 0 24px;
-  height: 100%;
   width: 100%;
+  box-sizing: border-box;
+  min-width: 600px;
+  flex-grow: 1;
 }
 
 .table {
@@ -11,6 +13,8 @@
   width: 100%;
   font-family: "Roboto", sans-serif;
   border-collapse: collapse;
+  min-width: 660px;
+  height: 100%;
 }
 .header {
   background: #fafafa;
@@ -32,13 +36,14 @@
 .name {
   color: #1890ff;
 }
-.row, .header {
+.row,
+.header {
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 .row td span {
-    display: inline-block;
-    line-height: 24px;
-    padding: 2px 12px;
+  display: inline-block;
+  line-height: 24px;
+  padding: 2px 12px;
 }
 .active {
   color: #52c41a;
@@ -52,7 +57,6 @@
   background: rgba(161, 161, 161, 0.15);
   border-radius: 4px;
   font-size: 14px;
-
 }
 
 .oncoming {
@@ -60,9 +64,7 @@
   background: rgba(24, 144, 255, 0.15);
   border-radius: 4px;
   font-size: 14px;
-
 }
-
 
 .more {
   cursor: pointer;
@@ -71,7 +73,8 @@
   justify-content: center;
 }
 
-.cell, .filter {
+.cell,
+.filter {
   display: flex;
   align-items: center;
 }
@@ -87,14 +90,15 @@
   margin-bottom: -3px;
 }
 .updown svg:nth-child(2) {
-  margin-top: -3  px;
+  margin-top: -3 px;
 }
 .filter {
   font-size: 22px;
   color: rgba(0, 0, 0, 0.25);
 }
 
-.filter, .updown {
+.filter,
+.updown {
   cursor: pointer;
   margin-left: 6px;
 }

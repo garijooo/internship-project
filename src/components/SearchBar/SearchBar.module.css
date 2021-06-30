@@ -1,8 +1,7 @@
 .searchbar {
   padding: 16px 24px;
-  min-width: 320px;
   position: relative;
-  width: 100%;
+  min-width: 660px;
 }
 
 .searchbar input {

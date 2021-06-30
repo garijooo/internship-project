@@ -1,14 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, {
+  useEffect,
+  useState,
+} from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import jwtDecode from 'jwt-decode';
-import { fetchUser, signOut } from '../../store/auth/actions';
+import {
+  fetchUser,
+  signOut,
+} from '../../store/auth/actions';
 import PageContainer from '../../components/PageContainer/PageContainer';
 import StreamsHeader from '../../components/StreamsHeader/StreamsHeader';
 import SearchBar from '../../components/SearchBar/SearchBar';
 
-const Streams = ({ children }) => {
+const Streams = (
+  { children },
+) => {
   const [searchingValue, setSearchingValue] = useState('');
   const history = useHistory();
   const dispatch = useDispatch();

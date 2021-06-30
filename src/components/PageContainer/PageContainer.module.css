@@ -1,11 +1,14 @@
 .grid {
   display: flex;
-  min-height: 500px;
-  min-width: 320px;
+  height: 100%;
+  min-width: 120px;
+  overflow: hidden;
 }
 
 .dashboard {
-  /* width: 100%; */
   flex-grow: 1;
   height: 100%;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
 }
