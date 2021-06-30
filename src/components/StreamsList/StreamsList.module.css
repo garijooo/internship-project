@@ -115,3 +115,11 @@
 .expanded {
   color: #FA8C16;
 }
+
+.hidden {
+  display: none;
+}
+
+/* .shown {
+  display: block;
+} */
