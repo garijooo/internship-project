@@ -72,6 +72,14 @@
   display: flex;
   justify-content: center;
   padding: 0 12px;
+  position: relative;
+}
+
+.submenu {
+  position: absolute;
+  bottom: 0;
+  right: 40px;
+  z-index: 2;
 }
 
 .cell,
@@ -102,4 +110,8 @@
 .updown {
   cursor: pointer;
   margin-left: 6px;
+}
+
+.expanded {
+  color: #FA8C16;
 }

@@ -1,0 +1,27 @@
+.menu {
+  width: 175px;
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 12px rgba(4, 22, 54, 0.12);
+  border-radius: 4px;
+}
+
+.default {
+  color: #595959;
+}
+
+.item {
+  font-size: 14px;
+  line-height: 22px;
+  padding: 8px 0;
+  padding-left: 16px;
+}
+
+.blue {
+  color: #0078d4;
+}
+
+.red {
+  color: #eb5757;
+}

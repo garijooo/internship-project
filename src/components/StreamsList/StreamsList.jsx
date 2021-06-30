@@ -2,6 +2,7 @@ import React from 'react';
 import {
   AiOutlineFilter, AiOutlineMore, AiFillCaretUp, AiFillCaretDown,
 } from 'react-icons/ai';
+import OptionalMenu from '../OptionalMenu/OptionalMenu';
 import styles from './StreamsList.module.css';
 
 const StreamsList = () => (
@@ -73,7 +74,14 @@ const StreamsList = () => (
           <td>Igor Bariev</td>
           <td>Mark Ovchinnikov</td>
           <td><span className={styles.oncoming}>Oncoming</span></td>
-          <td><div className={styles.more}><AiOutlineMore /></div></td>
+          <td>
+            <div className={`${styles.more} ${styles.expanded}`}>
+              <div className={styles.submenu}>
+                <OptionalMenu />
+              </div>
+              <AiOutlineMore />
+            </div>
+          </td>
         </tr>
         <tr className={styles.row}>
           <td className={styles.name}>C++ Dev. stream 08</td>
