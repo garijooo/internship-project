@@ -3,22 +3,20 @@ import React, {
   useState,
 } from 'react';
 import PropTypes from 'prop-types';
-import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import jwtDecode from 'jwt-decode';
 import {
   fetchUser,
-  signOut,
 } from '../../store/auth/actions';
 import PageContainer from '../../components/PageContainer/PageContainer';
 import StreamsHeader from '../../components/StreamsHeader/StreamsHeader';
 import SearchBar from '../../components/SearchBar/SearchBar';
+import PaginationBar from '../../components/PaginationBar/PaginationBar';
 
 const Streams = (
   { children },
 ) => {
   const [searchingValue, setSearchingValue] = useState('');
-  const history = useHistory();
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
 
@@ -32,13 +30,6 @@ const Streams = (
       dispatch(fetchUser(Email, token));
     }
   }, []);
-
-  const signOutHandler = () => {
-    localStorage.removeItem('auth-token');
-    sessionStorage.removeItem('auth-token');
-    dispatch(signOut());
-    history.push('/auth/login');
-  };
 
   const onSearchChange = (e) => {
     setSearchingValue(e.target.value);
@@ -54,9 +45,7 @@ const Streams = (
         value={searchingValue}
       />
       {children}
-      <button onClick={signOutHandler} type="button">
-        exit
-      </button>
+      <PaginationBar />
     </PageContainer>
   );
 };

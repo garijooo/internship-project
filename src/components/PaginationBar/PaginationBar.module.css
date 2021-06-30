@@ -1,0 +1,95 @@
+.container {
+  padding: 0 24px;
+  padding-bottom: 28px;
+  box-sizing: border-box;
+  min-width: 600px;
+  width: 100%;
+}
+
+.bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  min-width: 680px;
+  width: 100%;
+  box-sizing: border-box;
+  background: #fff;
+  padding: 16px;
+}
+
+.counter {
+    line-height: 22px;
+    font-size: 14px;
+}
+
+.pages {
+  display: flex;
+  justify-content: row;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.gap,
+.button {
+  height: 32px;
+  width: 32px;
+  margin-left: 8px;
+}
+
+.gap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 32px;
+  font-size: 28px;
+  color: rgba(0, 0, 0, 0.25);
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #d9d9d9;
+  border-radius: 2px;
+  cursor: pointer;
+}
+.button:first-child {
+  margin-left: 0;
+}
+
+.active {
+  background: rgba(250, 140, 22, 0.1);
+  border: 1px solid rgba(250, 140, 22, 1);
+}
+
+.format {
+position: relative;
+}
+
+.select {
+  border: 1px solid rgba(217, 217, 217, 1);
+  border-radius: 2px;
+  padding: 4px 12px;
+  padding-right: 28px;
+  box-sizing: border-box;
+  outline: none;
+  min-width: 53px;
+  line-height: 22px;
+  font-size: 14px;
+  position: relative;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.dropdown {
+  position: absolute;
+  right: 12px;
+  font-size: 16px;
+  top: 25%;
+  z-index: 1;
+  color: rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+}
