@@ -1,4 +1,4 @@
-const fetchWrapper = (method) => (url, options = {}) => {
+const apiRequestMaker = (method) => (url, options = {}) => {
   const updatedOptions = {
     method,
     ...options,
@@ -10,6 +10,8 @@ const fetchWrapper = (method) => (url, options = {}) => {
   return fetch(url, updatedOptions);
 };
 
-fetch.post = fetchWrapper('POST');
-fetch.get = fetchWrapper('GET');
-export default fetch;
+const fetchWrapper = {};
+fetchWrapper.post = apiRequestMaker('POST');
+fetchWrapper.get = apiRequestMaker('GET');
+
+export default fetchWrapper;

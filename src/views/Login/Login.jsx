@@ -9,7 +9,7 @@ import AuthForm from '../../components/AuthForm/AuthForm';
 import AuthLogo from '../../components/AuthLogo/AuthLogo';
 import FormUpperContent from '../../components/FormUpperContent/FormUpperContent';
 import styles from './Login.module.css';
-import fetch from '../../utils/fetchWrapper';
+import fetchWrapper from '../../utils/fetchWrapper';
 import { fetchUser } from '../../store/auth/actions';
 
 const Login = ({ history }) => {
@@ -21,7 +21,7 @@ const Login = ({ history }) => {
   const onLoginHandler = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch.post('/api/login', {
+      const response = await fetchWrapper.post('/api/login', {
         body: JSON.stringify({
           email: email.current.value,
           password: password.current.value,
