@@ -10,8 +10,9 @@ const apiRequestMaker = (method) => (url, options = {}) => {
   return fetch(url, updatedOptions);
 };
 
-const fetchWrapper = {};
-fetchWrapper.post = apiRequestMaker('POST');
-fetchWrapper.get = apiRequestMaker('GET');
+const fetchWrapper = {
+  post: apiRequestMaker('POST'),
+  get: apiRequestMaker('GET'),
+};
 
 export default fetchWrapper;
