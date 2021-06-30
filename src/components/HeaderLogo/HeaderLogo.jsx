@@ -4,7 +4,7 @@ import logo from '../../assets/images/logo-white.png';
 import styles from './HeaderLogo.module.css';
 
 const HeaderLogo = () => (
-  <Link to="/"><img src={logo} alt="logo" className={styles.logo} /></Link>
+  <Link to="/streams/current"><img src={logo} alt="logo" className={styles.logo} /></Link>
 );
 
 export default HeaderLogo;

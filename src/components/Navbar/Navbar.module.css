@@ -4,56 +4,73 @@
   min-height: 120px;
   width: 180px;
   padding-top: 20px;
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 2px 8px rgba(187, 183, 183, 0.15);
   z-index: 5;
   display: flex;
   flex-direction: column;
-  transition: 0.3s;
+  transition: 0.5s;
   text-overflow: clip;
   white-space: nowrap;
 }
 
-.hidden {
+.nav.hidden {
   min-width: 60px;
   width: 60px;
-  transition: 0.3s;
+  transition: 0.5s;
 }
-nav.hidden ul li a {
-  padding-right: 0;
-  transition: width 0.3s;
-}
+/* nav.hidden ul li.item a span {
+  transition: 1s;
+  display: none;
+} */
 
 .change {
   padding-left: 15px;
 }
-
-.hide {
+.hideIcon {
   display: none;
+}
+.text.hideSpan {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
 }
 .nav ul {
   height: 100%;
+  width: 100%;
 }
 
 .nav ul li {
   display: flex;
   align-items: center;
-  height: 40px;
   width: 100%;
 }
-.nav ul li a {
+
+.item a {
   display: flex;
   align-items: center;
-  color: #000;
+  width: 100%;
   font-size: 14px;
   line-height: 22px;
-  width: 100%;
-  height: 100%;
   margin-bottom: 8px;
-  padding-right: 50px;
-  padding-left: 15px;
+  padding: 9px 0;
+  padding-left: 17px;
+  color: #000;
+  height: 40px;
+  box-sizing: border-box;
 }
-.nav ul li a span {
-  margin-left: 12px;
+
+.text {
+  transition: 0.5s;
+  text-overflow: clip;
+  white-space: nowrap;
+}
+
+.icon {
+  font-size: 15px;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .selected {
