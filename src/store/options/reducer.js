@@ -1,7 +1,7 @@
 import { UPDATE_NAVBAR_VIEW } from './types';
 
 const INITIAL_STATE = {
-  navbarView: true,
+  navbarIsOpen: true,
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -9,7 +9,7 @@ export default (state = INITIAL_STATE, action) => {
     case UPDATE_NAVBAR_VIEW:
       return {
         ...state,
-        navbarView: action.payload,
+        navbarIsOpen: action.payload,
       };
     default:
       return state;

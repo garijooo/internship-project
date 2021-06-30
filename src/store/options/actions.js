@@ -1,8 +1,8 @@
 import { UPDATE_NAVBAR_VIEW, UPDATE_SMTHG_VIEW } from './types';
 
-export const updateNavbarView = (isShown) => ({
+export const updateNavbarView = (isOpen) => ({
   type: UPDATE_NAVBAR_VIEW,
-  payload: isShown,
+  payload: isOpen,
 });
 
 export const updateSmthgView = () => ({
