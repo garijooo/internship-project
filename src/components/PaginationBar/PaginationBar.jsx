@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   AiOutlineEllipsis,
   AiOutlineLeft,
@@ -7,10 +8,10 @@ import {
 } from 'react-icons/ai';
 import styles from './PaginationBar.module.css';
 
-const PaginationBar = () => (
+const PaginationBar = ({ amount }) => (
   <section className={styles.container}>
     <div className={styles.bar}>
-      <span className={styles.counter}>1-10 of 100 items</span>
+      <span className={styles.counter}>{`1-10 of ${amount} items`}</span>
       <div className={styles.pages}>
         <button className={styles.button} type="button">
           <AiOutlineLeft />
@@ -57,5 +58,9 @@ const PaginationBar = () => (
     </div>
   </section>
 );
+
+PaginationBar.propTypes = {
+  amount: PropTypes.number.isRequired,
+};
 
 export default PaginationBar;

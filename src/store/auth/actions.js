@@ -13,15 +13,15 @@ export const fetchUser = (Email, token) => async (dispatch) => {
       },
     });
     const {
-      ID, email, firstname, lastname,
+      id, email, firstName, lastName,
     } = await response.json();
     dispatch({
       type: FETCH_USER,
       payload: {
-        ID,
+        ID: id,
         email,
-        firstname,
-        lastname,
+        firstname: firstName,
+        lastname: lastName,
       },
     });
   } catch (err) {

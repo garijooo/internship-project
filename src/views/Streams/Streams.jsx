@@ -11,7 +11,6 @@ import {
 import PageContainer from '../../components/PageContainer/PageContainer';
 import StreamsHeader from '../../components/StreamsHeader/StreamsHeader';
 import SearchBar from '../../components/SearchBar/SearchBar';
-import PaginationBar from '../../components/PaginationBar/PaginationBar';
 
 const Streams = (
   { children },
@@ -45,7 +44,6 @@ const Streams = (
         value={searchingValue}
       />
       {children}
-      <PaginationBar />
     </PageContainer>
   );
 };
