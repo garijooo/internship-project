@@ -8,12 +8,14 @@ import currentStreams from '../../utils/currentStreams';
 const StreamsList = () => {
   const [streams, setStreams] = useState([]);
   const [amount, setAmount] = useState(0);
+  const [step, setStep] = useState(1);
   const [range, setRange] = useState(10);
   const [currentExpand, setCurrentExpand] = useState(null);
 
   useEffect(() => {
     setStreams([...currentStreams]);
     setAmount(currentStreams.length);
+    setStep(2);
   }, []);
 
   const onExpandHandler = (index) => {
@@ -36,7 +38,18 @@ const StreamsList = () => {
         />
       ));
     }
-    return <>more streams</>;
+    const filteredStreams = streams.filter(
+      (stream, index) => (index >= (step - 1) * range && index < step * range),
+    );
+    return filteredStreams.map((stream, index) => (
+      <ListRow
+        key={`${index + 1}`}
+        stream={stream}
+        index={index}
+        onClickHandler={onExpandHandler}
+        currentExpand={currentExpand}
+      />
+    ));
   };
 
   return (
@@ -53,6 +66,8 @@ const StreamsList = () => {
       </section>
       <PaginationBar
         amount={amount}
+        step={step}
+        range={range}
         onRangeChange={onRangeChangeHandler}
       />
     </>

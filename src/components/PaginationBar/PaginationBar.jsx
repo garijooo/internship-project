@@ -10,11 +10,15 @@ import styles from './PaginationBar.module.css';
 
 const PaginationBar = ({
   amount,
+  step,
+  range,
   onRangeChange,
 }) => (
   <section className={styles.container}>
     <div className={styles.bar}>
-      <span className={styles.counter}>{`1-10 of ${amount} items`}</span>
+      <span className={styles.counter}>
+        {step * range > amount ? `${(step - 1) * range + 1}-${amount} of ${amount} items` : `${(step - 1) * range + 1}-${step * range} of ${amount} items`}
+      </span>
       <div className={styles.pages}>
         <button className={styles.button} type="button">
           <AiOutlineLeft />
@@ -64,6 +68,8 @@ const PaginationBar = ({
 
 PaginationBar.propTypes = {
   amount: PropTypes.number.isRequired,
+  step: PropTypes.number.isRequired,
+  range: PropTypes.number.isRequired,
   onRangeChange: PropTypes.func.isRequired,
 };
 
