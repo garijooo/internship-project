@@ -8,7 +8,10 @@ import {
 } from 'react-icons/ai';
 import styles from './PaginationBar.module.css';
 
-const PaginationBar = ({ amount }) => (
+const PaginationBar = ({
+  amount,
+  onRangeChange,
+}) => (
   <section className={styles.container}>
     <div className={styles.bar}>
       <span className={styles.counter}>{`1-10 of ${amount} items`}</span>
@@ -49,10 +52,10 @@ const PaginationBar = ({ amount }) => (
       </div>
       <div className={styles.format}>
         <AiOutlineDown className={styles.dropdown} />
-        <select className={styles.select}>
-          <option>10/page</option>
-          <option>15/page</option>
-          <option>20/page</option>
+        <select className={styles.select} onChange={(e) => onRangeChange(e.target.value)}>
+          <option value={10}>10/page</option>
+          <option value={15}>15/page</option>
+          <option value={20}>20/page</option>
         </select>
       </div>
     </div>
@@ -61,6 +64,7 @@ const PaginationBar = ({ amount }) => (
 
 PaginationBar.propTypes = {
   amount: PropTypes.number.isRequired,
+  onRangeChange: PropTypes.func.isRequired,
 };
 
 export default PaginationBar;

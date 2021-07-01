@@ -32,9 +32,11 @@ const ListRow = ({
 
   return (
     <tr className={styles.row}>
-      <td className={styles.name}>{stream.name}</td>
+      <td className={styles.title}>{stream.title}</td>
       <td>{stream.date}</td>
-      <td>{stream.duration}</td>
+      <td>
+        {stream.duration < 2 ? `${stream.duration} day` : `${stream.duration} days`}
+      </td>
       <td>{stream.interns}</td>
       <td>{stream.mentor}</td>
       <td>{stream.lead}</td>
@@ -52,14 +54,14 @@ const ListRow = ({
 };
 
 ListRow.propTypes = {
-  stream: PropTypes.objectOf({
-    name: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired,
-    duration: PropTypes.number.isRequired,
-    interns: PropTypes.number.isRequired,
-    mentor: PropTypes.string.isRequired,
-    lead: PropTypes.string.isRequired,
-    status: PropTypes.string.isRequired,
+  stream: PropTypes.shape({
+    title: PropTypes.string,
+    date: PropTypes.string,
+    duration: PropTypes.number,
+    interns: PropTypes.number,
+    mentor: PropTypes.string,
+    lead: PropTypes.string,
+    status: PropTypes.string,
   }).isRequired,
   index: PropTypes.number.isRequired,
   onClickHandler: PropTypes.func.isRequired,

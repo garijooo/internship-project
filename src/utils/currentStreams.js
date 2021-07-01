@@ -1,5 +1,5 @@
 export default [{
-  name: 'Frontend Dev. stream 03',
+  title: 'Frontend Dev. stream 03',
   date: '22 Jun 2021',
   duration: 31,
   interns: 20,
@@ -8,7 +8,7 @@ export default [{
   status: 'Oncoming',
 },
 {
-  name: 'C++ Dev. stream 08',
+  title: 'C++ Dev. stream 08',
   date: '01 Jun 2021',
   duration: 15,
   interns: 18,
@@ -17,7 +17,7 @@ export default [{
   status: 'Active',
 },
 {
-  name: 'QA stream 02',
+  title: 'QA stream 02',
   date: '31 May 2021',
   duration: 31,
   interns: 24,
@@ -26,7 +26,7 @@ export default [{
   status: 'Paused',
 },
 {
-  name: 'C++ Dev. stream 08',
+  title: 'C++ Dev. stream 08',
   date: '01 Jun 2021',
   duration: 15,
   interns: 18,
@@ -35,7 +35,7 @@ export default [{
   status: 'Active',
 },
 {
-  name: 'C++ Dev. stream 08',
+  title: 'C++ Dev. stream 08',
   date: '01 Jun 2021',
   duration: 15,
   interns: 18,
@@ -44,7 +44,7 @@ export default [{
   status: 'Active',
 },
 {
-  name: 'Frontend Dev. stream 03',
+  title: 'Frontend Dev. stream 03',
   date: '22 Jun 2021',
   duration: 31,
   interns: 20,
@@ -53,7 +53,7 @@ export default [{
   status: 'Oncoming',
 },
 {
-  name: 'C++ Dev. stream 08',
+  title: 'C++ Dev. stream 08',
   date: '01 Jun 2021',
   duration: 15,
   interns: 18,
