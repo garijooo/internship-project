@@ -14,22 +14,26 @@ import AuthRoutes from './routes/AuthRoutes';
 import './styles/index.css';
 import './styles/auth.css';
 
-const App = () => (
-  <BrowserRouter>
-    <Switch>
-      <Route exact path="/">
-        {(localStorage.getItem('auth-token') || sessionStorage.getItem('auth-token')) ? <Redirect to="/streams/current" /> : <Redirect to="/auth/login" />}
-      </Route>
-      <PrivateRoute path="/streams/current" exact component={CurrentStreams} />
-      <PrivateRoute path="/streams/finished" exact component={FinishedStreams} />
-      <PrivateRoute path="/interns" exact component={Interns} />
-      <Route path="/auth">
-        {!(localStorage.getItem('auth-token') || sessionStorage.getItem('auth-token')) ? <AuthRoutes /> : <Redirect to="/streams/current" />}
-      </Route>
-      <Route>
-        {!(localStorage.getItem('auth-token') || sessionStorage.getItem('auth-token')) ? <Redirect to="/auth/login" /> : <NotFound />}
-      </Route>
-    </Switch>
-  </BrowserRouter>
-);
+const App = () => {
+  const isAuthorized = () => (localStorage.getItem('auth-token') || sessionStorage.getItem('auth-token')) && true;
+
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/">
+          {isAuthorized() ? <Redirect to="/streams/current" /> : <Redirect to="/auth/login" />}
+        </Route>
+        <PrivateRoute path="/streams/current" exact component={CurrentStreams} />
+        <PrivateRoute path="/streams/finished" exact component={FinishedStreams} />
+        <PrivateRoute path="/interns" exact component={Interns} />
+        <Route path="/auth">
+          {!isAuthorized() ? <AuthRoutes /> : <Redirect to="/streams/current" />}
+        </Route>
+        <Route>
+          {!isAuthorized() ? <Redirect to="/auth/login" /> : <NotFound />}
+        </Route>
+      </Switch>
+    </BrowserRouter>
+  );
+};
 export default App;
