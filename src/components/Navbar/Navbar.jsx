@@ -19,7 +19,7 @@ const Navbar = () => {
   const navClass = classNames(styles.nav, {
     [styles.hidden]: !options.navbarIsOpen,
   });
-  const spanClass = classNames(styles.text, {
+  const textElementClass = classNames(styles.text, {
     [styles.hideSpan]: !options.navbarIsOpen,
   });
   const streamsItemClass = classNames({
@@ -32,7 +32,7 @@ const Navbar = () => {
         <li className={styles.item}>
           <NavLink to="/streams/current" activeClassName={styles.selected} className={streamsItemClass}>
             <span className={styles.icon}><AiOutlineRocket /></span>
-            <span className={spanClass}>
+            <span className={textElementClass}>
               Internship Streams
             </span>
           </NavLink>
@@ -40,7 +40,7 @@ const Navbar = () => {
         <li className={styles.item}>
           <NavLink to="/interns" activeClassName={styles.selected}>
             <span className={styles.icon}><AiOutlineUser /></span>
-            <span className={spanClass}>
+            <span className={textElementClass}>
               Interns
             </span>
           </NavLink>

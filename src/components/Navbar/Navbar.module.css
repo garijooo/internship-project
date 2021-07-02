@@ -5,7 +5,6 @@
   width: 208px;
   padding-top: 12px;
   box-shadow: 0px 2px 8px rgba(187, 183, 183, 0.15);
-  z-index: 5;
   display: flex;
   flex-direction: column;
   transition: 0.5s;
@@ -14,18 +13,17 @@
 }
 
 .nav.hidden {
-  min-width: 60px;
-  width: 60px;
+  min-width: 50px;
+  width: 50px;
   transition: 0.5s;
 }
 .change {
   padding: 12px 16px;
-  box-shadow: inset 0px 1px 0px #F0F0F0;
+  box-shadow: inset 0px 1px 0px #f0f0f0;
   height: 16px;
 }
 .change svg {
-  height: 16px;
-  width: 16px;
+  size: 16px;
 }
 
 .hideIcon {
@@ -35,6 +33,7 @@
   visibility: hidden;
   opacity: 0;
   transition: visibility 0s, opacity 0.5s linear;
+  margin-left: 0;
 }
 .nav ul {
   height: 100%;
@@ -65,21 +64,20 @@
   transition: 0.5s;
   text-overflow: clip;
   white-space: nowrap;
+  margin-left: 10px;
 }
 
 .icon {
-  margin-right: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .icon svg {
-  height: 14px;
-  width: 14px;
+  size: 14px;
 }
 
 .selected {
   background: rgba(250, 140, 22, 0.2);
-  box-shadow: inset -3px 0px 0px #FA8C16;
+  box-shadow: inset -3px 0px 0px #fa8c16;
 }
