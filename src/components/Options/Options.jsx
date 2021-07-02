@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styles from './OptionalMenu.module.css';
+import styles from './Options.module.css';
 
-const OptionalMenu = () => (
+const Options = () => (
   <div className={styles.menu}>
     <div className={styles.item}>
       <Link to="/streams/current" className={styles.default}>Open Stream details</Link>
@@ -19,4 +19,4 @@ const OptionalMenu = () => (
   </div>
 );
 
-export default OptionalMenu;
+export default Options;

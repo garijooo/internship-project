@@ -2,17 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { AiOutlinePlus } from 'react-icons/ai';
-import styles from './SubmitButton.module.css';
+import styles from './ActionButton.module.css';
 
-const SubmitButton = ({ title }) => (
+const ActionButton = ({ title }) => (
   <button type="submit" className={styles.submit_button}>
     <AiOutlinePlus />
     <Link to="/streams/new">{title}</Link>
   </button>
 );
 
-SubmitButton.propTypes = {
+ActionButton.propTypes = {
   title: PropTypes.string.isRequired,
 };
 
-export default SubmitButton;
+export default ActionButton;

@@ -19,3 +19,7 @@
 .submit_button svg {
   margin-right: 5px;
 }
+
+.submit_button a {
+  color: #fff
+}

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { AiOutlineMore } from 'react-icons/ai';
 import classNames from 'classnames';
-import OptionalMenu from '../OptionalMenu/OptionalMenu';
+import Options from '../Options/Options';
 import styles from './StreamsList.module.css';
 
 const ListRow = ({
@@ -11,7 +11,6 @@ const ListRow = ({
   onClickHandler,
   currentExpand,
 }) => {
-  // const [isExpanded, setIsExpanded] = useState(false);
   const statusClass = classNames({
     [styles.oncoming]: stream.status === 'Oncoming',
     [styles.active]: stream.status === 'Active',
@@ -44,7 +43,7 @@ const ListRow = ({
       <td>
         <div className={styles.more}>
           <div className={submenuClass}>
-            <OptionalMenu />
+            <Options />
           </div>
           <AiOutlineMore onClick={onExpand} className={iconClass} />
         </div>
