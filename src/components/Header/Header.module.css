@@ -16,19 +16,14 @@
   flex-direction: row;
   align-items: center;
   font-size: 1em;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
 }
 
-.profile img {
-  border-radius: 50%;
-  width: 3em;
-  height: 3em;
-}
-
-.profile h3 {
+.title {
   font-size: 14px;
   line-height: 22px;
-  margin-left: 1em;
-}
-a {
-  color: #fff;
+  margin-left: 8px;
 }
