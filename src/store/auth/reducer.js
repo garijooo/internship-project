@@ -1,4 +1,4 @@
-import { SIGN_OUT, FETCH_USER } from './types';
+import { SIGN_OUT, UPDATE_USER } from './types';
 
 const INITIAL_STATE = {
   ID: '',
@@ -9,7 +9,7 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case FETCH_USER:
+    case UPDATE_USER:
       return {
         ...state,
         ID: action.payload.ID,

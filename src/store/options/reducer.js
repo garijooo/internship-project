@@ -1,4 +1,4 @@
-import { UPDATE_NAVBAR_VIEW } from './types';
+import UPDATE_NAVBAR_VIEW from './types';
 
 const INITIAL_STATE = {
   navbarIsOpen: true,
