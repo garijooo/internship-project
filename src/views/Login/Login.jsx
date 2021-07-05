@@ -1,5 +1,5 @@
 import React, {
-  useRef,
+  useState, useRef,
 } from 'react';
 import PropTypes from 'react-router-prop-types';
 import { Link } from 'react-router-dom';
@@ -13,9 +13,10 @@ import fetchWrapper from '../../utils/fetchWrapper';
 import { fetchUser } from '../../store/auth/actions';
 
 const Login = ({ history }) => {
-  const email = useRef('');
-  const password = useRef('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const checked = useRef(false);
+  const [error, setError] = useState('');
   const dispatch = useDispatch();
 
   const onLoginHandler = async (e) => {
@@ -23,8 +24,8 @@ const Login = ({ history }) => {
     try {
       const response = await fetchWrapper.post('/api/login', {
         body: JSON.stringify({
-          email: email.current.value,
-          password: password.current.value,
+          email,
+          password,
         }),
       });
       const data = await response.json();
@@ -34,8 +35,8 @@ const Login = ({ history }) => {
       const { Email } = jwtDecode(data.token);
       dispatch(fetchUser(Email, data.token));
       history.push('/streams/current');
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      setError(err.message);
     }
   };
   return (
@@ -46,20 +47,21 @@ const Login = ({ history }) => {
         <AuthForm
           onSubmitHandler={onLoginHandler}
           submitTitle="Sign In"
+          error={error}
         >
           <input
             type="email"
-            value={email.current.value}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             placeholder="Email"
             required
-            ref={email}
           />
           <input
             type="password"
-            value={password.current.value}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
             required
-            ref={password}
           />
           <div className={styles.content}>
             <div className={styles.checkbox}>

@@ -11,7 +11,7 @@ const SearchBar = (
     <input
       type="search"
       placeholder={title}
-      onChange={onChangeHandler}
+      onChange={(e) => onChangeHandler(e.target.value)}
     />
   </div>
 );

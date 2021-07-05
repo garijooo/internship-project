@@ -2,14 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { AiOutlineMore } from 'react-icons/ai';
 import classNames from 'classnames';
+import TableAvatar from '../TableAvatar/TableAvatar';
 import Options from '../Options/Options';
 import styles from './StreamsList.module.css';
 
 const ListRow = ({
-  stream,
-  index,
-  onClickHandler,
-  currentExpand,
+  stream, index, onClickHandler, currentExpand,
 }) => {
   const statusClass = classNames({
     [styles.oncoming]: stream.status === 'Oncoming',
@@ -34,12 +32,26 @@ const ListRow = ({
       <td className={styles.title}>{stream.title}</td>
       <td>{stream.date}</td>
       <td>
-        {stream.duration < 2 ? `${stream.duration} day` : `${stream.duration} days`}
+        {stream.duration < 2
+          ? `${stream.duration} day`
+          : `${stream.duration} days`}
       </td>
       <td>{stream.interns}</td>
-      <td>{stream.mentor}</td>
-      <td>{stream.lead}</td>
-      <td><span className={statusClass}>{stream.status}</span></td>
+      <td>
+        <div className={styles.user}>
+          <TableAvatar image={stream.mentorAvatar} />
+          {stream.mentor}
+        </div>
+      </td>
+      <td>
+        <div className={styles.user}>
+          <TableAvatar image={stream.leadAvatar} />
+          {stream.lead}
+        </div>
+      </td>
+      <td>
+        <span className={statusClass}>{stream.status}</span>
+      </td>
       <td>
         <div className={styles.more}>
           <div className={submenuClass}>
@@ -59,7 +71,9 @@ ListRow.propTypes = {
     duration: PropTypes.number,
     interns: PropTypes.number,
     mentor: PropTypes.string,
+    mentorAvatar: PropTypes.string,
     lead: PropTypes.string,
+    leadAvatar: PropTypes.string,
     status: PropTypes.string,
   }).isRequired,
   index: PropTypes.number.isRequired,

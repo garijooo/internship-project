@@ -17,6 +17,7 @@ const PaginationBar = ({
   onStepChange,
 }) => {
   const activeButtonClass = classNames(styles.button, styles.active);
+
   const renderButtons = () => {
     const pages = Math.ceil(amount / range);
     if (pages < 5) {

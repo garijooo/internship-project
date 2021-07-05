@@ -1,9 +1,9 @@
 .container {
   padding: 0 24px;
   padding-bottom: 28px;
-  box-sizing: border-box;
-  min-width: 600px;
+  min-width: 788px;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .bar {

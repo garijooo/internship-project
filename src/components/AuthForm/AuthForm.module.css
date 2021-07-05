@@ -46,3 +46,13 @@
 .form input[type="submit"]:hover {
   background: #bba99e;
 }
+
+.error {
+  color: #d32a00;
+  font-size: 14px;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}

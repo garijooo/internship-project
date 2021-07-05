@@ -13,7 +13,7 @@ const StreamsList = () => {
   const [currentExpand, setCurrentExpand] = useState(null);
 
   useEffect(() => {
-    setStreams([...currentStreams]);
+    setStreams(currentStreams);
     setAmount(currentStreams.length);
     setStep(2);
   }, []);

@@ -1,21 +1,27 @@
 import React, { useState } from 'react';
+import PropTypes from 'react-router-prop-types';
+import { useDispatch } from 'react-redux';
+import jwtDecode from 'jwt-decode';
 import AuthForm from '../../components/AuthForm/AuthForm';
 import AuthLogo from '../../components/AuthLogo/AuthLogo';
 import FormUpperContent from '../../components/FormUpperContent/FormUpperContent';
-import fetch from '../../utils/fetchWrapper';
+import fetchWrapper from '../../utils/fetchWrapper';
+import { fetchUser } from '../../store/auth/actions';
 
-const SignUp = () => {
+const SignUp = ({ history }) => {
   const [fname, setFname] = useState('');
   const [lname, setLname] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState('');
+  const dispatch = useDispatch();
 
   const onSignUpHandler = async (e) => {
     e.preventDefault();
     try {
       if (password !== confirmPassword) throw new Error('passwords didn\'t match');
-      const response = await fetch.post('/api/user', {
+      let response = await fetchWrapper.post('/api/user', {
         body: JSON.stringify({
           firstname: fname,
           lastname: lname,
@@ -23,11 +29,26 @@ const SignUp = () => {
           password,
         }),
       });
-      const data = await response.json();
+      let data = await response.json();
       if (data.msg) throw new Error(data.msg);
-      console.log(data);
-    } catch (error) {
-      console.log(error);
+      try {
+        response = await fetchWrapper.post('/api/login', {
+          body: JSON.stringify({
+            email: data.email,
+            password,
+          }),
+        });
+        data = await response.json();
+        if (data.msg) throw new Error(data.msg);
+        localStorage.setItem('auth-token', data.token);
+        const { Email } = jwtDecode(data.token);
+        dispatch(fetchUser(Email, data.token));
+        history.push('/streams/current');
+      } catch (err) {
+        setError(err.message);
+      }
+    } catch (err) {
+      setError(err.message);
     }
   };
 
@@ -39,6 +60,7 @@ const SignUp = () => {
         <AuthForm
           onSubmitHandler={onSignUpHandler}
           submitTitle="Register"
+          error={error}
         >
           <input
             type="text"
@@ -79,6 +101,10 @@ const SignUp = () => {
       </div>
     </section>
   );
+};
+
+SignUp.propTypes = {
+  history: PropTypes.history.isRequired,
 };
 
 export default SignUp;

@@ -8,6 +8,7 @@ import jwtDecode from 'jwt-decode';
 import {
   fetchUser,
 } from '../../store/auth/actions';
+import { updateSearchingValue } from '../../store/options/actions';
 import PageContainer from '../../components/PageContainer/PageContainer';
 import StreamsHeader from '../../components/StreamsHeader/StreamsHeader';
 import SearchBar from '../../components/SearchBar/SearchBar';
@@ -30,8 +31,9 @@ const Streams = (
     }
   }, []);
 
-  const onSearchChange = (e) => {
-    setSearchingValue(e.target.value);
+  const onSearchChange = (searchedValue) => {
+    setSearchingValue(searchedValue);
+    dispatch(updateSearchingValue(searchedValue));
     console.log(searchingValue);
   };
 
