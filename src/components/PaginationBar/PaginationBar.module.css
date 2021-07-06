@@ -1,7 +1,7 @@
 .container {
   padding: 0 24px;
   padding-bottom: 28px;
-  min-width: 788px;
+  min-width: 828px;
   width: 100%;
   box-sizing: border-box;
 }
@@ -54,14 +54,44 @@
   border: 1px solid #d9d9d9;
   border-radius: 2px;
   cursor: pointer;
+  transition: 0.5s ease;
 }
+
+.button[disabled] {
+  color: #d0d0d0;
+  cursor: not-allowed;
+}
+
+.button:hover {
+  color: rgba(250, 140, 22, 1);
+  border: 1px solid rgba(250, 140, 22, 1);
+}
+
+.button[disabled]:hover {
+  color: #d9d9d9;
+  border: 1px solid #d9d9d9;
+}
+
 .button:first-child {
   margin-left: 0;
 }
 
 .active {
+  color: rgba(250, 140, 22, 1);
   background: rgba(250, 140, 22, 0.1);
   border: 1px solid rgba(250, 140, 22, 1);
+}
+.ellipsis .arrows {
+  display: none;
+  color: rgba(250, 140, 22, 1);
+  transition: 1s ease;
+}
+
+.ellipsis:hover > svg {
+  display: none;
+}
+.ellipsis:hover > .arrows {
+  display: block;
 }
 
 .format {

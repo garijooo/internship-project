@@ -5,6 +5,8 @@ import {
   AiOutlineLeft,
   AiOutlineRight,
   AiOutlineDown,
+  AiOutlineDoubleLeft,
+  AiOutlineDoubleRight,
 } from 'react-icons/ai';
 import classNames from 'classnames';
 import styles from './PaginationBar.module.css';
@@ -17,592 +19,127 @@ const PaginationBar = ({
   onStepChange,
 }) => {
   const activeButtonClass = classNames(styles.button, styles.active);
+  const ellipsisClass = classNames(styles.button, styles.ellipsis);
+  const countPages = Math.ceil(amount / range);
 
-  const renderButtons = () => {
-    const pages = Math.ceil(amount / range);
-    if (pages < 5) {
-      const rendered = [];
-      for (let i = 1; i <= pages; i += 1) {
-        rendered.push(
+  const renderLeftSide = () => {
+    const interval = step - 1 < 4 ? step - 1 : 4;
+    const buttons = [];
+    let diff = 4 - (countPages - step);
+    if (diff < 2) diff = 2;
+    for (let i = 1; i <= diff; i += 1) {
+      if (step - i >= 1) {
+        buttons.unshift(
           <button
-            className={i === step ? activeButtonClass : styles.button}
             type="button"
-            onClick={(e) => onStepChange(parseInt(e.target.textContent, 10))}
+            className={styles.button}
+            key={step - i}
+            onClick={() => onStepChange(step - i)}
           >
-            {i}
+            {step - i}
           </button>,
         );
       }
-      return rendered;
     }
-    if (pages >= 5) {
-      if (step !== 1 && step !== pages) {
-        if (step === 2) {
-          return (
-            <>
-              <button
-                className={styles.button}
-                type="button"
-                onClick={() => onStepChange(step - 1)}
-              >
-                <AiOutlineLeft />
-              </button>
-              <button
-                className={styles.button}
-                type="button"
-                onClick={() => onStepChange(1)}
-              >
-                1
-              </button>
-              <div className={styles.gap}>
-                <AiOutlineEllipsis />
-              </div>
-              <button
-                className={activeButtonClass}
-                type="button"
-                onClick={(e) => onStepChange(parseInt(e.target.textContent, 10))}
-              >
-                {step}
-              </button>
-              <button
-                className={styles.button}
-                type="button"
-                onClick={(e) => onStepChange(parseInt(e.target.textContent, 10))}
-              >
-                {step + 1}
-              </button>
-              <div className={styles.gap}>
-                <AiOutlineEllipsis />
-              </div>
-              <button
-                className={styles.button}
-                type="button"
-                onClick={(e) => onStepChange(parseInt(e.target.textContent, 10))}
-              >
-                {Math.ceil(amount / range)}
-              </button>
-              <button
-                className={styles.button}
-                type="button"
-                onClick={() => onStepChange(step + 1)}
-              >
-                <AiOutlineRight />
-              </button>
-            </>
-          );
-        }
-        if (step === pages - 1) {
-          return (
-            <>
-              <button
-                className={styles.button}
-                type="button"
-                onClick={() => onStepChange(step - 1)}
-              >
-                <AiOutlineLeft />
-              </button>
-              <button
-                className={styles.button}
-                type="button"
-                onClick={() => onStepChange(1)}
-              >
-                1
-              </button>
-              <div className={styles.gap}>
-                <AiOutlineEllipsis />
-              </div>
-              <button
-                className={styles.button}
-                type="button"
-                onClick={(e) => onStepChange(parseInt(e.target.textContent, 10))}
-              >
-                {step - 1}
-              </button>
-              <button
-                className={activeButtonClass}
-                type="button"
-                onClick={(e) => onStepChange(parseInt(e.target.textContent, 10))}
-              >
-                {step}
-              </button>
-              <div className={styles.gap}>
-                <AiOutlineEllipsis />
-              </div>
-              <button
-                className={styles.button}
-                type="button"
-                onClick={(e) => onStepChange(parseInt(e.target.textContent, 10))}
-              >
-                {Math.ceil(amount / range)}
-              </button>
-              <button
-                className={styles.button}
-                type="button"
-                onClick={() => onStepChange(step + 1)}
-              >
-                <AiOutlineRight />
-              </button>
-            </>
-          );
-        }
-        return (
-          <>
-            <button
-              className={styles.button}
-              type="button"
-              onClick={() => onStepChange(step - 1)}
-            >
-              <AiOutlineLeft />
-            </button>
-            <button
-              className={styles.button}
-              type="button"
-              onClick={() => onStepChange(1)}
-            >
-              1
-            </button>
-            <div className={styles.gap}>
-              <AiOutlineEllipsis />
-            </div>
-            <button
-              className={styles.button}
-              type="button"
-              onClick={(e) => onStepChange(parseInt(e.target.textContent, 10))}
-            >
-              {step - 1}
-            </button>
-            <button
-              className={activeButtonClass}
-              type="button"
-              onClick={(e) => onStepChange(parseInt(e.target.textContent, 10))}
-            >
-              {step}
-            </button>
-            <button
-              className={styles.button}
-              type="button"
-              onClick={(e) => onStepChange(parseInt(e.target.textContent, 10))}
-            >
-              {step + 1}
-            </button>
-            <div className={styles.gap}>
-              <AiOutlineEllipsis />
-            </div>
-            <button
-              className={styles.button}
-              type="button"
-              onClick={(e) => onStepChange(parseInt(e.target.textContent, 10))}
-            >
-              {Math.ceil(amount / range)}
-            </button>
-            <button
-              className={styles.button}
-              type="button"
-              onClick={() => onStepChange(step + 1)}
-            >
-              <AiOutlineRight />
-            </button>
-          </>
-        );
-      }
-      if (step === 1) {
-        return (
-          <>
-            <button
-              className={activeButtonClass}
-              type="button"
-              onClick={(e) => onStepChange(parseInt(e.target.textContent, 10))}
-            >
-              {step}
-            </button>
-            <button
-              className={styles.button}
-              type="button"
-              onClick={(e) => onStepChange(parseInt(e.target.textContent, 10))}
-            >
-              {step + 1}
-            </button>
-            <div className={styles.gap}>
-              <AiOutlineEllipsis />
-            </div>
-            <button
-              className={styles.button}
-              type="button"
-              onClick={(e) => onStepChange(parseInt(e.target.textContent, 10))}
-            >
-              {Math.ceil(amount / range)}
-            </button>
-            <button
-              className={styles.button}
-              type="button"
-              onClick={() => onStepChange(step + 1)}
-            >
-              <AiOutlineRight />
-            </button>
-          </>
-        );
-      }
-      if (step === pages) {
-        return (
-          <>
-            <button
-              className={styles.button}
-              type="button"
-              onClick={() => onStepChange(step - 1)}
-            >
-              <AiOutlineLeft />
-            </button>
-            <button
-              className={styles.button}
-              type="button"
-              onClick={() => onStepChange(1)}
-            >
-              1
-            </button>
-            <div className={styles.gap}>
-              <AiOutlineEllipsis />
-            </div>
-            <button
-              className={styles.button}
-              type="button"
-              onClick={(e) => onStepChange(parseInt(e.target.textContent, 10))}
-            >
-              {step - 1}
-            </button>
-            <button
-              className={activeButtonClass}
-              type="button"
-              onClick={(e) => onStepChange(parseInt(e.target.textContent, 10))}
-            >
-              {step}
-            </button>
-          </>
+    if (step - 3 > 1) {
+      buttons.unshift(
+        <button type="button" className={ellipsisClass}>
+          <AiOutlineEllipsis />
+          <AiOutlineDoubleLeft
+            className={styles.arrows}
+            onClick={() => onStepChange(step - interval)}
+          />
+        </button>,
+      );
+    }
+    if (step - 2 > 1) {
+      buttons.unshift(
+        <button
+          type="button"
+          className={styles.button}
+          onClick={() => onStepChange(1)}
+        >
+          {1}
+        </button>,
+      );
+    }
+    return buttons;
+  };
+
+  const renderRightSide = () => {
+    const buttons = [];
+    const interval = countPages - step < 4 ? countPages - step : 4;
+    let diff = 4 - (step - 1);
+    if (diff < 2) diff = 2;
+    for (let i = 1; i <= diff; i += 1) {
+      if (step + i <= countPages) {
+        buttons.push(
+          <button
+            type="button"
+            className={styles.button}
+            key={step + i}
+            onClick={() => onStepChange(step + i)}
+          >
+            {step + i}
+          </button>,
         );
       }
     }
-    if (pages >= 7) {
-      if (step !== 1 && step !== pages) {
-        if (step === 2) {
-          return (
-            <>
-              <button
-                className={styles.button}
-                type="button"
-                onClick={() => onStepChange(step - 1)}
-              >
-                <AiOutlineLeft />
-              </button>
-              <button className={styles.button} type="button">1</button>
-              <div className={styles.gap}>
-                <AiOutlineEllipsis />
-              </div>
-              <button
-                className={styles.button}
-                type="button"
-                onClick={(e) => onStepChange(parseInt(e.target.textContent, 10))}
-              >
-                {step - 1}
-              </button>
-              <button
-                className={activeButtonClass}
-                type="button"
-                onClick={(e) => onStepChange(parseInt(e.target.textContent, 10))}
-              >
-                {step}
-              </button>
-              <button
-                className={styles.button}
-                type="button"
-                onClick={(e) => onStepChange(parseInt(e.target.textContent, 10))}
-              >
-                {step + 1}
-              </button>
-              <button
-                className={styles.button}
-                type="button"
-                onClick={(e) => onStepChange(parseInt(e.target.textContent, 10))}
-              >
-                {step + 2}
-              </button>
-              <div className={styles.gap}>
-                <AiOutlineEllipsis />
-              </div>
-              <button
-                className={styles.button}
-                type="button"
-                onClick={(e) => onStepChange(parseInt(e.target.textContent, 10))}
-              >
-                {Math.ceil(amount / range)}
-              </button>
-              <button
-                className={styles.button}
-                type="button"
-                onClick={() => onStepChange(step + 1)}
-              >
-                <AiOutlineRight />
-              </button>
-            </>
-          );
-        }
-        if (step === pages - 1) {
-          return (
-            <>
-              <button
-                className={styles.button}
-                type="button"
-                onClick={() => onStepChange(step - 1)}
-              >
-                <AiOutlineLeft />
-              </button>
-              <button className={styles.button} type="button">1</button>
-              <div className={styles.gap}>
-                <AiOutlineEllipsis />
-              </div>
-              <button
-                className={styles.button}
-                type="button"
-                onClick={(e) => onStepChange(parseInt(e.target.textContent, 10))}
-              >
-                {step - 2}
-              </button>
-              <button
-                className={styles.button}
-                type="button"
-                onClick={(e) => onStepChange(parseInt(e.target.textContent, 10))}
-              >
-                {step - 1}
-              </button>
-              <button
-                className={activeButtonClass}
-                type="button"
-                onClick={(e) => onStepChange(parseInt(e.target.textContent, 10))}
-              >
-                {step}
-              </button>
-              <button
-                className={styles.button}
-                type="button"
-                onClick={(e) => onStepChange(parseInt(e.target.textContent, 10))}
-              >
-                {step + 1}
-              </button>
-              <div className={styles.gap}>
-                <AiOutlineEllipsis />
-              </div>
-              <button
-                className={styles.button}
-                type="button"
-                onClick={(e) => onStepChange(parseInt(e.target.textContent, 10))}
-              >
-                {Math.ceil(amount / range)}
-              </button>
-              <button
-                className={styles.button}
-                type="button"
-                onClick={() => onStepChange(step + 1)}
-              >
-                <AiOutlineRight />
-              </button>
-            </>
-          );
-        }
-        return (
-          <>
-            <button
-              className={styles.button}
-              type="button"
-              onClick={() => onStepChange(step - 1)}
-            >
-              <AiOutlineLeft />
-            </button>
-            <button className={styles.button} type="button">1</button>
-            <div className={styles.gap}>
-              <AiOutlineEllipsis />
-            </div>
-            <button
-              className={styles.button}
-              type="button"
-              onClick={(e) => onStepChange(parseInt(e.target.textContent, 10))}
-            >
-              {step - 2}
-            </button>
-            <button
-              className={styles.button}
-              type="button"
-              onClick={(e) => onStepChange(parseInt(e.target.textContent, 10))}
-            >
-              {step - 1}
-            </button>
-            <button
-              className={activeButtonClass}
-              type="button"
-              onClick={(e) => onStepChange(parseInt(e.target.textContent, 10))}
-            >
-              {step}
-            </button>
-            <button
-              className={styles.button}
-              type="button"
-              onClick={(e) => onStepChange(parseInt(e.target.textContent, 10))}
-            >
-              {step + 1}
-            </button>
-            <button
-              className={styles.button}
-              type="button"
-              onClick={(e) => onStepChange(parseInt(e.target.textContent, 10))}
-            >
-              {step + 2}
-            </button>
-            <div className={styles.gap}>
-              <AiOutlineEllipsis />
-            </div>
-            <button
-              className={styles.button}
-              type="button"
-              onClick={(e) => onStepChange(parseInt(e.target.textContent, 10))}
-            >
-              {Math.ceil(amount / range)}
-            </button>
-            <button
-              className={styles.button}
-              type="button"
-              onClick={() => onStepChange(step + 1)}
-            >
-              <AiOutlineRight />
-            </button>
-          </>
-        );
-      }
-      if (step === 1) {
-        return (
-          <>
-            <button
-              className={activeButtonClass}
-              type="button"
-              onClick={(e) => onStepChange(parseInt(e.target.textContent, 10))}
-            >
-              {step}
-            </button>
-            <button
-              className={styles.button}
-              type="button"
-              onClick={(e) => onStepChange(parseInt(e.target.textContent, 10))}
-            >
-              {step + 1}
-            </button>
-            <button
-              className={styles.button}
-              type="button"
-              onClick={(e) => onStepChange(parseInt(e.target.textContent, 10))}
-            >
-              {step + 2}
-            </button>
-            <div className={styles.gap}>
-              <AiOutlineEllipsis />
-            </div>
-            <button
-              className={styles.button}
-              type="button"
-              onClick={(e) => onStepChange(parseInt(e.target.textContent, 10))}
-            >
-              {Math.ceil(amount / range)}
-            </button>
-            <button
-              className={styles.button}
-              type="button"
-              onClick={() => onStepChange(step + 1)}
-            >
-              <AiOutlineRight />
-            </button>
-          </>
-        );
-      }
-      if (step === pages) {
-        return (
-          <>
-            <button
-              className={styles.button}
-              type="button"
-              onClick={() => onStepChange(step - 1)}
-            >
-              <AiOutlineLeft />
-            </button>
-            <button className={styles.button} type="button">1</button>
-            <div className={styles.gap}>
-              <AiOutlineEllipsis />
-            </div>
-            <button
-              className={styles.button}
-              type="button"
-              onClick={(e) => onStepChange(parseInt(e.target.textContent, 10))}
-            >
-              {step - 2}
-            </button>
-            <button
-              className={styles.button}
-              type="button"
-              onClick={(e) => onStepChange(parseInt(e.target.textContent, 10))}
-            >
-              {step - 1}
-            </button>
-            <button
-              className={activeButtonClass}
-              type="button"
-              onClick={(e) => onStepChange(parseInt(e.target.textContent, 10))}
-            >
-              {step}
-            </button>
-          </>
-        );
-      }
+    if (step + 3 < countPages) {
+      buttons.push(
+        <button type="button" className={ellipsisClass}>
+          <AiOutlineEllipsis />
+          <AiOutlineDoubleRight
+            className={styles.arrows}
+            onClick={() => onStepChange(step + interval)}
+          />
+        </button>,
+      );
     }
-    return <></>;
+    if (step + 2 < countPages) {
+      buttons.push(
+        <button
+          type="button"
+          className={styles.button}
+          onClick={() => onStepChange(countPages)}
+        >
+          {countPages}
+        </button>,
+      );
+    }
+    return buttons;
   };
 
   return (
     <section className={styles.container}>
       <div className={styles.bar}>
         <span className={styles.counter}>
-          {step * range > amount ? `${(step - 1) * range + 1}-${amount} of ${amount} items` : `${(step - 1) * range + 1}-${step * range} of ${amount} items`}
+          {step * range > amount
+            ? `${(step - 1) * range + 1}-${amount} of ${amount} items`
+            : `${(step - 1) * range + 1}-${step * range} of ${amount} items`}
         </span>
         <div className={styles.pages}>
-          {renderButtons()}
-          {/* <button className={styles.button} type="button">
+          <button
+            type="button"
+            disabled={step === 1}
+            className={styles.button}
+            onClick={() => onStepChange(step - 1)}
+          >
             <AiOutlineLeft />
           </button>
-          <button className={styles.button} type="button">1</button>
-          <div className={styles.gap}>
-            <AiOutlineEllipsis />
-          </div>
-          <button className={styles.button} type="button">
-            4
+          {renderLeftSide()}
+          <button type="button" className={activeButtonClass}>
+            {step}
           </button>
-          <button className={styles.button} type="button">
-            5
-          </button>
-          <button className={`${styles.button} ${styles.active}`} type="button">
-            6
-          </button>
-          <button className={styles.button} type="button">
-            7
-          </button>
-          <button className={styles.button} type="button">
-            8
-          </button>
-          <div className={styles.gap}>
-            <AiOutlineEllipsis />
-          </div>
+          {renderRightSide()}
           <button
-            className={styles.button}
             type="button"
-            onClick={(e) => onStepChange(parseInt(e.target.textContent, 10))}
+            disabled={step === countPages}
+            className={styles.button}
+            onClick={() => onStepChange(step + 1)}
           >
-            {Math.ceil(amount / range)}
-          </button>
-          <button className={styles.button} type="button">
             <AiOutlineRight />
-          </button> */}
+          </button>
         </div>
         <div className={styles.format}>
           <AiOutlineDown className={styles.dropdown} />
