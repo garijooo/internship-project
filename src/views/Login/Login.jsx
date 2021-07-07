@@ -4,12 +4,12 @@ import React, {
 import PropTypes from 'react-router-prop-types';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import jwtDecode from 'jwt-decode';
 import AuthForm from '../../components/AuthForm/AuthForm';
 import AuthLogo from '../../components/AuthLogo/AuthLogo';
 import FormUpperContent from '../../components/FormUpperContent/FormUpperContent';
 import styles from './Login.module.css';
 import fetchWrapper from '../../utils/fetchWrapper';
+import getEmail from '../../utils/jwtDecoder';
 import { fetchUser } from '../../store/auth/actions';
 
 const Login = ({ history }) => {
@@ -32,8 +32,7 @@ const Login = ({ history }) => {
       if (data.msg) throw new Error(data.msg);
       if (checked.current.checked) localStorage.setItem('auth-token', data.token);
       else sessionStorage.setItem('auth-token', data.token);
-      const { Email } = jwtDecode(data.token);
-      dispatch(fetchUser(Email, data.token));
+      dispatch(fetchUser(getEmail(data.token), data.token));
       history.push('/streams/current');
     } catch (err) {
       setError(err.message);

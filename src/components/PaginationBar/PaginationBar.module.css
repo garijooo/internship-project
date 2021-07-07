@@ -28,28 +28,25 @@
   justify-content: row;
   align-items: center;
   padding: 0 16px;
+  list-style-type: none;
 }
 
-.gap,
-.button {
+.item {
   height: 32px;
   width: 32px;
   margin-left: 8px;
 }
 
-.gap {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  line-height: 32px;
-  font-size: 28px;
-  color: rgba(0, 0, 0, 0.25);
+.item:first-child {
+  margin-left: 0;
 }
 
 .button {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  height: 100%;
   background: #fff;
   border: 1px solid #d9d9d9;
   border-radius: 2px;
@@ -118,8 +115,7 @@
 .dropdown {
   position: absolute;
   right: 12px;
-  font-size: 16px;
-  top: 25%;
+  top: 37.5%;
   z-index: 1;
   color: rgba(0, 0, 0, 0.25);
   pointer-events: none;

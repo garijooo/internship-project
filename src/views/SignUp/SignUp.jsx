@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import PropTypes from 'react-router-prop-types';
 import { useDispatch } from 'react-redux';
-import jwtDecode from 'jwt-decode';
 import AuthForm from '../../components/AuthForm/AuthForm';
 import AuthLogo from '../../components/AuthLogo/AuthLogo';
 import FormUpperContent from '../../components/FormUpperContent/FormUpperContent';
 import fetchWrapper from '../../utils/fetchWrapper';
+import getEmail from '../../utils/jwtDecoder';
 import { fetchUser } from '../../store/auth/actions';
 
 const SignUp = ({ history }) => {
@@ -41,8 +41,7 @@ const SignUp = ({ history }) => {
         data = await response.json();
         if (data.msg) throw new Error(data.msg);
         localStorage.setItem('auth-token', data.token);
-        const { Email } = jwtDecode(data.token);
-        dispatch(fetchUser(Email, data.token));
+        dispatch(fetchUser(getEmail(data.token), data.token));
         history.push('/streams/current');
       } catch (err) {
         setError(err.message);

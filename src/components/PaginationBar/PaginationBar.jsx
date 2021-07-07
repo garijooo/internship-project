@@ -30,37 +30,47 @@ const PaginationBar = ({
     for (let i = 1; i <= diff; i += 1) {
       if (step - i >= 1) {
         buttons.unshift(
-          <button
-            type="button"
-            className={styles.button}
-            key={step - i}
-            onClick={() => onStepChange(step - i)}
-          >
-            {step - i}
-          </button>,
+          <li className={styles.item}>
+            <button
+              type="button"
+              className={styles.button}
+              key={step - i}
+              onClick={() => onStepChange(step - i)}
+            >
+              {step - i}
+            </button>
+          </li>,
         );
       }
     }
     if (step - 3 > 1) {
       buttons.unshift(
-        <button type="button" className={ellipsisClass}>
-          <AiOutlineEllipsis />
-          <AiOutlineDoubleLeft
-            className={styles.arrows}
-            onClick={() => onStepChange(step - interval)}
-          />
-        </button>,
+        <li className={styles.item}>
+          <button type="button" className={ellipsisClass}>
+            <AiOutlineEllipsis
+              size={12}
+              onClick={() => onStepChange(step - interval)}
+            />
+            <AiOutlineDoubleLeft
+              className={styles.arrows}
+              size={12}
+              onClick={() => onStepChange(step - interval)}
+            />
+          </button>
+        </li>,
       );
     }
     if (step - 2 > 1) {
       buttons.unshift(
-        <button
-          type="button"
-          className={styles.button}
-          onClick={() => onStepChange(1)}
-        >
-          {1}
-        </button>,
+        <li className={styles.item}>
+          <button
+            type="button"
+            className={styles.button}
+            onClick={() => onStepChange(1)}
+          >
+            {1}
+          </button>
+        </li>,
       );
     }
     return buttons;
@@ -74,37 +84,47 @@ const PaginationBar = ({
     for (let i = 1; i <= diff; i += 1) {
       if (step + i <= countPages) {
         buttons.push(
-          <button
-            type="button"
-            className={styles.button}
-            key={step + i}
-            onClick={() => onStepChange(step + i)}
-          >
-            {step + i}
-          </button>,
+          <li className={styles.item}>
+            <button
+              type="button"
+              className={styles.button}
+              key={step + i}
+              onClick={() => onStepChange(step + i)}
+            >
+              {step + i}
+            </button>
+          </li>,
         );
       }
     }
     if (step + 3 < countPages) {
       buttons.push(
-        <button type="button" className={ellipsisClass}>
-          <AiOutlineEllipsis />
-          <AiOutlineDoubleRight
-            className={styles.arrows}
-            onClick={() => onStepChange(step + interval)}
-          />
-        </button>,
+        <li className={styles.item}>
+          <button type="button" className={ellipsisClass}>
+            <AiOutlineEllipsis
+              size={12}
+              onClick={() => onStepChange(step + interval)}
+            />
+            <AiOutlineDoubleRight
+              className={styles.arrows}
+              size={12}
+              onClick={() => onStepChange(step + interval)}
+            />
+          </button>
+        </li>,
       );
     }
     if (step + 2 < countPages) {
       buttons.push(
-        <button
-          type="button"
-          className={styles.button}
-          onClick={() => onStepChange(countPages)}
-        >
-          {countPages}
-        </button>,
+        <li className={styles.item}>
+          <button
+            type="button"
+            className={styles.button}
+            onClick={() => onStepChange(countPages)}
+          >
+            {countPages}
+          </button>
+        </li>,
       );
     }
     return buttons;
@@ -118,34 +138,40 @@ const PaginationBar = ({
             ? `${(step - 1) * range + 1}-${amount} of ${amount} items`
             : `${(step - 1) * range + 1}-${step * range} of ${amount} items`}
         </span>
-        <div className={styles.pages}>
-          <button
-            type="button"
-            disabled={step === 1}
-            className={styles.button}
-            onClick={() => onStepChange(step - 1)}
-          >
-            <AiOutlineLeft />
-          </button>
+        <ul className={styles.pages}>
+          <li className={styles.item}>
+            <button
+              type="button"
+              disabled={step === 1}
+              className={styles.button}
+              onClick={() => onStepChange(step - 1)}
+            >
+              <AiOutlineLeft size={12} />
+            </button>
+          </li>
           {renderLeftSide()}
-          <button type="button" className={activeButtonClass}>
-            {step}
-          </button>
+          <li className={styles.item}>
+            <button type="button" className={activeButtonClass}>
+              {step}
+            </button>
+          </li>
           {renderRightSide()}
-          <button
-            type="button"
-            disabled={step === countPages}
-            className={styles.button}
-            onClick={() => onStepChange(step + 1)}
-          >
-            <AiOutlineRight />
-          </button>
-        </div>
+          <li className={styles.item}>
+            <button
+              type="button"
+              disabled={step === countPages}
+              className={styles.button}
+              onClick={() => onStepChange(step + 1)}
+            >
+              <AiOutlineRight size={12} />
+            </button>
+          </li>
+        </ul>
         <div className={styles.format}>
-          <AiOutlineDown className={styles.dropdown} />
+          <AiOutlineDown className={styles.dropdown} size={12} />
           <select
             className={styles.select}
-            onChange={(e) => onRangeChange(parseInt(e.target.value, 10))}
+            onChange={(e) => onRangeChange(e.target.value)}
           >
             <option value={10}>10/page</option>
             <option value={15}>15/page</option>

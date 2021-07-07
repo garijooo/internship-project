@@ -15,7 +15,7 @@ import './styles/index.css';
 import './styles/auth.css';
 
 const App = () => {
-  const isAuthorized = () => (localStorage.getItem('auth-token') || sessionStorage.getItem('auth-token')) && true;
+  const isAuthorized = () => (localStorage.getItem('auth-token') || sessionStorage.getItem('auth-token'));
 
   return (
     <BrowserRouter>

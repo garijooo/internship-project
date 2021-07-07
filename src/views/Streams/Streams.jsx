@@ -34,7 +34,6 @@ const Streams = (
   const onSearchChange = (searchedValue) => {
     setSearchingValue(searchedValue);
     dispatch(updateSearchingValue(searchedValue));
-    console.log(searchingValue);
   };
 
   return (

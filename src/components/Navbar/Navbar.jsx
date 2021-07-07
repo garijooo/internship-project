@@ -31,7 +31,7 @@ const Navbar = () => {
       <ul>
         <li className={styles.item}>
           <NavLink to="/streams/current" activeClassName={styles.selected} className={streamsItemClass}>
-            <span className={styles.icon}><AiOutlineRocket /></span>
+            <span className={styles.icon}><AiOutlineRocket size={14} /></span>
             <span className={textElementClass}>
               Internship Streams
             </span>
@@ -39,7 +39,7 @@ const Navbar = () => {
         </li>
         <li className={styles.item}>
           <NavLink to="/interns" activeClassName={styles.selected}>
-            <span className={styles.icon}><AiOutlineUser /></span>
+            <span className={styles.icon}><AiOutlineUser size={14} /></span>
             <span className={textElementClass}>
               Interns
             </span>
@@ -50,10 +50,12 @@ const Navbar = () => {
         <AiOutlineMenuFold
           onClick={() => dispatch(updateNavbarView(!options.navbarIsOpen))}
           className={!options.navbarIsOpen && styles.hideIcon}
+          size={16}
         />
         <AiOutlineMenuUnfold
           className={options.navbarIsOpen && styles.hideIcon}
           onClick={() => dispatch(updateNavbarView(!options.navbarIsOpen))}
+          size={16}
         />
       </div>
     </nav>

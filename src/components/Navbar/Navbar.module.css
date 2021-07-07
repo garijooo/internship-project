@@ -22,9 +22,6 @@
   box-shadow: inset 0px 1px 0px #f0f0f0;
   height: 16px;
 }
-.change svg {
-  size: 16px;
-}
 
 .hideIcon {
   display: none;
@@ -71,10 +68,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.icon svg {
-  size: 14px;
 }
 
 .selected {
