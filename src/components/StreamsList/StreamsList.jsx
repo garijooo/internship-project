@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import PaginationBar from '../PaginationBar/PaginationBar';
 import ListRow from './ListRow';
 import ListHeader from './ListHeader';
 import styles from './StreamsList.module.css';
-import currentStreams from '../../utils/currentStreams';
 
-const StreamsList = () => {
+const StreamsList = ({ fetchedStreams }) => {
   const [streams, setStreams] = useState([]);
   const [amount, setAmount] = useState(0);
   const [step, setStep] = useState(1);
@@ -13,8 +13,8 @@ const StreamsList = () => {
   const [currentExpand, setCurrentExpand] = useState(null);
 
   useEffect(() => {
-    setStreams(currentStreams);
-    setAmount(currentStreams.length);
+    setStreams(fetchedStreams);
+    setAmount(fetchedStreams.length);
   }, []);
 
   const onExpandHandler = (index) => setCurrentExpand(index);
@@ -68,6 +68,24 @@ const StreamsList = () => {
       />
     </>
   );
+};
+
+StreamsList.propTypes = {
+  fetchedStreams: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string,
+    date: PropTypes.string,
+    duration: PropTypes.number,
+    interns: PropTypes.number,
+    mentor: PropTypes.string,
+    mentorAvatar: PropTypes.string,
+    lead: PropTypes.string,
+    leadAvatar: PropTypes.string,
+    status: PropTypes.string,
+  })),
+};
+
+StreamsList.defaultProps = {
+  fetchedStreams: [],
 };
 
 export default StreamsList;

@@ -4,17 +4,16 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import jwtDecode from 'jwt-decode';
-import {
-  fetchUser,
-} from '../../store/auth/actions';
+import { fetchUser } from '../../store/auth/actions';
+import getEmail from '../../utils/jwtDecoder';
 import { updateSearchingValue } from '../../store/options/actions';
 import PageContainer from '../../components/PageContainer/PageContainer';
 import StreamsHeader from '../../components/StreamsHeader/StreamsHeader';
 import SearchBar from '../../components/SearchBar/SearchBar';
+import StreamsList from '../../components/StreamsList/StreamsList';
 
 const Streams = (
-  { children },
+  { streams },
 ) => {
   const [searchingValue, setSearchingValue] = useState('');
   const dispatch = useDispatch();
@@ -25,9 +24,7 @@ const Streams = (
       let token;
       if (localStorage.getItem('auth-token')) token = localStorage.getItem('auth-token');
       else token = sessionStorage.getItem('auth-token');
-      const data = jwtDecode(token);
-      const { Email } = data;
-      dispatch(fetchUser(Email, token));
+      dispatch(fetchUser(getEmail(token), token));
     }
   }, []);
 
@@ -44,17 +41,27 @@ const Streams = (
         onChangeHandler={onSearchChange}
         value={searchingValue}
       />
-      {children}
+      <StreamsList fetchedStreams={streams} />
     </PageContainer>
   );
 };
 
 Streams.propTypes = {
-  children: PropTypes.node,
+  streams: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string,
+    date: PropTypes.string,
+    duration: PropTypes.number,
+    interns: PropTypes.number,
+    mentor: PropTypes.string,
+    mentorAvatar: PropTypes.string,
+    lead: PropTypes.string,
+    leadAvatar: PropTypes.string,
+    status: PropTypes.string,
+  })),
 };
 
 Streams.defaultProps = {
-  children: null,
+  streams: [],
 };
 
 export default Streams;

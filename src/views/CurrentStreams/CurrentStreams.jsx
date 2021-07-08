@@ -1,11 +1,9 @@
 import React from 'react';
+import currentStreams from '../../utils/currentStreams';
 import Streams from '../Streams/Streams';
-import StreamsList from '../../components/StreamsList/StreamsList';
 
 const CurrentStreams = () => (
-  <Streams>
-    <StreamsList />
-  </Streams>
+  <Streams streams={currentStreams} />
 );
 
 export default CurrentStreams;

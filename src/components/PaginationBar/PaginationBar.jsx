@@ -22,6 +22,12 @@ const PaginationBar = ({
   const ellipsisClass = classNames(styles.button, styles.ellipsis);
   const countPages = Math.ceil(amount / range);
 
+  const onRangeChangeHandler = (e) => {
+    e.preventDefault();
+    onRangeChange(Number(e.target.value));
+    onStepChange(1);
+  };
+
   const renderLeftSide = () => {
     const interval = step - 1 < 4 ? step - 1 : 4;
     const buttons = [];
@@ -60,7 +66,7 @@ const PaginationBar = ({
         </li>,
       );
     }
-    if (step - 2 > 1) {
+    if (step - 2 > 1 && countPages > 4) {
       buttons.unshift(
         <li className={styles.item}>
           <button
@@ -114,7 +120,7 @@ const PaginationBar = ({
         </li>,
       );
     }
-    if (step + 2 < countPages) {
+    if (step + 2 < countPages && countPages > 4) {
       buttons.push(
         <li className={styles.item}>
           <button
@@ -171,7 +177,7 @@ const PaginationBar = ({
           <AiOutlineDown className={styles.dropdown} size={12} />
           <select
             className={styles.select}
-            onChange={(e) => onRangeChange(e.target.value)}
+            onChange={onRangeChangeHandler}
           >
             <option value={10}>10/page</option>
             <option value={15}>15/page</option>
