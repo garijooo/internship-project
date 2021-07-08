@@ -36,11 +36,10 @@ const PaginationBar = ({
     for (let i = 1; i <= diff; i += 1) {
       if (step - i >= 1) {
         buttons.unshift(
-          <li className={styles.item}>
+          <li className={styles.item} key={`${step}-${step - i}`}>
             <button
               type="button"
               className={styles.button}
-              key={step - i}
               onClick={() => onStepChange(step - i)}
             >
               {step - i}
@@ -51,7 +50,7 @@ const PaginationBar = ({
     }
     if (step - 3 > 1) {
       buttons.unshift(
-        <li className={styles.item}>
+        <li className={styles.item} key={`${step}-ellipsis-left`}>
           <button type="button" className={ellipsisClass}>
             <AiOutlineEllipsis
               size={12}
@@ -68,7 +67,7 @@ const PaginationBar = ({
     }
     if (step - 2 > 1 && countPages > 4) {
       buttons.unshift(
-        <li className={styles.item}>
+        <li className={styles.item} key={`${step}-1`}>
           <button
             type="button"
             className={styles.button}
@@ -90,11 +89,10 @@ const PaginationBar = ({
     for (let i = 1; i <= diff; i += 1) {
       if (step + i <= countPages) {
         buttons.push(
-          <li className={styles.item}>
+          <li className={styles.item} key={`${step}+${step + i}`}>
             <button
               type="button"
               className={styles.button}
-              key={step + i}
               onClick={() => onStepChange(step + i)}
             >
               {step + i}
@@ -105,7 +103,7 @@ const PaginationBar = ({
     }
     if (step + 3 < countPages) {
       buttons.push(
-        <li className={styles.item}>
+        <li className={styles.item} key={`${step}-ellipsis-right`}>
           <button type="button" className={ellipsisClass}>
             <AiOutlineEllipsis
               size={12}
@@ -122,7 +120,7 @@ const PaginationBar = ({
     }
     if (step + 2 < countPages && countPages > 4) {
       buttons.push(
-        <li className={styles.item}>
+        <li className={styles.item} key={`${step}-${countPages}`}>
           <button
             type="button"
             className={styles.button}
@@ -145,7 +143,7 @@ const PaginationBar = ({
             : `${(step - 1) * range + 1}-${step * range} of ${amount} items`}
         </span>
         <ul className={styles.pages}>
-          <li className={styles.item}>
+          <li className={styles.item} key={`${step}-left`}>
             <button
               type="button"
               disabled={step === 1}
@@ -156,13 +154,13 @@ const PaginationBar = ({
             </button>
           </li>
           {renderLeftSide()}
-          <li className={styles.item}>
+          <li className={styles.item} key={`${step}-${step}`}>
             <button type="button" className={activeButtonClass}>
               {step}
             </button>
           </li>
           {renderRightSide()}
-          <li className={styles.item}>
+          <li className={styles.item} key={`${step}-right`}>
             <button
               type="button"
               disabled={step === countPages}
