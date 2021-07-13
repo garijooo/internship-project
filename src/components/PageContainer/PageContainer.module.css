@@ -1,13 +1,15 @@
 .grid {
   display: flex;
   height: 100%;
+  width: 100%;
   overflow: hidden;
+  overflow-x: auto;
 }
 
 .dashboard {
-  flex-grow: 1;
-  height: 100%;
-  overflow: auto;
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
+  min-width: 724px;
+  overflow-x: auto;
 }

@@ -1,11 +1,10 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import PropTypes from 'react-router-prop-types';
 import { useDispatch } from 'react-redux';
 import { signOut } from '../../store/auth/actions';
 import PageContainer from '../../components/PageContainer/PageContainer';
 
-const Interns = () => {
-  const history = useHistory();
+const Interns = ({ history }) => {
   const dispatch = useDispatch();
   const signOutHandler = () => {
     localStorage.removeItem('auth-token');
@@ -22,6 +21,10 @@ const Interns = () => {
       </button>
     </PageContainer>
   );
+};
+
+Interns.propTypes = {
+  history: PropTypes.history.isRequired,
 };
 
 export default Interns;

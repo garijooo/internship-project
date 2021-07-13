@@ -9,6 +9,7 @@ import {
   AiOutlineDoubleRight,
 } from 'react-icons/ai';
 import classNames from 'classnames';
+import { ICON_SIZE_DEFAULT } from '../../constants';
 import styles from './PaginationBar.module.css';
 
 const PaginationBar = ({
@@ -21,15 +22,42 @@ const PaginationBar = ({
   const activeButtonClass = classNames(styles.button, styles.active);
   const ellipsisClass = classNames(styles.button, styles.ellipsis);
   const countPages = Math.ceil(amount / range);
+  const itemsCountOptions = [10, 15, 20, 30];
 
   const renderLeftSide = () => {
     const interval = step - 1 < 4 ? step - 1 : 4;
     const buttons = [];
     let diff = 4 - (countPages - step);
     if (diff < 2) diff = 2;
-    for (let i = 1; i <= diff; i += 1) {
+
+    if (step - 2 > 1 && countPages > 5) {
+      buttons.push(
+        <li className={styles.item}>
+          <button
+            type="button"
+            className={styles.button}
+            onClick={() => onStepChange(1)}
+          >
+            {1}
+          </button>
+        </li>,
+      );
+    }
+
+    if (step - 3 > 1 && countPages > 5) {
+      buttons.push(
+        <li className={styles.item}>
+          <button type="button" className={ellipsisClass} onClick={() => onStepChange(step - interval)}>
+            <AiOutlineEllipsis size={ICON_SIZE_DEFAULT} />
+            <AiOutlineDoubleLeft className={styles.arrows} size={ICON_SIZE_DEFAULT} />
+          </button>
+        </li>,
+      );
+    }
+
+    for (let i = diff; i >= 1; i -= 1) {
       if (step - i >= 1) {
-        buttons.unshift(
+        buttons.push(
           <li className={styles.item}>
             <button
               type="button"
@@ -43,36 +71,7 @@ const PaginationBar = ({
         );
       }
     }
-    if (step - 3 > 1) {
-      buttons.unshift(
-        <li className={styles.item}>
-          <button type="button" className={ellipsisClass}>
-            <AiOutlineEllipsis
-              size={12}
-              onClick={() => onStepChange(step - interval)}
-            />
-            <AiOutlineDoubleLeft
-              className={styles.arrows}
-              size={12}
-              onClick={() => onStepChange(step - interval)}
-            />
-          </button>
-        </li>,
-      );
-    }
-    if (step - 2 > 1) {
-      buttons.unshift(
-        <li className={styles.item}>
-          <button
-            type="button"
-            className={styles.button}
-            onClick={() => onStepChange(1)}
-          >
-            {1}
-          </button>
-        </li>,
-      );
-    }
+
     return buttons;
   };
 
@@ -97,24 +96,17 @@ const PaginationBar = ({
         );
       }
     }
-    if (step + 3 < countPages) {
+    if (step + 3 < countPages && countPages > 5) {
       buttons.push(
         <li className={styles.item}>
-          <button type="button" className={ellipsisClass}>
-            <AiOutlineEllipsis
-              size={12}
-              onClick={() => onStepChange(step + interval)}
-            />
-            <AiOutlineDoubleRight
-              className={styles.arrows}
-              size={12}
-              onClick={() => onStepChange(step + interval)}
-            />
+          <button type="button" className={ellipsisClass} onClick={() => onStepChange(step + interval)}>
+            <AiOutlineEllipsis size={ICON_SIZE_DEFAULT} />
+            <AiOutlineDoubleRight className={styles.arrows} size={ICON_SIZE_DEFAULT} />
           </button>
         </li>,
       );
     }
-    if (step + 2 < countPages) {
+    if (step + 2 < countPages && countPages > 5) {
       buttons.push(
         <li className={styles.item}>
           <button
@@ -146,7 +138,7 @@ const PaginationBar = ({
               className={styles.button}
               onClick={() => onStepChange(step - 1)}
             >
-              <AiOutlineLeft size={12} />
+              <AiOutlineLeft size={ICON_SIZE_DEFAULT} />
             </button>
           </li>
           {renderLeftSide()}
@@ -163,19 +155,17 @@ const PaginationBar = ({
               className={styles.button}
               onClick={() => onStepChange(step + 1)}
             >
-              <AiOutlineRight size={12} />
+              <AiOutlineRight size={ICON_SIZE_DEFAULT} />
             </button>
           </li>
         </ul>
         <div className={styles.format}>
-          <AiOutlineDown className={styles.dropdown} size={12} />
+          <AiOutlineDown className={styles.dropdown} size={ICON_SIZE_DEFAULT} />
           <select
             className={styles.select}
             onChange={(e) => onRangeChange(e.target.value)}
           >
-            <option value={10}>10/page</option>
-            <option value={15}>15/page</option>
-            <option value={20}>20/page</option>
+            {itemsCountOptions.map((item) => (<option value={item}>{`${item}/page`}</option>))}
           </select>
         </div>
       </div>

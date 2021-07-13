@@ -4,12 +4,13 @@
   min-height: 120px;
   width: 208px;
   padding-top: 12px;
-  box-shadow: 0px 2px 8px rgba(187, 183, 183, 0.15);
+  box-shadow: 0px 2px 8px #d9d9d9;
   display: flex;
   flex-direction: column;
   transition: 0.5s;
   text-overflow: clip;
   white-space: nowrap;
+  z-index: 1;
 }
 
 .nav.hidden {
@@ -71,6 +72,6 @@
 }
 
 .selected {
-  background: rgba(250, 140, 22, 0.2);
+  background: #fee8d0;
   box-shadow: inset -3px 0px 0px #fa8c16;
 }

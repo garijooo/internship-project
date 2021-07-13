@@ -7,7 +7,7 @@ const SearchBar = (
   { title, onChangeHandler },
 ) => (
   <div className={styles.searchbar}>
-    <AiOutlineSearch />
+    <AiOutlineSearch size={16} />
     <input
       type="search"
       placeholder={title}

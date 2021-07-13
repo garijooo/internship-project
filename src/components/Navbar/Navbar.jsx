@@ -9,6 +9,7 @@ import {
 } from 'react-icons/ai';
 import classNames from 'classnames';
 import { updateNavbarView } from '../../store/options/actions';
+import { ICON_SIZE_NAVBAR } from '../../constants';
 import styles from './Navbar.module.css';
 
 const Navbar = () => {
@@ -31,7 +32,7 @@ const Navbar = () => {
       <ul>
         <li className={styles.item}>
           <NavLink to="/streams/current" activeClassName={styles.selected} className={streamsItemClass}>
-            <span className={styles.icon}><AiOutlineRocket size={14} /></span>
+            <span className={styles.icon}><AiOutlineRocket size={ICON_SIZE_NAVBAR} /></span>
             <span className={textElementClass}>
               Internship Streams
             </span>
@@ -39,7 +40,7 @@ const Navbar = () => {
         </li>
         <li className={styles.item}>
           <NavLink to="/interns" activeClassName={styles.selected}>
-            <span className={styles.icon}><AiOutlineUser size={14} /></span>
+            <span className={styles.icon}><AiOutlineUser size={ICON_SIZE_NAVBAR} /></span>
             <span className={textElementClass}>
               Interns
             </span>

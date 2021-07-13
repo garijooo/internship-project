@@ -18,8 +18,11 @@ const StreamsList = () => {
   }, []);
 
   const onExpandHandler = (index) => setCurrentExpand(index);
-  const onRangeChangeHandler = (updatedRange) => setRange(updatedRange);
   const onStepChangeHandler = (updatedStep) => setStep(updatedStep);
+  const onRangeChangeHandler = (updatedRange) => {
+    setStep(1);
+    setRange(updatedRange);
+  };
 
   const renderStreams = () => {
     if (amount < range) {

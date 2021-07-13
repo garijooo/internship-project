@@ -1,9 +1,8 @@
 .container {
   padding: 0 24px;
   padding-bottom: 28px;
-  min-width: 828px;
-  width: 100%;
   box-sizing: border-box;
+  width: 100%;
 }
 
 .bar {
@@ -11,8 +10,6 @@
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
-  min-width: 680px;
-  width: 100%;
   box-sizing: border-box;
   background: #fff;
   padding: 16px;
@@ -60,8 +57,8 @@
 }
 
 .button:hover {
-  color: rgba(250, 140, 22, 1);
-  border: 1px solid rgba(250, 140, 22, 1);
+  color: #fa8c16;
+  border: 1px solid #fa8c16;
 }
 
 .button[disabled]:hover {
@@ -74,13 +71,13 @@
 }
 
 .active {
-  color: rgba(250, 140, 22, 1);
-  background: rgba(250, 140, 22, 0.1);
-  border: 1px solid rgba(250, 140, 22, 1);
+  color: #fa8c16;
+  background: #fff4e8;
+  border: 1px solid #fa8c16;
 }
 .ellipsis .arrows {
   display: none;
-  color: rgba(250, 140, 22, 1);
+  color: #fa8c16;
   transition: 1s ease;
 }
 
@@ -96,7 +93,7 @@
 }
 
 .select {
-  border: 1px solid rgba(217, 217, 217, 1);
+  border: 1px solid #d9d9d9;
   border-radius: 2px;
   padding: 4px 12px;
   padding-right: 28px;
@@ -115,8 +112,8 @@
 .dropdown {
   position: absolute;
   right: 12px;
-  top: 37.5%;
+  top: 11px;
   z-index: 1;
-  color: rgba(0, 0, 0, 0.25);
+  color: #bfbfbf;
   pointer-events: none;
 }
