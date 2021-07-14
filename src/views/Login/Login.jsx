@@ -23,10 +23,8 @@ const Login = ({ history }) => {
     e.preventDefault();
     try {
       const response = await fetchWrapper.post('/api/login', {
-        body: JSON.stringify({
-          email,
-          password,
-        }),
+        email,
+        password,
       });
       const data = await response.json();
       if (data.msg) throw new Error(data.msg);

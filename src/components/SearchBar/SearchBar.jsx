@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 import { AiOutlineSearch } from 'react-icons/ai';
 import styles from './SearchBar.module.css';
 
-const SearchBar = (
-  { title, onChangeHandler },
-) => (
+const SearchBar = ({ title, onChangeHandler }) => (
   <div className={styles.searchbar}>
     <AiOutlineSearch size={16} />
     <input

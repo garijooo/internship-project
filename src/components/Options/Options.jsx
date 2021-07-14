@@ -3,20 +3,20 @@ import { Link } from 'react-router-dom';
 import styles from './Options.module.css';
 
 const Options = () => (
-  <div className={styles.menu}>
-    <div className={styles.item}>
+  <ul className={styles.menu}>
+    <li className={styles.item}>
       <Link to="/streams/current" className={styles.default}>Open Stream details</Link>
-    </div>
-    <div className={styles.item}>
+    </li>
+    <li className={styles.item}>
       <Link to="/streams/current" className={styles.blue}>Open Study plan</Link>
-    </div>
-    <div className={styles.item}>
+    </li>
+    <li className={styles.item}>
       <Link to="/streams/current" className={styles.default}>Paused Stream</Link>
-    </div>
-    <div className={styles.item}>
+    </li>
+    <li className={styles.item}>
       <Link to="/streams/current" className={styles.red}>Delete Stream</Link>
-    </div>
-  </div>
+    </li>
+  </ul>
 );
 
 export default Options;
