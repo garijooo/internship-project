@@ -22,11 +22,10 @@ const Login = ({ history }) => {
   const onLoginHandler = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetchWrapper.post('/api/login', {
+      const data = await fetchWrapper.post('/api/login', {
         email,
         password,
       });
-      const data = await response.json();
       if (data.msg) throw new Error(data.msg);
       if (checked.current.checked) localStorage.setItem('auth-token', data.token);
       else sessionStorage.setItem('auth-token', data.token);

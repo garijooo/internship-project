@@ -21,20 +21,18 @@ const SignUp = ({ history }) => {
     e.preventDefault();
     try {
       if (password !== confirmPassword) throw new Error('passwords didn\'t match');
-      let response = await fetchWrapper.post('/api/user', {
+      let data = await fetchWrapper.post('/api/user', {
         firstname: fname,
         lastname: lname,
         email,
         password,
       });
-      let data = await response.json();
       if (data.msg) throw new Error(data.msg);
       try {
-        response = await fetchWrapper.post('/api/login', {
+        data = await fetchWrapper.post('/api/login', {
           email: data.email,
           password,
         });
-        data = await response.json();
         if (data.msg) throw new Error(data.msg);
         localStorage.setItem('auth-token', data.token);
         dispatch(fetchUser(getEmail(data.token), data.token));

@@ -1,4 +1,4 @@
-const apiRequestMaker = (method) => (url, options = {}) => {
+const apiRequestMaker = (method) => async (url, options = {}) => {
   let updatedOptions = {
     method,
     headers: {
@@ -20,7 +20,9 @@ const apiRequestMaker = (method) => (url, options = {}) => {
     default:
       break;
   }
-  return fetch(url, updatedOptions);
+  const response = await fetch(url, updatedOptions);
+  const data = await response.json();
+  return data;
 };
 
 const fetchWrapper = {

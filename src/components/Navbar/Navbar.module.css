@@ -73,5 +73,5 @@
 
 .selected {
   background: #fee8d0;
-  box-shadow: inset -3px 0 0px #fa8c16;
+  box-shadow: inset -3px 0 0 #fa8c16;
 }

@@ -6,8 +6,7 @@
 }
 
 .searchbar input {
-  padding: 8px 0;
-  padding-left: 38px;
+  padding: 8px 0 8px 38px;
   border: 1px solid #d9d9d9;
   box-sizing: border-box;
   border-radius: 2px;
