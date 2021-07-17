@@ -1,0 +1,117 @@
+.container {
+  padding: 0 24px 28px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  box-sizing: border-box;
+  background: #fff;
+  padding: 16px;
+}
+
+.counter {
+  line-height: 22px;
+  font-size: 14px;
+}
+
+.pages {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 16px;
+  list-style-type: none;
+}
+
+.item {
+  height: 32px;
+  width: 32px;
+  margin-left: 8px;
+}
+
+.item:first-child {
+  margin-left: 0;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  border: 1px solid #d9d9d9;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+
+.button[disabled] {
+  color: #d0d0d0;
+  cursor: not-allowed;
+}
+
+.button:hover {
+  color: #fa8c16;
+  border: 1px solid #fa8c16;
+}
+
+.button[disabled]:hover {
+  color: #d9d9d9;
+  border: 1px solid #d9d9d9;
+}
+
+.button:first-child {
+  margin-left: 0;
+}
+
+.active {
+  color: #fa8c16;
+  background: #fff4e8;
+  border: 1px solid #fa8c16;
+}
+.ellipsis .arrows {
+  display: none;
+  color: #fa8c16;
+  transition: 1s ease;
+}
+
+.ellipsis:hover > svg {
+  display: none;
+}
+.ellipsis:hover > .arrows {
+  display: block;
+}
+
+.format {
+  position: relative;
+}
+
+.select {
+  border: 1px solid #d9d9d9;
+  border-radius: 2px;
+  padding: 4px 28px 4px 12px;
+  box-sizing: border-box;
+  outline: none;
+  min-width: 53px;
+  line-height: 22px;
+  font-size: 14px;
+  position: relative;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: absolute;
+  right: 12px;
+  top: 11px;
+  z-index: 1;
+  color: #bfbfbf;
+  pointer-events: none;
+}

@@ -1,46 +1,60 @@
-import React, { useEffect } from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import React, {
+  useEffect,
+  useState,
+} from 'react';
+import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import jwtDecode from 'jwt-decode';
-import { fetchUser, signOut } from '../../store/actions';
+import {
+  fetchUser,
+} from '../../store/auth/actions';
+import { updateSearchingValue } from '../../store/options/actions';
+import PageContainer from '../../components/PageContainer/PageContainer';
+import StreamsHeader from '../../components/StreamsHeader/StreamsHeader';
+import SearchBar from '../../components/SearchBar/SearchBar';
 
-const Streams = () => {
-  const history = useHistory();
+const Streams = (
+  { children },
+) => {
+  const [searchingValue, setSearchingValue] = useState('');
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
+  const auth = useSelector((state) => state.auth);
 
   useEffect(() => {
-    if (!user.ID) {
-      let data;
-      if (localStorage.getItem('auth-token')) data = jwtDecode(localStorage.getItem('auth-token'));
-      else data = jwtDecode(sessionStorage.getItem('auth-token'));
+    if (!auth.ID) {
+      let token;
+      if (localStorage.getItem('auth-token')) token = localStorage.getItem('auth-token');
+      else token = sessionStorage.getItem('auth-token');
+      const data = jwtDecode(token);
       const { Email } = data;
-      dispatch(fetchUser(Email, sessionStorage.getItem('auth-token')));
+      dispatch(fetchUser(Email, token));
     }
   }, []);
 
-  const signOutHandler = () => {
-    localStorage.removeItem('auth-token');
-    sessionStorage.removeItem('auth-token');
-    dispatch(signOut());
-    history.push('/auth/login');
+  const onSearchChange = (searchedValue) => {
+    setSearchingValue(searchedValue);
+    dispatch(updateSearchingValue(searchedValue));
   };
 
   return (
-    <div>
-      Streams
-      <button
-        onClick={signOutHandler}
-        type="button"
-      >
-        exit
-      </button>
-      <h2>
-        {`${user.firstname} ${user.lastname}`}
-      </h2>
-      <Link to="/test">Dashboard</Link>
-    </div>
+    <PageContainer>
+      <StreamsHeader />
+      <SearchBar
+        title="Search stream"
+        onChangeHandler={onSearchChange}
+        value={searchingValue}
+      />
+      {children}
+    </PageContainer>
   );
+};
+
+Streams.propTypes = {
+  children: PropTypes.node,
+};
+
+Streams.defaultProps = {
+  children: null,
 };
 
 export default Streams;

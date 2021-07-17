@@ -1,41 +1,38 @@
 import React, {
-  useRef,
+  useState, useRef,
 } from 'react';
 import PropTypes from 'react-router-prop-types';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import jwtDecode from 'jwt-decode';
 import AuthForm from '../../components/AuthForm/AuthForm';
 import AuthLogo from '../../components/AuthLogo/AuthLogo';
 import FormUpperContent from '../../components/FormUpperContent/FormUpperContent';
 import styles from './Login.module.css';
-import fetch from '../../utils/fetchWrapper';
-import { fetchUser } from '../../store/actions';
+import fetchWrapper from '../../utils/fetchWrapper';
+import getEmail from '../../utils/jwtDecoder';
+import { fetchUser } from '../../store/auth/actions';
 
 const Login = ({ history }) => {
-  const email = useRef('');
-  const password = useRef('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const checked = useRef(false);
+  const [error, setError] = useState('');
   const dispatch = useDispatch();
 
   const onLoginHandler = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch.post('/api/login', {
-        body: JSON.stringify({
-          email: email.current.value,
-          password: password.current.value,
-        }),
+      const data = await fetchWrapper.post('/api/login', {
+        email,
+        password,
       });
-      const data = await response.json();
       if (data.msg) throw new Error(data.msg);
       if (checked.current.checked) localStorage.setItem('auth-token', data.token);
       else sessionStorage.setItem('auth-token', data.token);
-      const { Email } = jwtDecode(data.token);
-      dispatch(fetchUser(Email, data.token));
-      history.push('/');
-    } catch (error) {
-      console.log(error);
+      dispatch(fetchUser(getEmail(data.token), data.token));
+      history.push('/streams/current');
+    } catch (err) {
+      setError(err.message);
     }
   };
   return (
@@ -46,20 +43,21 @@ const Login = ({ history }) => {
         <AuthForm
           onSubmitHandler={onLoginHandler}
           submitTitle="Sign In"
+          error={error}
         >
           <input
             type="email"
-            value={email.current.value}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             placeholder="Email"
             required
-            ref={email}
           />
           <input
             type="password"
-            value={password.current.value}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
             required
-            ref={password}
           />
           <div className={styles.content}>
             <div className={styles.checkbox}>

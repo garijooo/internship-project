@@ -1,0 +1,31 @@
+.menu {
+  width: 175px;
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
+  box-sizing: border-box;
+  box-shadow: 0 0 12px #e1e3e7;
+  border-radius: 4px;
+  list-style: none;
+}
+
+.default {
+  color: #595959;
+}
+
+.item {
+  font-size: 14px;
+  line-height: 22px;
+  padding: 8px 0 0 16px;
+}
+
+.item:hover {
+  background: #f1f1f1;
+}
+
+.blue {
+  color: #0078d4;
+}
+
+.red {
+  color: #eb5757;
+}

@@ -1,0 +1,77 @@
+.nav {
+  background: #ffffff;
+  min-width: 208px;
+  min-height: 120px;
+  width: 208px;
+  padding-top: 12px;
+  box-shadow: 0 2px 8px #d9d9d9;
+  display: flex;
+  flex-direction: column;
+  transition: 0.5s;
+  text-overflow: clip;
+  white-space: nowrap;
+  z-index: 1;
+}
+
+.nav.hidden {
+  min-width: 50px;
+  width: 50px;
+  transition: 0.5s;
+}
+
+.change {
+  padding: 12px 16px;
+  box-shadow: inset 0 1px 0 #f0f0f0;
+  height: 16px;
+}
+
+.hideIcon {
+  display: none;
+}
+.text.hideSpan {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
+  margin-left: 0;
+}
+.nav ul {
+  height: 100%;
+  width: 100%;
+}
+
+.nav ul li {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.item a {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  font-size: 14px;
+  line-height: 22px;
+  padding: 9px 0 0 16px;
+  color: #000;
+  height: 40px;
+  box-sizing: border-box;
+}
+
+.text {
+  transition: 0.5s;
+  text-overflow: clip;
+  white-space: nowrap;
+  margin-left: 10px;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.selected {
+  background: #fee8d0;
+  box-shadow: inset -3px 0 0 #fa8c16;
+}

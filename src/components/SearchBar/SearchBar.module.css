@@ -1,0 +1,32 @@
+.searchbar {
+  padding: 16px 24px;
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.searchbar input {
+  padding: 8px 0 8px 38px;
+  border: 1px solid #d9d9d9;
+  box-sizing: border-box;
+  border-radius: 2px;
+  width: 100%;
+  outline: none;
+}
+
+.searchbar input::placeholder {
+  color: #bfbfbf;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.searchbar input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+.searchbar svg {
+  color: #bfbfbf;
+  position: absolute;
+  left: 36px;
+  top: 25px;
+}
