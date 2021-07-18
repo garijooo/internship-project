@@ -1,13 +1,28 @@
-const apiRequestMaker = (method) => (url, options = {}) => {
-  const updatedOptions = {
+const apiRequestMaker = (method) => async (url, options = {}) => {
+  let updatedOptions = {
     method,
-    ...options,
     headers: {
       'Content-Type': 'application/json',
-      ...(options.headers ?? {}),
     },
   };
-  return fetch(url, updatedOptions);
+  switch (method) {
+    case 'POST':
+      updatedOptions = { ...updatedOptions, body: JSON.stringify({ ...options }) };
+      break;
+    case 'GET':
+      updatedOptions = {
+        ...updatedOptions,
+        headers: {
+          ...updatedOptions.headers, ...(options.headers ?? {}),
+        },
+      };
+      break;
+    default:
+      break;
+  }
+  const response = await fetch(url, updatedOptions);
+  const data = await response.json();
+  return data;
 };
 
 const fetchWrapper = {
