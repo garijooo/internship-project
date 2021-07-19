@@ -36,9 +36,9 @@ const PaginationBar = ({
     let diff = 4 - (countPages - step);
     if (diff < 2) diff = 2;
 
-    if (step - 2 > 1 && countPages > 5) {
+    if (step - 2 > 1 && countPages > 4) {
       buttons.push(
-        <li className={styles.item}>
+        <li className={styles.item} key={`${step}-1`}>
           <button
             type="button"
             className={styles.button}
@@ -52,7 +52,7 @@ const PaginationBar = ({
 
     if (step - 3 > 1 && countPages > 5) {
       buttons.push(
-        <li className={styles.item}>
+        <li className={styles.item} key="ellipsis-left">
           <button type="button" className={ellipsisClass} onClick={() => onStepChange(step - interval)}>
             <AiOutlineEllipsis size={ICON_SIZE_DEFAULT} />
             <AiOutlineDoubleLeft className={styles.arrows} size={ICON_SIZE_DEFAULT} />
@@ -64,7 +64,7 @@ const PaginationBar = ({
     for (let i = diff; i >= 1; i -= 1) {
       if (step - i >= 1) {
         buttons.push(
-          <li className={styles.item}>
+          <li className={styles.item} key={`${step}-${step - i}`}>
             <button
               type="button"
               className={styles.button}
@@ -87,7 +87,7 @@ const PaginationBar = ({
     for (let i = 1; i <= diff; i += 1) {
       if (step + i <= countPages) {
         buttons.push(
-          <li className={styles.item} key={`${step}+${step + i}`}>
+          <li className={styles.item} key={`${step}-${step + i}`}>
             <button
               type="button"
               className={styles.button}
@@ -101,7 +101,7 @@ const PaginationBar = ({
     }
     if (step + 3 < countPages && countPages > 5) {
       buttons.push(
-        <li className={styles.item}>
+        <li className={styles.item} key="ellipsis-right">
           <button type="button" className={ellipsisClass} onClick={() => onStepChange(step + interval)}>
             <AiOutlineEllipsis size={ICON_SIZE_DEFAULT} />
             <AiOutlineDoubleRight className={styles.arrows} size={ICON_SIZE_DEFAULT} />

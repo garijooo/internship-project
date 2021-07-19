@@ -1,0 +1,67 @@
+.container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  background: #0000004d;
+}
+
+.modal {
+  min-width: 360px;
+  background: #fff;
+  border-radius: 2px;
+  box-shadow: 0 3px 6px -4px #0000001f, 0 6px 16px #00000014,
+    0 9px 28px 8px #0000000d;
+}
+
+.hidden {
+  display: none;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 500;
+  color: #000000d9;
+}
+
+.icon {
+  height: 100%;
+}
+
+.icon svg {
+  cursor: pointer;
+  color: #00000073;
+  transition: 0.3s ease;
+}
+
+.icon svg:hover {
+  color: #000;
+}
+
+.content {
+  padding: 24px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  box-sizing: border-box;
+  padding: 10px 16px;
+}
+
+.buttons button:last-child {
+  margin-left: 8px;
+}
