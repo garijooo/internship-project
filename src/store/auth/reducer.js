@@ -1,10 +1,11 @@
-import { SIGN_OUT, UPDATE_USER } from './types';
+import { SIGN_OUT, UPDATE_USER, UPDATE_STREAMS } from './types';
 
 const INITIAL_STATE = {
   ID: '',
   email: '',
   firstname: '',
   lastname: '',
+  streams: [],
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -19,6 +20,8 @@ export default (state = INITIAL_STATE, action) => {
       };
     case SIGN_OUT:
       return INITIAL_STATE;
+    case UPDATE_STREAMS:
+      return { ...state, streams: action.payload };
     default:
       return state;
   }
