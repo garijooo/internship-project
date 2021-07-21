@@ -21,7 +21,7 @@ const SignUp = ({ history }) => {
     e.preventDefault();
     try {
       if (password !== confirmPassword) throw new Error('passwords didn\'t match');
-      let data = await fetchWrapper.post('/api/user', {
+      let data = await fetchWrapper.post('/api/user', {}, {
         firstname: fname,
         lastname: lname,
         email,
@@ -29,7 +29,7 @@ const SignUp = ({ history }) => {
       });
       if (data.msg) throw new Error(data.msg);
       try {
-        data = await fetchWrapper.post('/api/login', {
+        data = await fetchWrapper.post('/api/login', {}, {
           email: data.email,
           password,
         });

@@ -14,8 +14,8 @@ const ActionButton = ({
   return (
     <button
       className={buttonClass}
-      type="button"
-      onClick={onClickHandler}
+      type={onClickHandler ? 'button' : 'submit'}
+      onClick={onClickHandler || null}
     >
       {children}
     </button>

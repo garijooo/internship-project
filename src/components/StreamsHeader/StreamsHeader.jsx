@@ -1,15 +1,32 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { AiOutlinePlus } from 'react-icons/ai';
 import styles from './StreamsHeader.module.css';
 import ActionButton from '../ActionButton';
 import AddStreamModal from '../AddStreamModal';
+import fetchWrapper from '../../utils/fetchWrapper';
+import { fetchStreams } from '../../store/auth/actions';
 
 const StreamsHeader = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const dispatch = useDispatch();
 
-  const onStreamAddHandler = (title, description) => {
-    console.log(`${title} ${description}`);
+  const onStreamAddHandler = async (title, description) => {
+    const token = localStorage.getItem('auth-token') ? localStorage.getItem('auth-token') : sessionStorage.getItem('auth-token');
+    try {
+      const data = await fetchWrapper.post('/api/stream', {
+        Authorization: `Bearer ${token}`,
+      }, {
+        title,
+        description,
+        status: 'Oncoming',
+      });
+      if (data.id) dispatch(fetchStreams(token));
+      setIsOpen(false);
+    } catch (err) {
+      console.log(err.message);
+    }
   };
 
   return (
@@ -24,7 +41,7 @@ const StreamsHeader = () => {
           isOpen={isOpen}
           onCancel={() => setIsOpen(false)}
           onDismiss={() => setIsOpen(false)}
-          onClick={onStreamAddHandler}
+          onSubmitHandler={onStreamAddHandler}
         />
       </div>
       <div className={styles.links}>

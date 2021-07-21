@@ -6,7 +6,7 @@ import { AiOutlineClose } from 'react-icons/ai';
 import styles from './Modal.module.css';
 
 const Modal = ({
-  title, children, isOpen, onCancel, onDismiss, actions,
+  title, children, isOpen, onCancel, onDismiss,
 }) => {
   const modalClass = classNames(styles.container, {
     [styles.hidden]: !isOpen,
@@ -30,9 +30,6 @@ const Modal = ({
         <div className={styles.content}>
           {children}
         </div>
-        <div className={styles.buttons}>
-          {actions()}
-        </div>
       </div>
     </section>,
     document.querySelector('#modal'),
@@ -45,7 +42,6 @@ Modal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onCancel: PropTypes.func.isRequired,
   onDismiss: PropTypes.func.isRequired,
-  actions: PropTypes.node.isRequired,
 };
 
 export default Modal;

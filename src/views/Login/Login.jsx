@@ -22,7 +22,7 @@ const Login = ({ history }) => {
   const onLoginHandler = async (e) => {
     e.preventDefault();
     try {
-      const data = await fetchWrapper.post('/api/login', {
+      const data = await fetchWrapper.post('/api/login', {}, {
         email,
         password,
       });

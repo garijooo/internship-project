@@ -5,6 +5,7 @@ import Streams from '../Streams/Streams';
 
 const CurrentStreams = () => {
   const [streams, setStreams] = useState([]);
+  // const selectedStreams = useSelector((state) => state.auth.streams);
   const selectedStreams = useSelector(selectStreams);
 
   useEffect(() => {

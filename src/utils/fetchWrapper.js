@@ -1,4 +1,4 @@
-const apiRequestMaker = (method) => async (url, options = {}) => {
+const apiRequestMaker = (method) => async (url, options = {}, body) => {
   let updatedOptions = {
     method,
     headers: {
@@ -7,13 +7,19 @@ const apiRequestMaker = (method) => async (url, options = {}) => {
   };
   switch (method) {
     case 'POST':
-      updatedOptions = { ...updatedOptions, body: JSON.stringify({ ...options }) };
+      updatedOptions = {
+        ...updatedOptions,
+        body: JSON.stringify({ ...body }),
+        headers: {
+          ...updatedOptions.headers, ...(options ?? {}),
+        },
+      };
       break;
     case 'GET':
       updatedOptions = {
         ...updatedOptions,
         headers: {
-          ...updatedOptions.headers, ...(options.headers ?? {}),
+          ...updatedOptions.headers, ...(options ?? {}),
         },
       };
       break;

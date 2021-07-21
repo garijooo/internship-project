@@ -57,11 +57,7 @@ Streams.propTypes = {
     lead: PropTypes.string,
     leadAvatar: PropTypes.string,
     status: PropTypes.string,
-  })),
-};
-
-Streams.defaultProps = {
-  streams: [],
+  })).isRequired,
 };
 
 export default Streams;
