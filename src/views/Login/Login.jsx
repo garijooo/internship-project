@@ -10,7 +10,7 @@ import FormUpperContent from '../../components/FormUpperContent/FormUpperContent
 import styles from './Login.module.css';
 import fetchWrapper from '../../utils/fetchWrapper';
 import getEmail from '../../utils/jwtDecoder';
-import { fetchUser, fetchStreams } from '../../store/auth/actions';
+import { fetchUser } from '../../store/auth/actions';
 
 const Login = ({ history }) => {
   const [email, setEmail] = useState('');
@@ -30,7 +30,6 @@ const Login = ({ history }) => {
       if (checked.current.checked) localStorage.setItem('auth-token', data.token);
       else sessionStorage.setItem('auth-token', data.token);
       dispatch(fetchUser(getEmail(data.token), data.token));
-      dispatch(fetchStreams(data.token));
       history.push('/streams/current');
     } catch (err) {
       setError(err.message);

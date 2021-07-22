@@ -4,7 +4,7 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchUser } from '../../store/auth/actions';
+import { fetchUser, fetchStreams } from '../../store/auth/actions';
 import getEmail from '../../utils/jwtDecoder';
 import { updateSearchingValue } from '../../store/options/actions';
 import PageContainer from '../../components/PageContainer/PageContainer';
@@ -20,13 +20,14 @@ const Streams = (
   const auth = useSelector((state) => state.auth);
 
   useEffect(() => {
+    const token = localStorage.getItem('auth-token') ? localStorage.getItem('auth-token') : sessionStorage.getItem('auth-token');
     if (!auth.ID) {
-      let token;
-      if (localStorage.getItem('auth-token')) token = localStorage.getItem('auth-token');
-      else token = sessionStorage.getItem('auth-token');
       dispatch(fetchUser(getEmail(token), token));
     }
+    dispatch(fetchStreams(token));
   }, []);
+
+  useEffect(() => console.log(streams), [streams]);
 
   const onSearchChange = (searchedValue) => {
     setSearchingValue(searchedValue);
