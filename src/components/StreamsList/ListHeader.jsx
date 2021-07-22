@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 import {
   AiOutlineFilter,
@@ -7,7 +8,7 @@ import {
 } from 'react-icons/ai';
 import styles from './StreamsList.module.css';
 
-const ListHeader = () => {
+const ListHeader = ({ onSortAction }) => {
   const location = useLocation();
   const isCurrent = location.pathname.split('/')[2] === 'current';
 
@@ -17,7 +18,13 @@ const ListHeader = () => {
       <th>
         <div className={styles.cell}>
           Start Date
-          <div className={styles.updown}>
+          <div
+            role="button"
+            tabIndex={0}
+            className={styles.updown}
+            onClick={() => onSortAction('date')}
+            onKeyDown={() => onSortAction('date')}
+          >
             <AiFillCaretUp />
             <AiFillCaretDown />
           </div>
@@ -26,7 +33,13 @@ const ListHeader = () => {
       <th>
         <div className={styles.cell}>
           Duration
-          <div className={styles.updown}>
+          <div
+            className={styles.updown}
+            role="button"
+            tabIndex={0}
+            onClick={() => onSortAction('duration')}
+            onKeyDown={() => onSortAction('duration')}
+          >
             <AiFillCaretUp />
             <AiFillCaretDown />
           </div>
@@ -35,7 +48,13 @@ const ListHeader = () => {
       <th>
         <div className={styles.cell}>
           Interns
-          <div className={styles.updown}>
+          <div
+            className={styles.updown}
+            role="button"
+            tabIndex={0}
+            onClick={() => onSortAction('interns')}
+            onKeyDown={() => onSortAction('interns')}
+          >
             <AiFillCaretUp />
             <AiFillCaretDown />
           </div>
@@ -70,6 +89,10 @@ const ListHeader = () => {
       <th> </th>
     </tr>
   );
+};
+
+ListHeader.propTypes = {
+  onSortAction: PropTypes.func.isRequired,
 };
 
 export default ListHeader;

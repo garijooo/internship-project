@@ -16,6 +16,8 @@ const Streams = (
   { streams },
 ) => {
   const [searchingValue, setSearchingValue] = useState('');
+  const [streamsArray, setStreamsArray] = useState([]);
+
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
 
@@ -27,9 +29,24 @@ const Streams = (
     dispatch(fetchStreams(token));
   }, []);
 
+  useEffect(() => {
+    setStreamsArray(streams);
+  }, [streams]);
+
   const onSearchChange = (searchedValue) => {
     setSearchingValue(searchedValue);
     dispatch(updateSearchingValue(searchedValue));
+  };
+
+  const onSearchActionHandler = () => {
+    if (!searchingValue) setStreamsArray(streams);
+    else setStreamsArray((streamsArray ?? []).filter((stream) => stream.title === searchingValue));
+  };
+
+  const byField = (field) => (a, b) => (a[field] > b[field] ? 1 : -1);
+
+  const onSortActionHandler = (field) => {
+    setStreamsArray([...streamsArray].sort(byField(field)));
   };
 
   return (
@@ -39,8 +56,9 @@ const Streams = (
         title="Search stream"
         onChangeHandler={onSearchChange}
         value={searchingValue}
+        onSearchAction={onSearchActionHandler}
       />
-      <StreamsList fetchedStreams={streams} />
+      <StreamsList fetchedStreams={streamsArray} onSortAction={onSortActionHandler} />
     </PageContainer>
   );
 };
