@@ -3,29 +3,29 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styles from './Options.module.css';
 
-const Options = ({ path, index }) => (
-  <div className={styles.menu}>
-    <div className={styles.item}>
+const Options = ({ isCurrent, index }) => (
+  <ul className={styles.menu}>
+    <li className={styles.item}>
       <Link to={`/streams/${index}`} className={styles.default}>Open Stream details</Link>
-    </div>
-    <div className={styles.item}>
+    </li>
+    <li className={styles.item}>
       <Link to="/streams/current" className={styles.blue}>Open Study plan</Link>
-    </div>
-    {path === 'current' && (
-    <div className={styles.item}>
+    </li>
+    {isCurrent && (
+    <li className={styles.item}>
       <Link to="/streams/current" className={styles.default}>Paused Stream</Link>
-    </div>
+    </li>
     )}
-    {path === 'current' && (
-    <div className={styles.item}>
+    {isCurrent && (
+    <li className={styles.item}>
       <Link to="/streams/current" className={styles.red}>Delete Stream</Link>
-    </div>
+    </li>
     )}
-  </div>
+  </ul>
 );
 
 Options.propTypes = {
-  path: PropTypes.string.isRequired,
+  isCurrent: PropTypes.bool.isRequired,
   index: PropTypes.number,
 };
 

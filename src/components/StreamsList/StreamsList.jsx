@@ -15,7 +15,7 @@ const StreamsList = ({ fetchedStreams }) => {
   useEffect(() => {
     setStreams(fetchedStreams);
     setAmount(fetchedStreams.length);
-  }, []);
+  }, [fetchedStreams]);
 
   const onExpandHandler = (index) => setCurrentExpand(index);
   const onStepChangeHandler = (updatedStep) => setStep(updatedStep);

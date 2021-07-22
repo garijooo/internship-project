@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useLocation } from 'react-router-dom';
 import {
   AiOutlineFilter,
@@ -8,11 +8,8 @@ import {
 import styles from './StreamsList.module.css';
 
 const ListHeader = () => {
-  const [path, setPath] = useState('');
   const location = useLocation();
-  useEffect(() => {
-    setPath(location.pathname.split('/')[2]);
-  }, []);
+  const isCurrent = location.pathname.split('/')[2] === 'current';
 
   return (
     <tr className={styles.header}>
@@ -60,7 +57,7 @@ const ListHeader = () => {
           </div>
         </div>
       </th>
-      {path === 'current' && (
+      {isCurrent && (
       <th>
         <div className={styles.cell}>
           Status
