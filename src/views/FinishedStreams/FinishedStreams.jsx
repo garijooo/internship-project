@@ -9,7 +9,7 @@ const FinishedStreams = () => {
 
   useEffect(() => {
     const updateStreams = () => {
-      setStreams((selectedStreams ?? []).filter((item) => item.status === 'Finished'));
+      if (Array.isArray(selectedStreams)) setStreams((selectedStreams ?? []).filter((item) => item.status === 'Finished'));
     };
     updateStreams();
   }, [selectedStreams]);

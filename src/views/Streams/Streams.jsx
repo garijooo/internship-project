@@ -49,6 +49,10 @@ const Streams = (
     setStreamsArray([...streamsArray].sort(byField(field)));
   };
 
+  const onFilterActionHandler = (field) => {
+    console.log(field);
+  };
+
   return (
     <PageContainer>
       <StreamsHeader />
@@ -58,7 +62,11 @@ const Streams = (
         value={searchingValue}
         onSearchAction={onSearchActionHandler}
       />
-      <StreamsList fetchedStreams={streamsArray} onSortAction={onSortActionHandler} />
+      <StreamsList
+        fetchedStreams={streamsArray}
+        onSortAction={onSortActionHandler}
+        onFilterAction={onFilterActionHandler}
+      />
     </PageContainer>
   );
 };

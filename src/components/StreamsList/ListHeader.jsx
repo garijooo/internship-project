@@ -8,7 +8,7 @@ import {
 } from 'react-icons/ai';
 import styles from './StreamsList.module.css';
 
-const ListHeader = ({ onSortAction }) => {
+const ListHeader = ({ onSortAction, onFilterAction }) => {
   const location = useLocation();
   const isCurrent = location.pathname.split('/')[2] === 'current';
 
@@ -63,7 +63,13 @@ const ListHeader = ({ onSortAction }) => {
       <th>
         <div className={styles.cell}>
           Mentor
-          <div className={styles.filter}>
+          <div
+            className={styles.filter}
+            role="button"
+            tabIndex={0}
+            onClick={() => onFilterAction('mentor')}
+            onKeyDown={() => onFilterAction('mentor')}
+          >
             <AiOutlineFilter />
           </div>
         </div>
@@ -71,7 +77,13 @@ const ListHeader = ({ onSortAction }) => {
       <th>
         <div className={styles.cell}>
           Lead
-          <div className={styles.filter}>
+          <div
+            className={styles.filter}
+            role="button"
+            tabIndex={0}
+            onClick={() => onFilterAction('lead')}
+            onKeyDown={() => onFilterAction('lead')}
+          >
             <AiOutlineFilter />
           </div>
         </div>
@@ -80,7 +92,13 @@ const ListHeader = ({ onSortAction }) => {
       <th>
         <div className={styles.cell}>
           Status
-          <div className={styles.filter}>
+          <div
+            className={styles.filter}
+            role="button"
+            tabIndex={0}
+            onClick={() => onFilterAction('status')}
+            onKeyDown={() => onFilterAction('status')}
+          >
             <AiOutlineFilter />
           </div>
         </div>
@@ -93,6 +111,7 @@ const ListHeader = ({ onSortAction }) => {
 
 ListHeader.propTypes = {
   onSortAction: PropTypes.func.isRequired,
+  onFilterAction: PropTypes.func.isRequired,
 };
 
 export default ListHeader;

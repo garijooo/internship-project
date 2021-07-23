@@ -5,7 +5,7 @@ import ListRow from './ListRow';
 import ListHeader from './ListHeader';
 import styles from './StreamsList.module.css';
 
-const StreamsList = ({ fetchedStreams, onSortAction }) => {
+const StreamsList = ({ fetchedStreams, onSortAction, onFilterAction }) => {
   const [streams, setStreams] = useState([]);
   const [amount, setAmount] = useState(0);
   const [step, setStep] = useState(1);
@@ -55,7 +55,10 @@ const StreamsList = ({ fetchedStreams, onSortAction }) => {
       <section className={styles.list}>
         <table className={styles.table}>
           <thead>
-            <ListHeader onSortAction={onSortAction} />
+            <ListHeader
+              onSortAction={onSortAction}
+              onFilterAction={onFilterAction}
+            />
           </thead>
           <tbody>
             {renderStreams()}
@@ -86,6 +89,7 @@ StreamsList.propTypes = {
     status: PropTypes.string,
   })),
   onSortAction: PropTypes.func.isRequired,
+  onFilterAction: PropTypes.func.isRequired,
 };
 
 StreamsList.defaultProps = {

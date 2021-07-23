@@ -6,6 +6,10 @@ import {
   UPDATE_STREAMS,
 } from './types';
 
+export const signOut = () => ({
+  type: SIGN_OUT,
+});
+
 export const updateUserState = (ID, email, firstname, lastname) => ({
   type: UPDATE_USER,
   payload: {
@@ -29,10 +33,6 @@ export const fetchUser = (Email, token) => async (dispatch) => {
     console.log(err);
   }
 };
-
-export const signOut = () => ({
-  type: SIGN_OUT,
-});
 
 export const updateStreams = (streams) => ({
   type: UPDATE_STREAMS,
