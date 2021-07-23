@@ -54,9 +54,9 @@ const ListRow = ({
         </div>
       </td>
       {isCurrent && (
-      <td>
-        <span className={statusClass}>{stream.status}</span>
-      </td>
+        <td>
+          <span className={statusClass}>{stream.status}</span>
+        </td>
       )}
       <td>
         <div className={styles.more}>

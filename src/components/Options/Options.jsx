@@ -12,14 +12,14 @@ const Options = ({ isCurrent, index }) => (
       <Link to="/streams/current" className={styles.blue}>Open Study plan</Link>
     </li>
     {isCurrent && (
-    <li className={styles.item}>
-      <Link to="/streams/current" className={styles.default}>Paused Stream</Link>
-    </li>
+      <li className={styles.item}>
+        <Link to="/streams/current" className={styles.default}>Paused Stream</Link>
+      </li>
     )}
     {isCurrent && (
-    <li className={styles.item}>
-      <Link to="/streams/current" className={styles.red}>Delete Stream</Link>
-    </li>
+      <li className={styles.item}>
+        <Link to="/streams/current" className={styles.red}>Delete Stream</Link>
+      </li>
     )}
   </ul>
 );
