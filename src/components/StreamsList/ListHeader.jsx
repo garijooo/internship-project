@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 import {
@@ -6,11 +6,14 @@ import {
   AiFillCaretUp,
   AiFillCaretDown,
 } from 'react-icons/ai';
+import FilterOptions from '../FilterOptions';
 import styles from './StreamsList.module.css';
 
 const ListHeader = ({ onSortAction, onFilterAction }) => {
   const location = useLocation();
   const isCurrent = location.pathname.split('/')[2] === 'current';
+
+  const [active, setActive] = useState(0);
 
   return (
     <tr className={styles.header}>
@@ -67,10 +70,17 @@ const ListHeader = ({ onSortAction, onFilterAction }) => {
             className={styles.filter}
             role="button"
             tabIndex={0}
-            onClick={() => onFilterAction('mentor')}
-            onKeyDown={() => onFilterAction('mentor')}
+            onClick={() => (active === 1 ? setActive(0) : setActive(1))}
+            onKeyDown={() => (active === 1 ? setActive(0) : setActive(1))}
           >
             <AiOutlineFilter />
+            <FilterOptions
+              field="mentor"
+              active={active}
+              current={1}
+              onFilterAction={onFilterAction}
+              isCurrent={isCurrent}
+            />
           </div>
         </div>
       </th>
@@ -81,28 +91,42 @@ const ListHeader = ({ onSortAction, onFilterAction }) => {
             className={styles.filter}
             role="button"
             tabIndex={0}
-            onClick={() => onFilterAction('lead')}
-            onKeyDown={() => onFilterAction('lead')}
+            onClick={() => (active === 2 ? setActive(0) : setActive(2))}
+            onKeyDown={() => (active === 2 ? setActive(0) : setActive(2))}
           >
             <AiOutlineFilter />
+            <FilterOptions
+              field="lead"
+              active={active}
+              current={2}
+              onFilterAction={onFilterAction}
+              isCurrent={isCurrent}
+            />
           </div>
         </div>
       </th>
       {isCurrent && (
-      <th>
-        <div className={styles.cell}>
-          Status
-          <div
-            className={styles.filter}
-            role="button"
-            tabIndex={0}
-            onClick={() => onFilterAction('status')}
-            onKeyDown={() => onFilterAction('status')}
-          >
-            <AiOutlineFilter />
+        <th>
+          <div className={styles.cell}>
+            Status
+            <div
+              className={styles.filter}
+              role="button"
+              tabIndex={0}
+              onClick={() => (active === 3 ? setActive(0) : setActive(3))}
+              onKeyDown={() => (active === 3 ? setActive(0) : setActive(0))}
+            >
+              <AiOutlineFilter />
+              <FilterOptions
+                field="status"
+                active={active}
+                current={3}
+                onFilterAction={onFilterAction}
+                isCurrent={isCurrent}
+              />
+            </div>
           </div>
-        </div>
-      </th>
+        </th>
       )}
       <th> </th>
     </tr>

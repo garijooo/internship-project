@@ -15,7 +15,7 @@ const ActionButton = ({
     <button
       className={buttonClass}
       type={onClickHandler ? 'button' : 'submit'}
-      onClick={onClickHandler || null}
+      onClick={onClickHandler}
     >
       {children}
     </button>

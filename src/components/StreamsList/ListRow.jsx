@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import { AiOutlineMore } from 'react-icons/ai';
 import classNames from 'classnames';
 import TableAvatar from '../TableAvatar/TableAvatar';
-import Options from '../Options/Options';
+import Options from '../Options';
+import Option from '../Options/Option';
 import styles from './StreamsList.module.css';
 
 const ListRow = ({
@@ -61,7 +62,24 @@ const ListRow = ({
       <td>
         <div className={styles.more}>
           <div className={submenuClass}>
-            <Options isCurrent={isCurrent} index={index} />
+            <Options isCurrent={isCurrent}>
+              <Option subclass="default">
+                <Link to={`/streams/${index}`}>Open Stream details</Link>
+              </Option>
+              <Option subclass="blue">
+                <Link to="/streams/">Open Study plan</Link>
+              </Option>
+              {isCurrent && (
+                <Option subclass="default">
+                  <Link to="/streams/current">Paused Stream</Link>
+                </Option>
+              )}
+              {isCurrent && (
+                <Option subclass="red">
+                  <Link to="/streams/current">Delete Stream</Link>
+                </Option>
+              )}
+            </Options>
           </div>
           <AiOutlineMore onClick={onExpand} className={iconClass} />
         </div>

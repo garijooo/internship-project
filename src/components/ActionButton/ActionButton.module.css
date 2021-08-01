@@ -22,14 +22,14 @@
 }
 
 .accept a {
-  color: #fff
+  color: #fff;
 }
 
 .cancel {
   color: #000;
   background: #fff;
   border: 1px solid #d9d9d9;
-  box-shadow: 0 2px #00000004;
+  box-shadow: 0 2px rgba(0, 0, 0, 0.016);
   transition: .3s ease;
 }
 

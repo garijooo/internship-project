@@ -8,7 +8,7 @@ import {
   AiOutlineMenuUnfold,
 } from 'react-icons/ai';
 import classNames from 'classnames';
-import { updateNavbarView } from '../../store/options/actions';
+import updateNavbarView from '../../store/options/actions';
 import { ICON_SIZE_NAVBAR } from '../../constants';
 import styles from './Navbar.module.css';
 

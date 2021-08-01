@@ -5,7 +5,9 @@ import ListRow from './ListRow';
 import ListHeader from './ListHeader';
 import styles from './StreamsList.module.css';
 
-const StreamsList = ({ fetchedStreams, onSortAction, onFilterAction }) => {
+const StreamsList = ({
+  fetchedStreams, onSortAction, onFilterAction, toNullify,
+}) => {
   const [streams, setStreams] = useState([]);
   const [amount, setAmount] = useState(0);
   const [step, setStep] = useState(1);
@@ -16,6 +18,10 @@ const StreamsList = ({ fetchedStreams, onSortAction, onFilterAction }) => {
     setStreams(fetchedStreams);
     setAmount(fetchedStreams.length);
   }, [fetchedStreams]);
+
+  useEffect(() => {
+    setStep(1);
+  }, [toNullify]);
 
   const onExpandHandler = (index) => setCurrentExpand(index);
   const onStepChangeHandler = (updatedStep) => setStep(updatedStep);
@@ -90,6 +96,7 @@ StreamsList.propTypes = {
   })),
   onSortAction: PropTypes.func.isRequired,
   onFilterAction: PropTypes.func.isRequired,
+  toNullify: PropTypes.bool.isRequired,
 };
 
 StreamsList.defaultProps = {

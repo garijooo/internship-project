@@ -1,10 +1,10 @@
 .buttons {
-    display: flex;
-    justify-content: flex-end;
-    box-sizing: border-box;
-    padding: 10px 16px;
-  }
-  
-  .buttons button:last-child {
-    margin-left: 8px;
-  }
+  display: flex;
+  justify-content: flex-end;
+  box-sizing: border-box;
+  padding: 10px 16px;
+}
+
+.buttons button:not(:last-child) {
+  margin-right: 8px;
+}

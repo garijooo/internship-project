@@ -8,7 +8,7 @@
   list-style: none;
 }
 
-.default {
+.default a, span {
   color: #595959;
 }
 
@@ -22,10 +22,10 @@
   background: #f1f1f1;
 }
 
-.blue {
+.blue a {
   color: #0078d4;
 }
 
-.red {
+.red a {
   color: #eb5757;
 }

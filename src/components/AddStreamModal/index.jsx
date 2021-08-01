@@ -6,12 +6,12 @@ import ActionButton from '../ActionButton';
 import styles from './AddStreamModal.module.css';
 
 const AddStreamModal = ({
-  isOpen, onCancel, onDismiss, onSubmitHandler,
+  isOpen, onCancel, onSubmitHandler,
 }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
-  const onActionHandler = (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
     onSubmitHandler(title, description);
   };
@@ -21,9 +21,8 @@ const AddStreamModal = ({
       title="Add a new stream"
       isOpen={isOpen}
       onCancel={onCancel}
-      onDismiss={onDismiss}
     >
-      <form onSubmit={onActionHandler}>
+      <form onSubmit={onSubmit}>
         <InputElement
           type="text"
           placeholder="Title"
@@ -56,7 +55,6 @@ const AddStreamModal = ({
 AddStreamModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onCancel: PropTypes.func.isRequired,
-  onDismiss: PropTypes.func.isRequired,
   onSubmitHandler: PropTypes.func,
 };
 

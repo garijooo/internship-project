@@ -1,0 +1,12 @@
+.submenu {
+  position: absolute;
+  top: 0;
+  left: 40px;
+  z-index: 2;
+  max-height: 140px;
+  overflow-y: auto;
+}
+
+.hidden {
+  display: none;
+}

@@ -7,21 +7,24 @@ import ActionButton from '../ActionButton';
 import AddStreamModal from '../AddStreamModal';
 import fetchWrapper from '../../utils/fetchWrapper';
 import { fetchStreams } from '../../store/auth/actions';
+import getToken from '../../utils/getTokenByBrowser';
 
 const StreamsHeader = () => {
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
 
   const onStreamAddHandler = async (title, description) => {
-    const token = localStorage.getItem('auth-token') ? localStorage.getItem('auth-token') : sessionStorage.getItem('auth-token');
+    const token = getToken();
     try {
-      const data = await fetchWrapper.post('/api/stream', {
-        Authorization: `Bearer ${token}`,
-      }, {
-        title,
-        description,
-        status: 'Oncoming',
-      });
+      const data = await fetchWrapper.post(
+        '/api/stream',
+        { Authorization: `Bearer ${token}` },
+        {
+          title,
+          description,
+          status: 'Oncoming',
+        },
+      );
       if (data.id) dispatch(fetchStreams(token));
       setIsOpen(false);
     } catch (err) {
