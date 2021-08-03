@@ -8,7 +8,7 @@ import PageContainer from '../../components/PageContainer/PageContainer';
 import StreamsHeader from '../../components/StreamsHeader/StreamsHeader';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import StreamsList from '../../components/StreamsList/StreamsList';
-// import byField from '../../utils/sortByField';
+import byField from '../../utils/sortByField';
 import getEmail from '../../utils/jwtDecoder';
 import getToken from '../../utils/getTokenByBrowser';
 
@@ -17,7 +17,8 @@ const Streams = ({ streams }) => {
 
   const [search, setSearch] = useState('');
   const [sort, setSort] = useState('');
-  // const [filter, setFilter] = useState('');
+  const [filterField, setFilterField] = useState('');
+  const [filterItem, setFilterItem] = useState('');
 
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
@@ -34,43 +35,25 @@ const Streams = ({ streams }) => {
     setStreamsArray(streams);
   }, [streams]);
 
-  // const memorizedSearch = useMemo(
-  //   () => (search
-  //     ? streamsArray.filter(
-  //       (stream) => stream.title.toLowerCase().indexOf(search.toLowerCase()) >= 0,
-  //     )
-  //     : streams), [search],
-  // );
-
   const memorizedSearch = useMemo(
-    () => (search
-      ? streamsArray.filter(
-        (stream) => stream.title.toLowerCase().indexOf(search.toLowerCase()) > 0,
-      )
+    () => (search ? streamsArray.filter(
+      (stream) => stream.title.toLowerCase().indexOf(search.toLowerCase()) >= 0,
+    )
       : streamsArray), [search, streamsArray],
   );
 
-  // const memorizedSearch = useMemo(() => (
-  //   search ? streamsArray.filter(
-  //     (stream) => stream.title.toLowerCase().indexOf(search.toLowerCase()) >= 0,
-  //   ) : streams),
-  // [search]);
+  const memorizedFilter = useMemo(
+    () => (filterItem ? (memorizedSearch.filter((stream) => stream[filterField] === filterItem))
+      : memorizedSearch),
+    [filterItem, filterField, memorizedSearch],
+  );
 
-  // useEffect(() => {
-  //   setStreamsArray(memorizedSearch);
-  //   setToNullify(!toNullify);
-  // }, [memorizedSearch]);
+  const memorizedSort = useMemo(
+    () => (sort ? [...memorizedFilter].sort(byField(sort))
+      : memorizedFilter), [sort, memorizedFilter],
+  );
 
-  // const memorizedSort = useMemo(() => (sort ? [...streamsArray].sort(byField(sort)) : streams),
-  //   [sort, streams, streamsArray]);
-
-  // useEffect(() => {
-  //   setStreamsArray(memorizedSort);
-  // }, [memorizedSort]);
-
-  const onSearchChange = (value) => {
-    setSearch(value);
-  };
+  const onSearchChange = (value) => setSearch(value);
 
   const onSortActionHandler = (field) => {
     if (field === sort) {
@@ -81,9 +64,8 @@ const Streams = ({ streams }) => {
   };
 
   const onFilterActionHandler = (field, item) => {
-    setStreamsArray(
-      (streamsArray ?? []).filter((stream) => stream[field] === item),
-    );
+    setFilterField(field);
+    setFilterItem(item);
   };
 
   return (
@@ -95,7 +77,7 @@ const Streams = ({ streams }) => {
         value={search}
       />
       <StreamsList
-        fetchedStreams={memorizedSearch}
+        fetchedStreams={memorizedSort}
         onSortAction={onSortActionHandler}
         onFilterAction={onFilterActionHandler}
       />
