@@ -9,10 +9,10 @@ import StreamsHeader from '../../components/StreamsHeader/StreamsHeader';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import StreamsList from '../../components/StreamsList/StreamsList';
 import byField from '../../utils/sortByField';
-import getEmail from '../../utils/jwtDecoder';
 import getToken from '../../utils/getTokenByBrowser';
 
 const Streams = ({ streams }) => {
+  const token = getToken();
   const [streamsArray, setStreamsArray] = useState([]);
 
   const [search, setSearch] = useState('');
@@ -24,9 +24,8 @@ const Streams = ({ streams }) => {
   const auth = useSelector((state) => state.auth);
 
   useEffect(() => {
-    const token = getToken();
     if (!auth.ID) {
-      dispatch(fetchUser(getEmail(token), token));
+      dispatch(fetchUser(token));
     }
     dispatch(fetchStreams(token));
   }, [auth.ID, dispatch]);

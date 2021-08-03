@@ -1,3 +1,1 @@
-export default () => (localStorage.getItem('auth-token')
-  ? localStorage.getItem('auth-token')
-  : sessionStorage.getItem('auth-token'));
+export default () => (localStorage.getItem('auth-token') || sessionStorage.getItem('auth-token'));

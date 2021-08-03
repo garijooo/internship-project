@@ -21,8 +21,10 @@ const apiRequestMaker = (method) => async (url, options, body) => {
       ...updatedOptions.headers, ...(options ?? {}),
     },
   };
+  console.log(updatedOptions);
   const response = await fetch(url, updatedOptions);
   const data = await response.json();
+  console.log(data);
   return data;
 };
 

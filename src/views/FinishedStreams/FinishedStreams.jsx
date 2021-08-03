@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import selectStreams from '../../store/auth/selectors';
 import { fetchStreams } from '../../store/auth/actions';
-import token from '../../utils/getTokenByBrowser';
+import getToken from '../../utils/getTokenByBrowser';
 import Streams from '../Streams/Streams';
 
 const FinishedStreams = () => {
+  const token = getToken();
   const [streams, setStreams] = useState([]);
   const selectedStreams = useSelector(selectStreams);
   const dispatch = useDispatch();

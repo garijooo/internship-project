@@ -12,20 +12,23 @@ import getToken from '../../utils/getTokenByBrowser';
 const StreamsHeader = () => {
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
+  const token = getToken();
 
   const onStreamAddHandler = async (title, description) => {
-    const token = getToken();
+    console.log(token);
     try {
       const data = await fetchWrapper.post(
-        '/api/stream',
+        '/api/Stream/CreateStream',
         { Authorization: `Bearer ${token}` },
         {
           title,
           description,
-          status: 'Oncoming',
+          planStartDate: '2021-08-12',
+          planEndDate: '2021-08-16',
+          status: 'NotStarted',
         },
       );
-      if (data.id) dispatch(fetchStreams(token));
+      if (data) dispatch(fetchStreams(token));
       setIsOpen(false);
     } catch (err) {
       console.log(err.message);

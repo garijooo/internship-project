@@ -22,9 +22,10 @@ export const updateUserState = (ID, email, firstname, lastname) => ({
 
 export const fetchUser = (token) => async (dispatch) => {
   try {
-    const data = await fetchWrapper.get('/api/Account/GetUserProfile', {
-      Authorization: `Bearer ${token}`,
-    });
+    const data = await fetchWrapper.get(
+      '/api/Account/GetUserProfile',
+      { Authorization: `Bearer ${token}` },
+    );
     const {
       id, email, name,
     } = data;
@@ -45,7 +46,6 @@ export const fetchStreams = (token) => async (dispatch) => {
     const data = await fetchWrapper.get('/api/Stream/GetStreams', {
       Authorization: `Bearer ${token}`,
     });
-    console.log(data);
     dispatch(updateStreams(data));
   } catch (err) {
     console.log(err);
