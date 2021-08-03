@@ -5,7 +5,6 @@ import AuthForm from '../../components/AuthForm/AuthForm';
 import AuthLogo from '../../components/AuthLogo/AuthLogo';
 import FormUpperContent from '../../components/FormUpperContent/FormUpperContent';
 import fetchWrapper from '../../utils/fetchWrapper';
-import getEmail from '../../utils/jwtDecoder';
 import { fetchUser } from '../../store/auth/actions';
 
 const SignUp = ({ history }) => {
@@ -20,23 +19,24 @@ const SignUp = ({ history }) => {
   const onSignUpHandler = async (e) => {
     e.preventDefault();
     try {
-      if (password !== confirmPassword) throw new Error('passwords didn\'t match');
-      let data = await fetchWrapper.post('/api/user', {}, {
+      let data = await fetchWrapper.post('/api/Account/Registration', {}, {
+        email,
         firstname: fname,
         lastname: lname,
-        email,
         password,
+        confirmPassword,
+        imagePath: '',
       });
-      if (data.msg) throw new Error(data.msg);
       try {
-        data = await fetchWrapper.post('/api/login', {}, {
-          email: data.email,
+        data = await fetchWrapper.post('/api/Account/SignIn', {}, {
+          email,
           password,
         });
-        if (data.msg) throw new Error(data.msg);
-        localStorage.setItem('auth-token', data.token);
-        dispatch(fetchUser(getEmail(data.token), data.token));
-        history.push('/streams/current');
+        if (data.success) {
+          localStorage.setItem('auth-token', data.token);
+          dispatch(fetchUser(data.token));
+          history.push('/streams/current');
+        } else throw new Error(data.errors);
       } catch (err) {
         setError(err.message);
       }

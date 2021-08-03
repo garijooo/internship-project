@@ -9,7 +9,6 @@ import AuthLogo from '../../components/AuthLogo/AuthLogo';
 import FormUpperContent from '../../components/FormUpperContent/FormUpperContent';
 import styles from './Login.module.css';
 import fetchWrapper from '../../utils/fetchWrapper';
-import getEmail from '../../utils/jwtDecoder';
 import { fetchUser } from '../../store/auth/actions';
 
 const Login = ({ history }) => {
@@ -22,15 +21,18 @@ const Login = ({ history }) => {
   const onLoginHandler = async (e) => {
     e.preventDefault();
     try {
-      const data = await fetchWrapper.post('/api/login', {}, {
+      const data = await fetchWrapper.post('/api/Account/SignIn', {}, {
         email,
         password,
       });
       if (data.msg) throw new Error(data.msg);
-      if (checked.current.checked) localStorage.setItem('auth-token', data.token);
-      else sessionStorage.setItem('auth-token', data.token);
-      dispatch(fetchUser(getEmail(data.token), data.token));
-      history.push('/streams/current');
+      if (data.success) {
+        if (checked.current.checked) {
+          localStorage.setItem('auth-token', data.token);
+        } else sessionStorage.setItem('auth-token', data.token);
+        dispatch(fetchUser(data.token));
+        history.push('/streams/current');
+      } else throw new Error(data.errors);
     } catch (err) {
       setError(err.message);
     }
