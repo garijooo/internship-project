@@ -9,3 +9,25 @@
     line-height: 24px;
     outline: none;
 }
+
+.duration {
+    padding: 4px 12px;
+    font-size: 14px;
+	line-height: 22px;
+	box-sizing: border-box;
+    margin: 0;
+    width: 280px;
+}
+
+.duration-wide::placeholder {
+    color: #c9c9c9;
+}
+
+.duration-wide {
+    padding: 4px 12px;
+    font-size: 14px;
+	line-height: 22px;
+	box-sizing: border-box;
+    margin: 0;
+    width: 100%;
+}

@@ -1,0 +1,13 @@
+.textarea {
+    width: 100%;
+    outline: none;
+    box-sizing: border-box;
+    padding: 4px 12px;
+    line-height: 22px;
+    font-size: 14px;
+    border: 1px solid #D9D9D9;
+}
+
+.textarea::placeholder {
+    color: #bfbfbf;
+}

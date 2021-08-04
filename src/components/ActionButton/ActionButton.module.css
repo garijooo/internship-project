@@ -26,9 +26,9 @@
 }
 
 .cancel {
-  color: #000;
+  color: #8C8C8C;
   background: #fff;
-  border: 1px solid #d9d9d9;
+  border: 1px solid #8C8C8C;
   box-shadow: 0 2px rgba(0, 0, 0, 0.016);
   transition: .3s ease;
 }
@@ -36,4 +36,21 @@
 .cancel:hover {
   border-color: #fa8c16;
   color: #fa8c16;
+}
+
+.btn:disabled {
+  opacity: .5;
+}
+
+.save {
+  color: #1890FF;
+  background: transparent;
+  padding: 0;
+  margin-left: 16px;
+}
+
+.simple {
+  color: #8C8C8C;
+  background: transparent;
+  padding: 0;
 }

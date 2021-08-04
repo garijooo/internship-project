@@ -17,7 +17,7 @@ const CurrentStreams = () => {
     const updateStreams = () => {
       if (Array.isArray(selectedStreams)) {
         const filtered = (selectedStreams ?? [])
-          .filter((item) => item.status !== 'Completed')
+          .filter((item) => item.status !== 'Finished')
           .map((item, index) => ({ ...item, interns: 100 - index }));
         setStreams(filtered);
       }

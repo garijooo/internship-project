@@ -22,8 +22,8 @@ const FilterOptions = ({
   return (
     <div className={filterOptionsClass}>
       <Options>
-        {getUnique(field, updated).map((item) => (
-          <Option>
+        {getUnique(field, updated).map((item, index) => (
+          <Option key={`filter-${index + 1}`}>
             <span
               role="button"
               tabIndex={0}

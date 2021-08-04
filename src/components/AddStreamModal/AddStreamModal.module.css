@@ -1,10 +1,192 @@
+.form {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .buttons {
   display: flex;
   justify-content: flex-end;
   box-sizing: border-box;
-  padding: 10px 16px;
 }
 
 .buttons button:not(:last-child) {
   margin-right: 8px;
+}
+
+.streamtypes {
+  display: flex;
+  margin-top: 18px;
+}
+
+.streamtypes .item {
+  display: flex;
+  align-items: center;
+  margin-right: 24px;
+}
+
+.radio {
+  margin-right: 8px;
+  height: 16px;
+  width: 16px;
+  background: #d9d9d9;
+}
+
+.streamtypes .item span {
+  color: #000;
+  line-height: 22px;
+  font-size: 14px;
+}
+
+.infotypes {
+  margin-top: 20px;
+}
+
+.infotypes .item {
+  box-sizing: border-box;
+  font-size: 16px;
+  line-height: 24px;
+  outline: none;
+}
+
+.infotypes .item:not(.active) {
+  background: transparent;
+  color: #939393;
+  border: none;
+  border-bottom: 2px solid transparent;
+}
+
+.active {
+  color: #fa8c16;
+  background: transparent;
+  padding-bottom: 8px;
+  border: none;
+  border-bottom: 2px solid #fa8c16;
+  font-weight: 500;
+}
+
+.general {
+  margin-right: 32px;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+.section {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  line-height: 20px;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.75);
+  margin-bottom: 4px;
+}
+
+.descriptionSection {
+  margin-top: 24px;
+}
+
+.counter {
+  color: #bfbfbf;
+  text-align: right;
+  line-height: 22px;
+  font-size: 14px;
+}
+
+.themeform {
+  background: #FAFAFA;
+  padding: 16px;
+  margin-top: 16px;
+}
+
+.themesection {
+  margin-top: 24px;
+}
+
+.themebtn {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-top: 18px;
+}
+
+.themeslist {
+  list-style: none;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.themeitem {
+  position: relative;
+  box-sizing: border-box;
+  background: #FAFAFA;
+  border: 1px solid #F0F0F0;
+  border-radius: 4px;
+  padding: 16px 0;
+  margin-bottom: 8px;
+}
+
+.themeicon {
+  position: absolute;
+  left: 16px;
+}
+
+.themebottomicon {
+  position: absolute;
+  color: #8C8C8C;
+  top: 21px;
+  height: 100%;
+  right: 16px;
+}
+
+.themebottomicon svg {
+  cursor: pointer;  
+}
+
+.themebottomicon svg:first-child {
+  margin-right: 8px;
+}
+
+.themebottomicon svg:first-child:hover {
+  color: #9acf2b;
+}
+
+.themebottomicon svg:last-child:hover {
+  color: #d32a00;
+}
+
+.themename {
+  padding: 0 36px;
+}
+
+.themedescription {
+  padding: 0 28px;
+  color: #595959;
+  margin-top: 16px;
+
+}
+
+.themename, .themedescription {
+  width: 100%;
+  box-sizing: border-box;
+  line-height: 22px;
+  font-size: 14px;
+}
+
+.hidden {
+  display: none;
+}
+
+.themeadd {
+  color: #FA8C16;
+  border: none;
+  background: transparent;
+  cursor: pointer;
 }

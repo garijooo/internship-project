@@ -1,0 +1,85 @@
+.duration {
+	display: flex;	
+	border-radius: 2px;
+	border: 1px solid #D9D9D9;
+	width: 280px;
+	height: 32px;
+	box-sizing: border-box;
+}
+
+.item {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	width: 50%;
+}
+
+.text::placeholder {
+	color: #939393;
+}
+
+.date, .text {
+    position: absolute;
+	outline: none;
+	border: none;
+	width: 100%;
+	font-size: 14px;
+	line-height: 22px;
+	box-sizing: border-box;
+	padding: 4px 12px;
+}
+
+.date {
+	z-index: 2;
+	background: transparent;
+    color: transparent;
+	width: 100%;
+}
+
+.date::-webkit-calendar-picker-indicator {
+    position: absolute;
+	width: 100%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    background: transparent;
+    color: transparent;
+    cursor: pointer;
+}
+
+.date::-webkit-datetime-edit-text {
+    -webkit-appearance: none;
+    display: none;
+}
+.date::-webkit-datetime-edit-month-field{
+    -webkit-appearance: none;
+    display: none;
+}
+.date::-webkit-datetime-edit-day-field {
+    -webkit-appearance: none;
+    display: none;
+}
+.date::-webkit-datetime-edit-year-field {
+    -webkit-appearance: none;
+    display: none;
+}
+
+.icon {
+	position: absolute;
+	z-index: 1;
+	right: 12px;
+	bottom: 0;
+	height: 100%;
+	display: flex;
+	align-items: center;
+}
+
+.icon svg {
+	height: 100%;
+	color: rgba(0, 0, 0, 0.25);
+}
+
+.end .text, .date {
+	padding-left: 0;
+}

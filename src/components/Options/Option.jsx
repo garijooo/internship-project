@@ -8,7 +8,7 @@ const Option = ({ children, subclass }) => {
     [styles[subclass]]: subclass,
   });
 
-  return <li className={optionClass}>{children}</li>;
+  return <li className={optionClass} key={children}>{children}</li>;
 };
 
 Option.propTypes = {

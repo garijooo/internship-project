@@ -11,6 +11,7 @@ const Modal = ({
   const modalClass = classNames(styles.container, {
     [styles.hidden]: !isOpen,
   });
+  const closeIconClass = classNames(styles.icon, styles.close);
 
   return ReactDOM.createPortal(
     <section role="button" tabIndex={0} className={modalClass} onClick={onCancel} onKeyDown={onCancel}>
@@ -23,7 +24,7 @@ const Modal = ({
       >
         <div className={styles.header}>
           <h2 className={styles.title}>{title}</h2>
-          <span className={styles.icon}>
+          <span className={closeIconClass}>
             <AiOutlineClose size={16} onClick={onCancel} />
           </span>
         </div>

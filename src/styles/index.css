@@ -7,7 +7,8 @@
 
 html,
 body,
-#root {
+#root,
+#modal {
   height: 100vh;
   width: 100%;
   overflow: hidden;
@@ -26,7 +27,10 @@ a,
 span,
 button,
 select,
-option {
+option,
+label,
+textarea,
+div {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
 }

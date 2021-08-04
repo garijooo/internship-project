@@ -79,7 +79,7 @@ const PaginationBar = ({
             className={styles.select}
             onChange={onRangeChangeHandler}
           >
-            {itemsCountOptions.map((item) => (<option value={item}>{`${item}/page`}</option>))}
+            {itemsCountOptions.map((item) => (<option key={item} value={item}>{`${item}/page`}</option>))}
           </select>
         </div>
       </div>
