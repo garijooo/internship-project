@@ -38,13 +38,26 @@ const AddStreamModal = ({ isOpen, onCancel, onSubmitHandler }) => {
   const onStartChangeHandler = (value) => setStartDate(value);
   const onEndChangeHandler = (value) => setEndDate(value);
 
-  const onAddThemeHandler = (themename, themedescription) => {
-    setPlan([...plan, { themename, themedescription }]);
-  };
+  const onPlanChangeHandler = (updatedPlan) => setPlan(updatedPlan);
+
+  const [currentName, setCurrentName] = useState('');
+  const [currentDescription, setCurrentDescription] = useState('');
+
+  const [edditing, setEdditing] = useState(-1);
 
   const onDeleteThemeHandler = (index) => setPlan(plan.filter((item, id) => id !== index));
+  const onEditThemeHandler = (index) => {
+    setIsThemeFormOpened(true);
+    setCurrentName(plan[index].themename);
+    setCurrentDescription(plan[index].themedescription);
+    setEdditing(index);
+  };
+
   const onThemeFormCloseHandler = () => {
+    setCurrentDescription('');
+    setCurrentName('');
     setIsThemeFormOpened(false);
+    setEdditing(-1);
   };
 
   const [opened, setOpened] = useState(-1);
@@ -71,6 +84,7 @@ const AddStreamModal = ({ isOpen, onCancel, onSubmitHandler }) => {
             <ThemesList
               onChangeOpened={onChangeOpenedHandler}
               onDeleteTheme={onDeleteThemeHandler}
+              onEditTheme={onEditThemeHandler}
               plan={plan}
               opened={opened}
             />
@@ -90,9 +104,12 @@ const AddStreamModal = ({ isOpen, onCancel, onSubmitHandler }) => {
               isThemeFormOpened
               && (
               <ThemeFormFields
-                onAddTheme={onAddThemeHandler}
                 onThemeFormClose={onThemeFormCloseHandler}
+                currentDescription={currentDescription}
+                currentName={currentName}
+                id={edditing}
                 plan={plan}
+                onPlanChange={onPlanChangeHandler}
               />
               )
             )

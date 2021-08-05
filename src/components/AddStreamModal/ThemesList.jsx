@@ -8,7 +8,7 @@ import { ICON_SIZE_DEFAULT } from '../../constants';
 import styles from './AddStreamModal.module.css';
 
 const ThemesList = ({
-  plan, opened, onDeleteTheme, onChangeOpened,
+  plan, opened, onDeleteTheme, onEditTheme, onChangeOpened,
 }) => {
   const descriptionHiddenClass = classNames(styles.themedescription, styles.hidden);
 
@@ -28,7 +28,10 @@ const ThemesList = ({
             {item.themedescription}
           </div>
           <div className={styles.themebottomicon}>
-            <AiOutlineEdit size={ICON_SIZE_DEFAULT} />
+            <AiOutlineEdit
+              size={ICON_SIZE_DEFAULT}
+              onClick={() => onEditTheme(index)}
+            />
             <AiOutlineDelete
               size={ICON_SIZE_DEFAULT}
               onClick={(plan.length === 1) ? null : () => onDeleteTheme(index)}
@@ -49,6 +52,7 @@ ThemesList.propTypes = {
   ).isRequired,
   opened: PropTypes.number,
   onDeleteTheme: PropTypes.func.isRequired,
+  onEditTheme: PropTypes.func.isRequired,
   onChangeOpened: PropTypes.func.isRequired,
 };
 

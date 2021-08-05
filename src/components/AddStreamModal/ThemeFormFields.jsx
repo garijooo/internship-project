@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import InputElement from '../InputElement';
@@ -6,13 +6,35 @@ import TextareaElement from '../TextareaElement';
 import ActionButton from '../ActionButton';
 import styles from './AddStreamModal.module.css';
 
-const ThemeFormFields = ({ onAddTheme, onThemeFormClose }) => {
+const ThemeFormFields = ({
+  onThemeFormClose, currentName, currentDescription, id, plan, onPlanChange,
+}) => {
   const descriptionSectionClass = classNames(styles.section, styles.themesection);
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
 
+  useEffect(() => {
+    if (currentName && currentDescription) {
+      setName(currentName);
+      setDescription(currentDescription);
+    }
+  }, [currentDescription, currentName]);
+
   const onClickHandler = () => {
-    onAddTheme(name, description);
+    if (currentName && currentDescription && id >= 0) {
+      const updated = plan.map((item, index) => ((index === id)
+        ? {
+          themename: name,
+          themedescription: description,
+        }
+        : item));
+      onPlanChange(updated);
+    } else {
+      onPlanChange([...plan, {
+        themename: name,
+        themedescription: description,
+      }]);
+    }
     onThemeFormClose();
   };
 
@@ -59,8 +81,23 @@ const ThemeFormFields = ({ onAddTheme, onThemeFormClose }) => {
 };
 
 ThemeFormFields.propTypes = {
-  onAddTheme: PropTypes.func.isRequired,
   onThemeFormClose: PropTypes.func.isRequired,
+  currentDescription: PropTypes.string,
+  currentName: PropTypes.string,
+  id: PropTypes.number,
+  plan: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      description: PropTypes.string,
+    }),
+  ).isRequired,
+  onPlanChange: PropTypes.func.isRequired,
+};
+
+ThemeFormFields.defaultProps = {
+  currentDescription: '',
+  currentName: '',
+  id: -1,
 };
 
 export default ThemeFormFields;
