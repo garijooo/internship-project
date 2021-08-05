@@ -10,6 +10,10 @@
     outline: none;
 }
 
+.item::placeholder {
+    color: #bfbfbf;
+}
+
 .duration {
     padding: 4px 12px;
     font-size: 14px;

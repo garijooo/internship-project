@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import PaginationBar from '../PaginationBar/PaginationBar';
+import PaginationBar from '../PaginationBar';
 import ListRow from './ListRow';
 import ListHeader from './ListHeader';
 import styles from './StreamsList.module.css';
@@ -17,6 +17,7 @@ const StreamsList = ({
   useEffect(() => {
     setStreams(fetchedStreams);
     setAmount(fetchedStreams.length);
+    setStep(1);
   }, [fetchedStreams]);
 
   const onExpandHandler = (index) => setCurrentExpand(index);

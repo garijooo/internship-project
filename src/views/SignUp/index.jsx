@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'react-router-prop-types';
 import { useDispatch } from 'react-redux';
-import AuthForm from '../../components/AuthForm/AuthForm';
-import AuthLogo from '../../components/AuthLogo/AuthLogo';
-import FormUpperContent from '../../components/FormUpperContent/FormUpperContent';
+import AuthForm from '../../components/AuthForm';
+import AuthLogo from '../../components/AuthLogo';
+import InputElement from '../../components/InputElement';
+import FormUpperContent from '../../components/FormUpperContent';
 import fetchWrapper from '../../utils/fetchWrapper';
 import { fetchUser } from '../../store/auth/actions';
 
@@ -55,39 +56,39 @@ const SignUp = ({ history }) => {
           submitTitle="Register"
           error={error}
         >
-          <input
+          <InputElement
             type="text"
             value={fname}
             placeholder="First name"
-            onChange={(e) => setFname(e.target.value)}
+            onChangeHandler={(value) => setFname(value)}
             required
           />
-          <input
+          <InputElement
             type="text"
             value={lname}
             placeholder="Last name"
-            onChange={(e) => setLname(e.target.value)}
+            onChangeHandler={(value) => setLname(value)}
             required
           />
-          <input
+          <InputElement
             type="email"
             value={email}
             placeholder="Email"
-            onChange={(e) => setEmail(e.target.value)}
+            onChangeHandler={(value) => setEmail(value)}
             required
           />
-          <input
+          <InputElement
             type="password"
             value={password}
             placeholder="Password(6 digits at least, case sensitive)"
-            onChange={(e) => setPassword(e.target.value)}
+            onChangeHandler={(value) => setPassword(value)}
             required
           />
-          <input
+          <InputElement
             type="password"
             value={confirmPassword}
             placeholder="Confirm password"
-            onChange={(e) => setConfirmPassword(e.target.value)}
+            onChangeHandler={(value) => setConfirmPassword(value)}
             required
           />
         </AuthForm>

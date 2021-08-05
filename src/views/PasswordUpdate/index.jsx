@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import AuthForm from '../../components/AuthForm/AuthForm';
-import AuthLogo from '../../components/AuthLogo/AuthLogo';
-import FormBottomContent from '../../components/FormBottomContent/FormBottomContent';
+import AuthForm from '../../components/AuthForm';
+import AuthLogo from '../../components/AuthLogo';
+import InputElement from '../../components/InputElement';
+import FormBottomContent from '../../components/FormBottomContent';
 
 const PasswordUpdate = () => {
   const [password, setPassword] = useState('');
@@ -25,18 +26,18 @@ const PasswordUpdate = () => {
           onSubmitHandler={onUpdatePasswordHandler}
           submitTitle="Reset password and Log in"
         >
-          <input
+          <InputElement
             type="password"
             value={password}
             placeholder="New password"
-            onChange={(e) => setPassword(e.target.value)}
+            onChangeHandler={(value) => setPassword(value)}
             required
           />
-          <input
+          <InputElement
             type="password"
             value={confirmPassword}
             placeholder="Confirm password"
-            onChange={(e) => setConfirmPassword(e.target.value)}
+            onChangeHandler={(value) => setConfirmPassword(value)}
             required
           />
         </AuthForm>

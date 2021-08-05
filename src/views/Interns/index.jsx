@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { signOut } from '../../store/auth/actions';
-import PageContainer from '../../components/PageContainer/PageContainer';
+import PageContainer from '../../components/PageContainer';
 
 const Interns = () => {
   const dispatch = useDispatch();

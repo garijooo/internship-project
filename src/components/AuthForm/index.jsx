@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import ActionButton from '../ActionButton';
 import styles from './AuthForm.module.css';
 
 const AuthForm = ({
@@ -16,7 +17,11 @@ const AuthForm = ({
   return (
     <form onSubmit={onSubmitHandler} className={styles.form}>
       {children}
-      <input type="submit" value={submitTitle} />
+      <ActionButton
+        btnStyle="accept-auth"
+      >
+        {submitTitle}
+      </ActionButton>
       <div className={errorClass}>
         <span>{error}</span>
       </div>

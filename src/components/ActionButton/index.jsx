@@ -7,7 +7,8 @@ const ActionButton = ({
   btnStyle, children, onClickHandler, disabled,
 }) => {
   const buttonClass = classNames(styles.btn, {
-    [styles.accept]: btnStyle === 'accept',
+    [styles.accept]: btnStyle === 'accept' || btnStyle === 'accept-auth',
+    [styles.authaccept]: btnStyle === 'accept-auth',
     [styles.cancel]: btnStyle === 'cancel',
     [styles.save]: btnStyle === 'save',
     [styles.simple]: btnStyle === 'simple',

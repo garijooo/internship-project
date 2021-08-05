@@ -34,7 +34,7 @@ const RightSideBar = ({ step, countPages, onStepChange }) => {
   }
   if (step + 3 < countPages && countPages > 5) {
     buttons.push(
-      <li className={styles.item}>
+      <li className={styles.item} key={`${step}+ellipsis`}>
         <button type="button" className={ellipsisClass} onClick={() => onStepChange(step + interval)}>
           <AiOutlineEllipsis size={ICON_SIZE_DEFAULT} />
           <AiOutlineDoubleRight className={styles.arrows} size={ICON_SIZE_DEFAULT} />
@@ -42,9 +42,9 @@ const RightSideBar = ({ step, countPages, onStepChange }) => {
       </li>,
     );
   }
-  if (step + 2 < countPages && countPages > 4) {
+  if (step + 2 < countPages && countPages > 5) {
     buttons.push(
-      <li className={styles.item} key={`${step}-${countPages}`}>
+      <li className={styles.item} key={`${step}+${countPages}`}>
         <button
           type="button"
           className={styles.button}

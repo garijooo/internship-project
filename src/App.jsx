@@ -5,10 +5,10 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom';
-import CurrentStreams from './views/CurrentStreams/CurrentStreams';
-import FinishedStreams from './views/FinishedStreams/FinishedStreams';
-import Interns from './views/Interns/Interns';
-import NotFound from './components/NotFound/NotFound';
+import CurrentStreams from './views/CurrentStreams';
+import FinishedStreams from './views/FinishedStreams';
+import Interns from './views/Interns';
+import NotFound from './components/NotFound';
 import PrivateRoute from './routes/PrivateRoute';
 import AuthRoutes from './routes/AuthRoutes';
 import './styles/index.css';

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useLocation, Link } from 'react-router-dom';
 import { AiOutlineMore } from 'react-icons/ai';
 import classNames from 'classnames';
-import TableAvatar from '../TableAvatar/TableAvatar';
+import TableAvatar from '../TableAvatar';
 import Options from '../Options';
 import Option from '../Options/Option';
 import styles from './StreamsList.module.css';

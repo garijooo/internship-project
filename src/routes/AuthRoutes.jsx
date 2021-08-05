@@ -1,9 +1,9 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import Login from '../views/Login/Login';
-import SignUp from '../views/SignUp/SignUp';
-import PasswordUpdate from '../views/PasswordUpdate/PasswordUpdate';
-import PasswordReset from '../views/PasswordReset/PasswordReset';
+import Login from '../views/Login';
+import SignUp from '../views/SignUp';
+import PasswordUpdate from '../views/PasswordUpdate';
+import PasswordReset from '../views/PasswordReset';
 
 const AuthRoutes = () => (
   <Switch>

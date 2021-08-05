@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import HeaderAvatar from '../HeaderAvatar/HeaderAvatar';
-import HeaderLogo from '../HeaderLogo/HeaderLogo';
+import HeaderAvatar from '../HeaderAvatar';
+import HeaderLogo from '../HeaderLogo';
 import styles from './Header.module.css';
 
 const Header = () => {

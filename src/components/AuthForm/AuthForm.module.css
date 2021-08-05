@@ -6,47 +6,6 @@
   font-size: 8px;
 }
 
-.form input[type="text"],
-.form input[type="email"],
-.form input[type="password"],
-.form input[type="submit"] {
-  width: 100%;
-  box-sizing: border-box;
-  font-size: 2em;
-  margin-bottom: 1.5em;
-  padding: 0.5em 0.75em;
-  outline: none;
-  border-radius: 2px;
-  line-height: 1.5em;
-}
-
-.form input[type="text"],
-.form input[type="email"],
-.form input[type="password"] {
-  border: 1px solid #d9d9d9;
-}
-
-.form input[type="text"]::placeholder,
-.form input[type="email"]::placeholder,
-.form input[type="password"]::placeholder {
-  color: #bfbfbf;
-}
-
-.form input[type="submit"] {
-  width: 100%;
-  border: none;
-  color: #fff;
-  background: #FA8C16;
-  cursor: pointer;
-  transition: background-color 0.5s ease;
-  line-height: 24px;
-  padding: 8px 0;
-}
-
-.form input[type="submit"]:hover {
-  background: #bba99e;
-}
-
 .error {
   color: #d32a00;
   font-size: 14px;

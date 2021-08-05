@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Header from '../Header/Header';
-import Navbar from '../Navbar/Navbar';
+import Header from '../Header';
+import Navbar from '../Navbar';
 import styles from './PageContainer.module.css';
 
 const PageContainer = ({ children }) => (

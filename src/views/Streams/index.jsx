@@ -4,10 +4,10 @@ import React, {
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUser, fetchStreams } from '../../store/auth/actions';
-import PageContainer from '../../components/PageContainer/PageContainer';
-import StreamsHeader from '../../components/StreamsHeader/StreamsHeader';
-import SearchBar from '../../components/SearchBar/SearchBar';
-import StreamsList from '../../components/StreamsList/StreamsList';
+import PageContainer from '../../components/PageContainer';
+import StreamsHeader from '../../components/StreamsHeader';
+import SearchBar from '../../components/SearchBar';
+import StreamsList from '../../components/StreamsList';
 import byField from '../../utils/sortByField';
 import getToken from '../../utils/getTokenByBrowser';
 
@@ -28,7 +28,7 @@ const Streams = ({ streams }) => {
       dispatch(fetchUser(token));
     }
     dispatch(fetchStreams(token));
-  }, [auth.ID, dispatch]);
+  }, [auth.ID, dispatch, token]);
 
   useEffect(() => {
     setStreamsArray(streams);

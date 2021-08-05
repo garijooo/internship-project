@@ -4,9 +4,10 @@ import React, {
 import PropTypes from 'react-router-prop-types';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import AuthForm from '../../components/AuthForm/AuthForm';
-import AuthLogo from '../../components/AuthLogo/AuthLogo';
-import FormUpperContent from '../../components/FormUpperContent/FormUpperContent';
+import AuthForm from '../../components/AuthForm';
+import AuthLogo from '../../components/AuthLogo';
+import InputElement from '../../components/InputElement';
+import FormUpperContent from '../../components/FormUpperContent';
 import styles from './Login.module.css';
 import fetchWrapper from '../../utils/fetchWrapper';
 import { fetchUser } from '../../store/auth/actions';
@@ -47,17 +48,17 @@ const Login = ({ history }) => {
           submitTitle="Sign In"
           error={error}
         >
-          <input
+          <InputElement
             type="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChangeHandler={(value) => setEmail(value)}
             placeholder="Email"
             required
           />
-          <input
+          <InputElement
             type="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChangeHandler={(value) => setPassword(value)}
             placeholder="Password"
             required
           />

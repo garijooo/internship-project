@@ -19,7 +19,7 @@ const LeftSideBar = ({ step, countPages, onStepChange }) => {
 
   if (step - 2 > 1 && countPages > 5) {
     buttons.push(
-      <li className={styles.item}>
+      <li className={styles.item} key={`${step}-1`}>
         <button
           type="button"
           className={styles.button}
@@ -33,7 +33,7 @@ const LeftSideBar = ({ step, countPages, onStepChange }) => {
 
   if (step - 3 > 1 && countPages > 5) {
     buttons.push(
-      <li className={styles.item}>
+      <li className={styles.item} key={`${step}-ellipsis`}>
         <button type="button" className={ellipsisClass} onClick={() => onStepChange(step - interval)}>
           <AiOutlineEllipsis size={ICON_SIZE_DEFAULT} />
           <AiOutlineDoubleLeft className={styles.arrows} size={ICON_SIZE_DEFAULT} />
@@ -45,7 +45,7 @@ const LeftSideBar = ({ step, countPages, onStepChange }) => {
   for (let i = diff; i >= 1; i -= 1) {
     if (step - i >= 1) {
       buttons.push(
-        <li className={styles.item}>
+        <li className={styles.item} key={`${step}-${step + i}`}>
           <button
             type="button"
             className={styles.button}

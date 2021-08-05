@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchStreams } from '../../store/auth/actions';
 import selectStreams from '../../store/auth/selectors';
 import getToken from '../../utils/getTokenByBrowser';
-import Streams from '../Streams/Streams';
+import Streams from '../Streams';
 
 const CurrentStreams = () => {
   const token = getToken();
@@ -11,7 +11,7 @@ const CurrentStreams = () => {
   const selectedStreams = useSelector(selectStreams);
   const dispatch = useDispatch();
 
-  useEffect(() => dispatch(fetchStreams(token)), [dispatch]);
+  useEffect(() => dispatch(fetchStreams(token)), [dispatch, token]);
 
   useEffect(() => {
     const updateStreams = () => {

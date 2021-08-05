@@ -25,6 +25,15 @@
   color: #fff;
 }
 
+.authaccept {
+  padding: 8px 0;
+  transition: background-color 0.5s ease;
+}
+
+.authaccept:hover {
+  background: #bba99e;
+}
+
 .cancel {
   color: #8C8C8C;
   background: #fff;
